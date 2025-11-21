@@ -1,9 +1,9 @@
-// app/page.tsx
 "use client";
 
 import React, { useState } from "react";
 import { Menu, X, ShoppingBag, Send } from "lucide-react";
 import Image from "next/image";
+import { SiInstagram } from "react-icons/si";
 
 export default function Home() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +28,6 @@ export default function Home() {
 	};
 
 	const handleFormSubmit = () => {
-		// In production, this would send to backend/email service
 		console.log("Form submitted:", formData);
 		setFormSubmitted(true);
 		setTimeout(() => setFormSubmitted(false), 3000);
@@ -40,19 +39,19 @@ export default function Home() {
 			name: "Uji Ceremonial Grade",
 			weight: "25g",
 			price: "THB 590",
-			color: "#7CB342",
-		},
+			color: "#bfa94f",
+		}, // gold tones for hover background
 		{
 			name: "Kagoshima Ceremonial Grade",
 			weight: "25g",
 			price: "THB 590",
-			color: "#8BC34A",
+			color: "#d1b24a",
 		},
 		{
 			name: "Mie Ceremonial Grade",
 			weight: "25g",
 			price: "THB 590",
-			color: "#9CCC65",
+			color: "#e2c94e",
 		},
 	];
 
@@ -65,10 +64,9 @@ export default function Home() {
 	];
 
 	return (
-		<div className="min-h-screen bg-stone-50">
+		<div className="min-h-screen bg-black text-yellow-400">
 			{/* Navigation */}
-			<nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 flex items-center h-16">
-				{/* Logo section flush left with small margin */}
+			<nav className="fixed w-full bg-black/95 backdrop-blur-sm shadow-md z-50 flex items-center h-16">
 				<div className="flex items-center gap-2 ml-4 sm:ml-6 lg:ml-8 shrink-0">
 					<Image
 						src="/Golden Matcha Logo.jpg"
@@ -78,93 +76,53 @@ export default function Home() {
 						className="rounded-full"
 						priority
 					/>
-					<h1 className="text-2xl font-bold text-amber-600 whitespace-nowrap">
+					<h1 className="text-2xl font-bold text-yellow-400 whitespace-nowrap">
 						Golden Matcha
 					</h1>
 				</div>
 
-				{/* Spacer to push the menu to the right */}
 				<div className="flex-grow"></div>
 
-				{/* Desktop Navigation: hidden on small screens */}
 				<div className="hidden md:flex space-x-8 mr-8">
-					<button
-						onClick={() => scrollToSection("home")}
-						className="text-gray-700 hover:text-amber-600 transition"
-					>
-						Home
-					</button>
-					<button
-						onClick={() => scrollToSection("our-story")}
-						className="text-gray-700 hover:text-amber-600 transition"
-					>
-						Our Story
-					</button>
-					<button
-						onClick={() => scrollToSection("shop")}
-						className="text-gray-700 hover:text-amber-600 transition"
-					>
-						Shop
-					</button>
-					<button
-						onClick={() => scrollToSection("wholesale")}
-						className="text-gray-700 hover:text-amber-600 transition"
-					>
-						Wholesale
-					</button>
-					<button
-						onClick={() => scrollToSection("contact")}
-						className="text-gray-700 hover:text-amber-600 transition"
-					>
-						Contact
-					</button>
+					{["home", "our-story", "shop", "wholesale", "contact"].map(
+						(section) => (
+							<button
+								key={section}
+								onClick={() => scrollToSection(section)}
+								className="text-yellow-300 hover:text-yellow-500 transition font-semibold"
+							>
+								{section.charAt(0).toUpperCase() +
+									section.slice(1).replace("-", " ")}
+							</button>
+						)
+					)}
 				</div>
 
-				{/* Mobile menu button */}
 				<div className="md:hidden mr-4">
 					<button
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
-						className="text-gray-700"
+						className="text-yellow-300"
 						aria-label="Toggle menu"
 					>
 						{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
 					</button>
 				</div>
 
-				{/* Mobile Navigation */}
 				{isMenuOpen && (
-					<div className="md:hidden fixed top-16 left-0 right-0 bg-white border-t shadow-md z-50">
+					<div className="md:hidden fixed top-16 left-0 right-0 bg-black border-t border-yellow-700 shadow-md z-50">
 						<div className="px-4 pt-4 pb-6 space-y-1">
-							<button
-								onClick={() => scrollToSection("home")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
-							>
-								Home
-							</button>
-							<button
-								onClick={() => scrollToSection("our-story")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
-							>
-								Our Story
-							</button>
-							<button
-								onClick={() => scrollToSection("shop")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
-							>
-								Shop
-							</button>
-							<button
-								onClick={() => scrollToSection("wholesale")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
-							>
-								Wholesale
-							</button>
-							<button
-								onClick={() => scrollToSection("contact")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
-							>
-								Contact
-							</button>
+							{["home", "our-story", "shop", "wholesale", "contact"].map(
+								(section) => (
+									<button
+										key={section}
+										onClick={() => scrollToSection(section)}
+										className="block w-full text-left px-3 py-2 text-yellow-300 hover:bg-yellow-900 rounded font-semibold"
+									>
+										{section.charAt(0).toUpperCase() +
+											section.slice(1).replace("-", " ")}
+									</button>
+								)
+							)}
 						</div>
 					</div>
 				)}
@@ -173,29 +131,31 @@ export default function Home() {
 			{/* Hero Section */}
 			<section
 				id="home"
-				className="pt-16 min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-green-50 to-stone-50"
+				className="pt-16 min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-yellow-900 to-black"
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-					<h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+					<Image
+						src="/Golden Matcha Logo.jpg"
+						alt="Golden Matcha Logo"
+						width={200}
+						height={200}
+						className="rounded-full mx-auto"
+						priority
+					/>
+					<h2 className="text-5xl md:text-7xl font-bold text-yellow-400 mb-6">
 						A Golden Moment
 						<br />
-						with <span className="text-amber-600">Golden Matcha</span>
+						with <span className="text-yellow-500">Golden Matcha</span>
 					</h2>
-					<p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+					<p className="text-xl text-yellow-300 mb-12 max-w-2xl mx-auto">
 						Premium Japanese matcha sourced directly from tea farms in Japan,
 						bringing you the finest quality at an affordable price.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<button
-							onClick={() => scrollToSection("our-story")}
-							className="px-8 py-4 bg-amber-600 text-white rounded-full font-semibold hover:bg-amber-700 transition transform hover:scale-105"
-						>
+						<button className="px-8 py-4 bg-yellow-500 text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105">
 							Our Story
 						</button>
-						<button
-							onClick={() => scrollToSection("shop")}
-							className="px-8 py-4 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition transform hover:scale-105 flex items-center justify-center gap-2"
-						>
+						<button className="px-8 py-4 bg-yellow-700 text-black rounded-full font-semibold hover:bg-yellow-800 transition transform hover:scale-105 flex items-center justify-center gap-2">
 							<ShoppingBag size={20} />
 							Shop Products
 						</button>
@@ -204,16 +164,15 @@ export default function Home() {
 			</section>
 
 			{/* Our Story Section */}
-			<section id="our-story" className="py-20 bg-white">
+			<section id="our-story" className="py-20 bg-black">
 				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
 						Our Story
 					</h2>
-					<div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-						<p className="text-xl font-semibold text-amber-600">
+					<div className="prose prose-lg max-w-none text-yellow-300 leading-relaxed space-y-6">
+						<p className="text-xl font-semibold text-yellow-500">
 							A Golden Moment with Golden Matcha
 						</p>
-
 						<p>
 							Golden Matcha started off in the humble streets of Bangkok,
 							founded by 2 individuals from very different backgrounds. One of
@@ -221,7 +180,6 @@ export default function Home() {
 							started off his matcha journey after a simple sip which changed
 							his perspective of Matcha.
 						</p>
-
 						<p>
 							Intrigued by the different nodes that different varieties of
 							matcha can offer, we explored matcha across Japan and China in
@@ -229,19 +187,16 @@ export default function Home() {
 							affordable price, in a time where Matcha has gained tremendous
 							popularity.
 						</p>
-
 						<p>
 							For matcha lovers, we would like to make matcha enjoyable and
 							accessible for your daily ritual. At Golden Matcha, that's our
 							goal and mission.
 						</p>
-
 						<p>
 							We take pride in sourcing our Matcha from the tea farms and
 							producers of Japan, building a relationship with them to ensure
 							the high quality of matcha we promise to our community.
 						</p>
-
 						<p>
 							With a mixture of creativity and expertise, we aim to serve you
 							with a variety of the finest matcha that you can enjoy with your
@@ -252,30 +207,30 @@ export default function Home() {
 			</section>
 
 			{/* Shop Section */}
-			<section id="shop" className="py-20 bg-stone-50">
+			<section id="shop" className="py-20 bg-black">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+					<h2 className="text-4xl font-bold text-yellow-400 mb-12 text-center">
 						Shop Our Matcha
 					</h2>
 					<div className="grid md:grid-cols-3 gap-8">
-						{products.map((product, index) => (
-							<ProductCard key={index} product={product} />
+						{products.map((product, i) => (
+							<ProductCard key={i} product={product} />
 						))}
 					</div>
 				</div>
 			</section>
 
 			{/* Wholesale Section */}
-			<section id="wholesale" className="py-20 bg-white">
+			<section id="wholesale" className="py-20 bg-black">
 				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
 						Wholesale
 					</h2>
-					<div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-6 mb-8">
-						<p className="text-center text-lg font-semibold text-amber-900">
+					<div className="bg-yellow-900 border-2 border-yellow-700 rounded-lg p-6 mb-8">
+						<p className="text-center text-lg font-semibold text-yellow-500">
 							For wholesale inquiries and pricing, please contact us via LINE
 						</p>
-						<p className="text-center text-amber-700 mt-2">
+						<p className="text-center text-yellow-400 mt-2">
 							LINE: goldenmatchaofficial
 						</p>
 					</div>
@@ -283,9 +238,9 @@ export default function Home() {
 						{wholesaleProducts.map((product, index) => (
 							<div
 								key={index}
-								className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition"
+								className="bg-yellow-800 border border-yellow-700 rounded-lg p-4 hover:shadow-md transition"
 							>
-								<h3 className="text-lg font-semibold text-gray-900">
+								<h3 className="text-lg font-semibold text-yellow-300">
 									{product}
 								</h3>
 							</div>
@@ -295,15 +250,15 @@ export default function Home() {
 			</section>
 
 			{/* Contact Section */}
-			<section id="contact" className="py-20 bg-stone-50">
+			<section id="contact" className="py-20 bg-black">
 				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
 						Contact Us
 					</h2>
 
 					<div className="grid md:grid-cols-2 gap-8 mb-8">
-						<div className="bg-white rounded-lg p-6 shadow-md">
-							<h3 className="text-xl font-semibold mb-4 text-gray-900">
+						<div className="bg-yellow-900 rounded-lg p-6 shadow-md">
+							<h3 className="text-xl font-semibold mb-4 text-yellow-300">
 								Connect with us
 							</h3>
 							<div className="space-y-3">
@@ -311,8 +266,19 @@ export default function Home() {
 									href="https://line.me/ti/p/goldenmatchaofficial"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="flex items-center text-green-600 hover:text-green-700"
+									className="flex items-center text-green-600 hover:text-green-700 gap-2"
 								>
+									{/* LINE icon as SVG */}
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="20"
+										height="20"
+										fill="currentColor"
+										viewBox="0 0 24 24"
+										className="inline-block"
+									>
+										<path d="M12 2C6.48 2 2 5.91 2 10.53c0 2.63 1.77 4.93 4.45 6.23-.13.9-.7 2.8-1.3 4.1 0 0-.09.38.52.18 1.54-1.18 2.71-2.13 3.77-2.86A10.5 10.5 0 0012 19c5.52 0 10-3.91 10-8.47S17.52 2 12 2z" />
+									</svg>
 									<span className="font-semibold">LINE:</span>
 									<span className="ml-2">goldenmatchaofficial</span>
 								</a>
@@ -320,15 +286,16 @@ export default function Home() {
 									href="https://instagram.com/goldenmatchaofficial"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="flex items-center text-pink-600 hover:text-pink-700"
+									className="flex items-center text-pink-600 hover:text-pink-700 gap-2"
 								>
+									<SiInstagram size={20} />
 									<span className="font-semibold">Instagram:</span>
 									<span className="ml-2">@goldenmatchaofficial</span>
 								</a>
 							</div>
 						</div>
 
-						<div className="bg-white rounded-lg p-6 shadow-md">
+						<div className="bg-yellow-900 rounded-lg p-6 shadow-md">
 							<div className="space-y-4">
 								<div>
 									<input
@@ -337,7 +304,7 @@ export default function Home() {
 										placeholder="Name"
 										value={formData.name}
 										onChange={handleFormChange}
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+										className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 									/>
 								</div>
 								<div>
@@ -347,7 +314,7 @@ export default function Home() {
 										placeholder="Email"
 										value={formData.email}
 										onChange={handleFormChange}
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+										className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 									/>
 								</div>
 								<div>
@@ -357,7 +324,7 @@ export default function Home() {
 										placeholder="Contact Number"
 										value={formData.contact}
 										onChange={handleFormChange}
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+										className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 									/>
 								</div>
 								<div>
@@ -367,12 +334,12 @@ export default function Home() {
 										value={formData.comment}
 										onChange={handleFormChange}
 										rows={4}
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+										className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 									/>
 								</div>
 								<button
 									onClick={handleFormSubmit}
-									className="w-full px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition flex items-center justify-center gap-2"
+									className="w-full px-6 py-3 bg-yellow-600 text-black rounded-lg font-semibold hover:bg-yellow-700 transition flex items-center justify-center gap-2"
 								>
 									<Send size={20} />
 									Send Message
@@ -389,13 +356,13 @@ export default function Home() {
 			</section>
 
 			{/* Footer */}
-			<footer className="bg-gray-900 text-white py-8">
+			<footer className="bg-black text-yellow-400 py-8">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<p className="text-lg font-semibold text-amber-500 mb-2">
-						Golden Matcha
+					<p className="text-lg font-semibold mb-2">Golden Matcha</p>
+					<p className="text-yellow-300">
+						Premium Japanese Matcha from Bangkok
 					</p>
-					<p className="text-gray-400">Premium Japanese Matcha from Bangkok</p>
-					<p className="text-gray-500 text-sm mt-4">
+					<p className="text-yellow-600 text-sm mt-4">
 						© 2024 Golden Matcha. All rights reserved.
 					</p>
 				</div>
@@ -416,22 +383,20 @@ const ProductCard = ({ product }: { product: Product }) => {
 
 	return (
 		<div
-			className="bg-white rounded-lg shadow-md overflow-hidden transform transition hover:scale-105 cursor-pointer"
+			className="bg-yellow-900 rounded-lg shadow-md overflow-hidden transform transition hover:scale-105 cursor-pointer"
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
+			style={{ backgroundColor: isHovered ? product.color : "#f5f5f4" }}
 		>
-			<div
-				className="h-64 flex items-center justify-center transition-colors duration-300"
-				style={{ backgroundColor: isHovered ? product.color : "#f5f5f4" }}
-			>
+			<div className="h-64 flex items-center justify-center transition-colors duration-300">
 				<div className="text-6xl">🍵</div>
 			</div>
 			<div className="p-6">
-				<h3 className="text-xl font-semibold text-gray-900 mb-2">
+				<h3 className="text-xl font-semibold text-black mb-2">
 					{product.name}
 				</h3>
-				<p className="text-gray-600 mb-4">{product.weight}</p>
-				<p className="text-2xl font-bold text-amber-600">{product.price}</p>
+				<p className="text-black mb-4">{product.weight}</p>
+				<p className="text-2xl font-bold text-yellow-400">{product.price}</p>
 			</div>
 		</div>
 	);
