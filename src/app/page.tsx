@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import { Menu, X, ShoppingBag, Send } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,92 +67,101 @@ export default function Home() {
 	return (
 		<div className="min-h-screen bg-stone-50">
 			{/* Navigation */}
-			<nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex justify-between items-center h-16">
-						<div className="flex-shrink-0">
-							<h1 className="text-2xl font-bold text-amber-600">
-								Golden Matcha
-							</h1>
-						</div>
+			<nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 flex items-center h-16">
+				{/* Logo section flush left with small margin */}
+				<div className="flex items-center gap-2 ml-4 sm:ml-6 lg:ml-8 shrink-0">
+					<Image
+						src="/Golden Matcha Logo.jpg"
+						alt="Golden Matcha Logo"
+						width={36}
+						height={36}
+						className="rounded-full"
+						priority
+					/>
+					<h1 className="text-2xl font-bold text-amber-600 whitespace-nowrap">
+						Golden Matcha
+					</h1>
+				</div>
 
-						{/* Desktop Navigation */}
-						<div className="hidden md:flex space-x-8">
-							<button
-								onClick={() => scrollToSection("home")}
-								className="text-gray-700 hover:text-amber-600 transition"
-							>
-								Home
-							</button>
-							<button
-								onClick={() => scrollToSection("our-story")}
-								className="text-gray-700 hover:text-amber-600 transition"
-							>
-								Our Story
-							</button>
-							<button
-								onClick={() => scrollToSection("shop")}
-								className="text-gray-700 hover:text-amber-600 transition"
-							>
-								Shop
-							</button>
-							<button
-								onClick={() => scrollToSection("wholesale")}
-								className="text-gray-700 hover:text-amber-600 transition"
-							>
-								Wholesale
-							</button>
-							<button
-								onClick={() => scrollToSection("contact")}
-								className="text-gray-700 hover:text-amber-600 transition"
-							>
-								Contact
-							</button>
-						</div>
+				{/* Spacer to push the menu to the right */}
+				<div className="flex-grow"></div>
 
-						{/* Mobile menu button */}
-						<div className="md:hidden">
-							<button
-								onClick={() => setIsMenuOpen(!isMenuOpen)}
-								className="text-gray-700"
-							>
-								{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-							</button>
-						</div>
-					</div>
+				{/* Desktop Navigation: hidden on small screens */}
+				<div className="hidden md:flex space-x-8 mr-8">
+					<button
+						onClick={() => scrollToSection("home")}
+						className="text-gray-700 hover:text-amber-600 transition"
+					>
+						Home
+					</button>
+					<button
+						onClick={() => scrollToSection("our-story")}
+						className="text-gray-700 hover:text-amber-600 transition"
+					>
+						Our Story
+					</button>
+					<button
+						onClick={() => scrollToSection("shop")}
+						className="text-gray-700 hover:text-amber-600 transition"
+					>
+						Shop
+					</button>
+					<button
+						onClick={() => scrollToSection("wholesale")}
+						className="text-gray-700 hover:text-amber-600 transition"
+					>
+						Wholesale
+					</button>
+					<button
+						onClick={() => scrollToSection("contact")}
+						className="text-gray-700 hover:text-amber-600 transition"
+					>
+						Contact
+					</button>
+				</div>
+
+				{/* Mobile menu button */}
+				<div className="md:hidden mr-4">
+					<button
+						onClick={() => setIsMenuOpen(!isMenuOpen)}
+						className="text-gray-700"
+						aria-label="Toggle menu"
+					>
+						{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+					</button>
 				</div>
 
 				{/* Mobile Navigation */}
 				{isMenuOpen && (
-					<div className="md:hidden bg-white border-t">
-						<div className="px-2 pt-2 pb-3 space-y-1">
+					<div className="md:hidden fixed top-16 left-0 right-0 bg-white border-t shadow-md z-50">
+						<div className="px-4 pt-4 pb-6 space-y-1">
 							<button
 								onClick={() => scrollToSection("home")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50"
+								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
 							>
 								Home
 							</button>
 							<button
 								onClick={() => scrollToSection("our-story")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50"
+								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
 							>
 								Our Story
 							</button>
 							<button
 								onClick={() => scrollToSection("shop")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50"
+								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
 							>
 								Shop
 							</button>
 							<button
 								onClick={() => scrollToSection("wholesale")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50"
+								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
 							>
 								Wholesale
 							</button>
 							<button
 								onClick={() => scrollToSection("contact")}
-								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50"
+								className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-amber-50 rounded"
 							>
 								Contact
 							</button>
