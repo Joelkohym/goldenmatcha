@@ -1,0 +1,97 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+export default function NavBar() {
+	const router = useRouter();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const scrollToSection = (id: string) => {
+		const element = document.getElementById(id);
+		element?.scrollIntoView({ behavior: "smooth" });
+		setIsMenuOpen(false);
+	};
+
+	const handleNavClick = (section: string) => {
+		if (section === "home") {
+			router.push("/");
+		} else if (section === "shop") {
+			router.push("/products");
+		} else {
+			scrollToSection(section);
+		}
+		setIsMenuOpen(false);
+	};
+
+	const navItems = ["home", "our-story", "shop", "wholesale", "contact"];
+
+	return (
+		<nav className="fixed w-full bg-black/95 backdrop-blur-sm shadow-md z-50 flex items-center h-16 px-4 sm:px-6 lg:px-8">
+			{/* Logo */}
+			<div
+				className="flex items-center gap-2 cursor-pointer"
+				onClick={() => router.push("/")}
+			>
+				<Image
+					src="/Golden Matcha Logo.jpg"
+					alt="Golden Matcha Logo"
+					width={36}
+					height={36}
+					className="rounded-full"
+					priority
+				/>
+				<h1 className="text-2xl font-bold text-yellow-400 whitespace-nowrap">
+					Golden Matcha
+				</h1>
+			</div>
+
+			<div className="flex-grow" />
+
+			{/* Desktop navigation */}
+			<div className="hidden md:flex space-x-8 mr-8">
+				{navItems.map((section) => (
+					<button
+						key={section}
+						onClick={() => handleNavClick(section)}
+						className="text-yellow-300 hover:text-yellow-500 transition font-semibold"
+					>
+						{section.charAt(0).toUpperCase() +
+							section.slice(1).replace("-", " ")}
+					</button>
+				))}
+			</div>
+
+			{/* Mobile menu toggle */}
+			<div className="md:hidden">
+				<button
+					onClick={() => setIsMenuOpen(!isMenuOpen)}
+					className="text-yellow-300"
+					aria-label="Toggle menu"
+				>
+					{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+				</button>
+			</div>
+
+			{/* Mobile navigation menu */}
+			{isMenuOpen && (
+				<div className="md:hidden fixed top-16 left-0 right-0 bg-black border-t border-yellow-700 shadow-md z-50">
+					<div className="px-4 pt-4 pb-6 space-y-1">
+						{navItems.map((section) => (
+							<button
+								key={section}
+								onClick={() => handleNavClick(section)}
+								className="block w-full text-left px-3 py-2 text-yellow-300 hover:bg-yellow-900 rounded font-semibold"
+							>
+								{section.charAt(0).toUpperCase() +
+									section.slice(1).replace("-", " ")}
+							</button>
+						))}
+					</div>
+				</div>
+			)}
+		</nav>
+	);
+}
