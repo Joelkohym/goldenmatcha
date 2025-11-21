@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import NavBar from "../components/NavBar";
+import NavBar from "../../components/NavBar";
 
 const products = [
 	{

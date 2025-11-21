@@ -20,6 +20,9 @@ export default function NavBar() {
 			router.push("/");
 		} else if (section === "shop") {
 			router.push("/products");
+		} else if (section === "our-story") {
+			// Navigate to home with a query parameter
+			router.push("/?scrollTo=our-story");
 		} else {
 			scrollToSection(section);
 		}

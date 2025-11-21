@@ -4,16 +4,31 @@ import React, { useState } from "react";
 import { ShoppingBag, Send } from "lucide-react";
 import Image from "next/image";
 import { SiInstagram } from "react-icons/si";
-import NavBar from "./components/NavBar";
+import emailjs from "emailjs-com";
+import { useRouter } from "next/navigation";
+import NavBar from "../components/NavBar";
+import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const scrollToSectionId = searchParams.get("scrollTo");
+	useEffect(() => {
+		if (scrollToSectionId) {
+			const element = document.getElementById(scrollToSectionId);
+			element?.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [scrollToSectionId]);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
-		contact: "",
-		comment: "",
+		company: "",
+		number: "",
+		message: "",
 	});
 	const [formSubmitted, setFormSubmitted] = useState(false);
+	const [error, setError] = useState("");
 
 	const handleFormChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,11 +36,34 @@ export default function Home() {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
-	const handleFormSubmit = () => {
-		console.log("Form submitted:", formData);
-		setFormSubmitted(true);
-		setTimeout(() => setFormSubmitted(false), 3000);
-		setFormData({ name: "", email: "", contact: "", comment: "" });
+	const handleFormSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		setError("");
+
+		emailjs
+			.send(
+				"service_yigoju9", // replace with your EmailJS service ID
+				"template_pinqcqe", // replace with your EmailJS template ID
+				formData,
+				"iJdghA9XIDkrCdIhQ" // replace with your EmailJS public key (user ID)
+			)
+			.then(
+				() => {
+					setFormSubmitted(true);
+					setFormData({
+						name: "",
+						email: "",
+						company: "",
+						number: "",
+						message: "",
+					});
+					setTimeout(() => setFormSubmitted(false), 3000);
+				},
+				(err) => {
+					setError("Failed to send message. Please try again later.");
+					console.error(err.text);
+				}
+			);
 	};
 
 	const products = [
@@ -88,7 +126,10 @@ export default function Home() {
 						<button className="px-8 py-4 bg-yellow-500 text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105">
 							Our Story
 						</button>
-						<button className="px-8 py-4 bg-yellow-700 text-black rounded-full font-semibold hover:bg-yellow-800 transition transform hover:scale-105 flex items-center justify-center gap-2">
+						<button
+							onClick={() => router.push("/products")}
+							className="px-8 py-4 bg-yellow-700 text-black rounded-full font-semibold hover:bg-yellow-800 transition transform hover:scale-105 flex items-center justify-center gap-2"
+						>
 							<ShoppingBag size={20} />
 							Shop Products
 						</button>
@@ -201,7 +242,6 @@ export default function Home() {
 									rel="noopener noreferrer"
 									className="flex items-center text-green-600 hover:text-green-700 gap-2"
 								>
-									{/* LINE SVG icon */}
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="20"
@@ -230,13 +270,14 @@ export default function Home() {
 						</div>
 
 						<div className="bg-yellow-900 rounded-lg p-6 shadow-md">
-							<div className="space-y-4">
+							<form onSubmit={handleFormSubmit}>
 								<input
 									type="text"
 									name="name"
 									placeholder="Name"
-									value={formData.name}
+									value={formData.name ?? ""}
 									onChange={handleFormChange}
+									required
 									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 								/>
 								<input
@@ -245,37 +286,52 @@ export default function Home() {
 									placeholder="Email"
 									value={formData.email}
 									onChange={handleFormChange}
+									required
 									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 								/>
 								<input
 									type="text"
-									name="contact"
+									name="company"
+									placeholder="Company"
+									value={formData.company}
+									onChange={handleFormChange}
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
+								/>
+								<input
+									type="text"
+									name="number"
 									placeholder="Contact Number"
-									value={formData.contact}
+									value={formData.number}
 									onChange={handleFormChange}
 									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 								/>
 								<textarea
-									name="comment"
+									name="message"
 									placeholder="Your Message"
-									value={formData.comment}
+									value={formData.message}
 									onChange={handleFormChange}
 									rows={4}
+									required
 									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
 								/>
 								<button
-									onClick={handleFormSubmit}
-									className="w-full px-6 py-3 bg-yellow-600 text-black rounded-lg font-semibold hover:bg-yellow-700 transition flex items-center justify-center gap-2"
+									type="submit"
+									className="w-full px-6 py-3 bg-yellow-600 text-black rounded-lg font-semibold hover:bg-yellow-700 transition flex items-center justify-center gap-2 mt-4"
 								>
 									<Send size={20} />
 									Send Message
 								</button>
 								{formSubmitted && (
-									<p className="text-green-600 text-center font-semibold">
+									<p className="text-green-600 text-center font-semibold mt-2">
 										Thank you! We'll be in touch soon.
 									</p>
 								)}
-							</div>
+								{error && (
+									<p className="text-red-600 text-center font-semibold mt-2">
+										{error}
+									</p>
+								)}
+							</form>
 						</div>
 					</div>
 				</div>
@@ -306,7 +362,6 @@ interface Product {
 
 const ProductCard = ({ product }: { product: Product }) => {
 	const [isHovered, setIsHovered] = useState(false);
-
 	return (
 		<div
 			className="bg-yellow-900 rounded-lg shadow-md overflow-hidden transform transition hover:scale-105 cursor-pointer"
