@@ -168,7 +168,10 @@ function HomeContent() {
 						bringing you the finest quality at an affordable price.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<button className="px-8 py-4 bg-yellow-500 text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105">
+						<button
+							onClick={() => router.push("/?scrollTo=our-story")}
+							className="px-8 py-4 bg-yellow-500 text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105"
+						>
 							Our Story
 						</button>
 						<button
