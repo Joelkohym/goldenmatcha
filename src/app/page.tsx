@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ShoppingBag, Send } from "lucide-react";
 import Image from "next/image";
 import { SiInstagram } from "react-icons/si";
 import emailjs from "emailjs-com";
 import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
-import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Home() {
 	const router = useRouter();
@@ -42,10 +42,10 @@ export default function Home() {
 
 		emailjs
 			.send(
-				"service_yigoju9", // replace with your EmailJS service ID
-				"template_pinqcqe", // replace with your EmailJS template ID
+				"Hkb-lDk9ijuSPQf3F", // replace with your EmailJS service ID
+				"template_cvklsbq", // replace with your EmailJS template ID
 				formData,
-				"iJdghA9XIDkrCdIhQ" // replace with your EmailJS public key (user ID)
+				"goldenmatchaofficial@gmail.com" // replace with your EmailJS public key (user ID)
 			)
 			.then(
 				() => {
@@ -100,11 +100,15 @@ export default function Home() {
 			<NavBar />
 
 			{/* Hero Section */}
-			<section
+			<motion.section
 				id="home"
-				className="pt-16 min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-yellow-900 to-black"
+				className="pt-16 min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-yellow-900 to-black px-4 sm:px-6 lg:px-8 py-20 text-center"
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
+				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
 			>
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+				<div className="max-w-7xl mx-auto">
 					<Image
 						src="/Golden Matcha Logo.jpg"
 						alt="Golden Matcha Logo"
@@ -135,11 +139,18 @@ export default function Home() {
 						</button>
 					</div>
 				</div>
-			</section>
+			</motion.section>
 
 			{/* Our Story Section */}
-			<section id="our-story" className="py-20 bg-black">
-				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<motion.section
+				id="our-story"
+				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
+				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+			>
+				<div className="max-w-4xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
 						Our Story
 					</h2>
@@ -178,25 +189,39 @@ export default function Home() {
 						</p>
 					</div>
 				</div>
-			</section>
+			</motion.section>
 
 			{/* Shop Section */}
-			<section id="shop" className="py-20 bg-black">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<motion.section
+				id="shop"
+				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
+				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+			>
+				<div className="max-w-7xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-12 text-center">
 						Shop Our Matcha
 					</h2>
-					<div className="grid md:grid-cols-3 gap-8">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 						{products.map((product, i) => (
-							<ProductCard key={i} product={product} />
+							<MotionProductCard key={i} product={product} />
 						))}
 					</div>
 				</div>
-			</section>
+			</motion.section>
 
 			{/* Wholesale Section */}
-			<section id="wholesale" className="py-20 bg-black">
-				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<motion.section
+				id="wholesale"
+				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
+				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+			>
+				<div className="max-w-4xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
 						Wholesale
 					</h2>
@@ -221,16 +246,23 @@ export default function Home() {
 						))}
 					</div>
 				</div>
-			</section>
+			</motion.section>
 
 			{/* Contact Section */}
-			<section id="contact" className="py-20 bg-black">
-				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<motion.section
+				id="contact"
+				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
+				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+			>
+				<div className="max-w-4xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
 						Contact Us
 					</h2>
 
-					<div className="grid md:grid-cols-2 gap-8 mb-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
 						<div className="bg-yellow-900 rounded-lg p-6 shadow-md">
 							<h3 className="text-xl font-semibold mb-4 text-yellow-300">
 								Connect with us
@@ -278,7 +310,7 @@ export default function Home() {
 									value={formData.name ?? ""}
 									onChange={handleFormChange}
 									required
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
 								/>
 								<input
 									type="email"
@@ -287,7 +319,7 @@ export default function Home() {
 									value={formData.email}
 									onChange={handleFormChange}
 									required
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
 								/>
 								<input
 									type="text"
@@ -295,7 +327,7 @@ export default function Home() {
 									placeholder="Company"
 									value={formData.company}
 									onChange={handleFormChange}
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
 								/>
 								<input
 									type="text"
@@ -303,7 +335,7 @@ export default function Home() {
 									placeholder="Contact Number"
 									value={formData.number}
 									onChange={handleFormChange}
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
 								/>
 								<textarea
 									name="message"
@@ -312,7 +344,7 @@ export default function Home() {
 									onChange={handleFormChange}
 									rows={4}
 									required
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
 								/>
 								<button
 									type="submit"
@@ -335,19 +367,15 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-			</section>
+			</motion.section>
 
 			{/* Footer */}
-			<footer className="bg-black text-yellow-400 py-8">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<p className="text-lg font-semibold mb-2">Golden Matcha</p>
-					<p className="text-yellow-300">
-						Premium Japanese Matcha from Bangkok
-					</p>
-					<p className="text-yellow-600 text-sm mt-4">
-						© 2024 Golden Matcha. All rights reserved.
-					</p>
-				</div>
+			<footer className="bg-black text-yellow-400 py-8 px-4 sm:px-6 lg:px-8 text-center">
+				<p className="text-lg font-semibold mb-2">Golden Matcha</p>
+				<p className="text-yellow-300">Premium Japanese Matcha from Bangkok</p>
+				<p className="text-yellow-600 text-sm mt-4">
+					© 2024 Golden Matcha. All rights reserved.
+				</p>
 			</footer>
 		</div>
 	);
@@ -360,14 +388,18 @@ interface Product {
 	color: string;
 }
 
-const ProductCard = ({ product }: { product: Product }) => {
+const MotionProductCard = ({ product }: { product: Product }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	return (
-		<div
-			className="bg-yellow-900 rounded-lg shadow-md overflow-hidden transform transition hover:scale-105 cursor-pointer"
+		<motion.div
+			className="rounded-lg shadow-md overflow-hidden cursor-pointer transform transition hover:scale-105"
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 			style={{ backgroundColor: isHovered ? product.color : "#f5f5f4" }}
+			initial={{ opacity: 0, y: 40 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.5, ease: "easeOut" }}
+			viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
 		>
 			<div className="h-64 flex items-center justify-center transition-colors duration-300">
 				<div className="text-6xl">🍵</div>
@@ -379,6 +411,6 @@ const ProductCard = ({ product }: { product: Product }) => {
 				<p className="text-black mb-4">{product.weight}</p>
 				<p className="text-2xl font-bold text-yellow-400">{product.price}</p>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
