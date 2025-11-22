@@ -30,7 +30,7 @@ const MotionProductCard = ({ product }: { product: Product }) => {
 			initial={{ opacity: 0, y: 40 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5, ease: "easeOut" }}
-			viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+			viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 		>
 			<div className="h-64 flex items-center justify-center transition-colors duration-300">
 				<div className="text-6xl">🍵</div>
@@ -147,7 +147,7 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
 				<div className="max-w-7xl mx-auto">
 					<Image
@@ -189,7 +189,7 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
 				<div className="max-w-4xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
@@ -239,7 +239,7 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
 				<div className="max-w-7xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-12 text-center">
@@ -260,7 +260,7 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
 				<div className="max-w-4xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
@@ -296,7 +296,7 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
 				<div className="max-w-4xl mx-auto">
 					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
