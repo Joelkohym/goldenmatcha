@@ -6,10 +6,9 @@ import React, { useState, useEffect } from "react";
 import { ShoppingBag, Send } from "lucide-react";
 import Image from "next/image";
 import { SiInstagram } from "react-icons/si";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
-// import NavBar from "@/components/NavBar";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -17,12 +16,14 @@ export default function Home() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const scrollToSectionId = searchParams.get("scrollTo");
+
 	useEffect(() => {
 		if (scrollToSectionId) {
 			const element = document.getElementById(scrollToSectionId);
 			element?.scrollIntoView({ behavior: "smooth" });
 		}
 	}, [scrollToSectionId]);
+
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -43,30 +44,33 @@ export default function Home() {
 		e.preventDefault();
 		setError("");
 
-		emailjs
-			.send(
-				"Hkb-lDk9ijuSPQf3F", // replace with your EmailJS service ID
-				"template_cvklsbq", // replace with your EmailJS template ID
-				formData,
-				"goldenmatchaofficial@gmail.com" // replace with your EmailJS public key (user ID)
-			)
-			.then(
-				() => {
-					setFormSubmitted(true);
-					setFormData({
-						name: "",
-						email: "",
-						company: "",
-						number: "",
-						message: "",
-					});
-					setTimeout(() => setFormSubmitted(false), 3000);
-				},
-				(err) => {
-					setError("Failed to send message. Please try again later.");
-					console.error(err.text);
-				}
-			);
+		// Use environment variables
+		const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+		const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+		const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+		if (!serviceId || !templateId || !publicKey) {
+			setError("Email service is not configured properly.");
+			return;
+		}
+
+		emailjs.send(serviceId, templateId, formData, publicKey).then(
+			() => {
+				setFormSubmitted(true);
+				setFormData({
+					name: "",
+					email: "",
+					company: "",
+					number: "",
+					message: "",
+				});
+				setTimeout(() => setFormSubmitted(false), 3000);
+			},
+			(err) => {
+				setError("Failed to send message. Please try again later.");
+				console.error(err.text);
+			}
+		);
 	};
 
 	const products = [
@@ -310,7 +314,7 @@ export default function Home() {
 									type="text"
 									name="name"
 									placeholder="Name"
-									value={formData.name ?? ""}
+									value={formData.name}
 									onChange={handleFormChange}
 									required
 									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
