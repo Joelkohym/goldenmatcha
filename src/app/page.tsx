@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import React, { useState, useEffect } from "react";
 import { ShoppingBag, Send } from "lucide-react";
 import Image from "next/image";
