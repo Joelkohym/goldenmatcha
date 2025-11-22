@@ -6,8 +6,8 @@ import Image from "next/image";
 import { SiInstagram } from "react-icons/si";
 import emailjs from "emailjs-com";
 import { useRouter } from "next/navigation";
-// import NavBar from "../components/NavBar";
-import NavBar from "@/components/NavBar";
+import NavBar from "../components/NavBar";
+// import NavBar from "@/components/NavBar";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 
