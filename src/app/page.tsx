@@ -2,17 +2,51 @@
 
 export const dynamic = "force-dynamic";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { ShoppingBag, Send } from "lucide-react";
 import Image from "next/image";
 import { SiInstagram } from "react-icons/si";
-import emailjs from "@emailjs/browser";
+import emailjs from "emailjs-com";
 import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 
-export default function Home() {
+interface Product {
+	name: string;
+	weight: string;
+	price: string;
+	color: string;
+}
+
+const MotionProductCard = ({ product }: { product: Product }) => {
+	const [isHovered, setIsHovered] = useState(false);
+	return (
+		<motion.div
+			className="rounded-lg shadow-md overflow-hidden cursor-pointer transform transition hover:scale-105"
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
+			style={{ backgroundColor: isHovered ? product.color : "#f5f5f4" }}
+			initial={{ opacity: 0, y: 40 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.5, ease: "easeOut" }}
+			viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+		>
+			<div className="h-64 flex items-center justify-center transition-colors duration-300">
+				<div className="text-6xl">🍵</div>
+			</div>
+			<div className="p-6">
+				<h3 className="text-xl font-semibold text-black mb-2">
+					{product.name}
+				</h3>
+				<p className="text-black mb-4">{product.weight}</p>
+				<p className="text-2xl font-bold text-yellow-400">{product.price}</p>
+			</div>
+		</motion.div>
+	);
+};
+
+function HomeContent() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const scrollToSectionId = searchParams.get("scrollTo");
@@ -388,36 +422,16 @@ export default function Home() {
 	);
 }
 
-interface Product {
-	name: string;
-	weight: string;
-	price: string;
-	color: string;
-}
-
-const MotionProductCard = ({ product }: { product: Product }) => {
-	const [isHovered, setIsHovered] = useState(false);
+export default function Home() {
 	return (
-		<motion.div
-			className="rounded-lg shadow-md overflow-hidden cursor-pointer transform transition hover:scale-105"
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			style={{ backgroundColor: isHovered ? product.color : "#f5f5f4" }}
-			initial={{ opacity: 0, y: 40 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5, ease: "easeOut" }}
-			viewport={{ amount: 0.8, once: false, margin: "0px 0px -100px 0px" }}
+		<Suspense
+			fallback={
+				<div className="min-h-screen bg-black flex items-center justify-center">
+					<div className="text-yellow-400 text-xl">Loading...</div>
+				</div>
+			}
 		>
-			<div className="h-64 flex items-center justify-center transition-colors duration-300">
-				<div className="text-6xl">🍵</div>
-			</div>
-			<div className="p-6">
-				<h3 className="text-xl font-semibold text-black mb-2">
-					{product.name}
-				</h3>
-				<p className="text-black mb-4">{product.weight}</p>
-				<p className="text-2xl font-bold text-yellow-400">{product.price}</p>
-			</div>
-		</motion.div>
+			<HomeContent />
+		</Suspense>
 	);
-};
+}
