@@ -45,7 +45,7 @@ export default function NavBar() {
 				onClick={() => router.push("/")}
 			>
 				<Image
-					src="/Golden Matcha Logo.jpg"
+					src="/favicon.ico"
 					alt="Golden Matcha Logo"
 					width={36}
 					height={36}
