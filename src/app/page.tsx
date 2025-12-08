@@ -4,43 +4,57 @@ export const dynamic = "force-dynamic";
 
 import React, { useState, useEffect, Suspense } from "react";
 import { ShoppingBag, Send } from "lucide-react";
-import Image from "next/image";
+import Image from "next/image"; // Uncommented for image usage
 import { SiInstagram } from "react-icons/si";
 import emailjs from "emailjs-com";
 import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-
+import Footer from "../components/Footer";
 interface Product {
 	name: string;
 	weight: string;
 	price: string;
 	color: string;
+	image?: string; // optional current image path string
+	link: string;
 }
 
 const MotionProductCard = ({ product }: { product: Product }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	return (
 		<motion.div
-			className="rounded-lg shadow-md overflow-hidden cursor-pointer transform transition hover:scale-105"
+			className="rounded-lg shadow-md overflow-hidden cursor-pointer transform transition hover:scale-105 relative"
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			style={{ backgroundColor: isHovered ? product.color : "#f5f5f4" }}
+			style={{ backgroundColor: isHovered ? product.color : "black" }}
 			initial={{ opacity: 0, y: 40 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5, ease: "easeOut" }}
 			viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 		>
-			<div className="h-64 flex items-center justify-center transition-colors duration-300">
-				<div className="text-6xl">🍵</div>
+			<div className="relative h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg">
+				<Image
+					src={
+						isHovered
+							? "/Hover_picture1.jpeg"
+							: product.image || "/placeholder.jpeg"
+					}
+					alt={product.name}
+					fill
+					className="object-cover rounded-t-lg transition-opacity duration-300"
+				/>
 			</div>
-			<div className="p-6">
-				<h3 className="text-xl font-semibold text-black mb-2">
-					{product.name}
+			<div className="p-6 text-center">
+				<h3 className="text-xl font-semibold text-[#ceb072] mb-4 font-serif">
+					{product.name} {product.weight}
 				</h3>
-				<p className="text-black mb-4">{product.weight}</p>
-				<p className="text-2xl font-bold text-yellow-400">{product.price}</p>
+				{/* <p className="text-xl text-[#ceb072] mb-4">{product.weight}</p> */}
+				<p className="text-xl text-[#ceb072] font-serif">
+					<span className="text-[18px]">฿</span>
+					{product.price}
+				</p>
 			</div>
 		</motion.div>
 	);
@@ -55,8 +69,10 @@ function HomeContent() {
 		if (scrollToSectionId) {
 			const element = document.getElementById(scrollToSectionId);
 			element?.scrollIntoView({ behavior: "smooth" });
+
+			router.replace("/", { scroll: false });
 		}
-	}, [scrollToSectionId]);
+	}, [scrollToSectionId, router]);
 
 	const [formData, setFormData] = useState({
 		name: "",
@@ -78,7 +94,6 @@ function HomeContent() {
 		e.preventDefault();
 		setError("");
 
-		// Use environment variables
 		const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
 		const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 		const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -107,24 +122,42 @@ function HomeContent() {
 		);
 	};
 
-	const products = [
+	// Replace your existing products array with these two arrays:
+	const ceremonialProducts: Product[] = [
 		{
 			name: "Uji Ceremonial Grade",
 			weight: "25g",
-			price: "THB 590",
-			color: "#bfa94f",
+			price: "699",
+			color: "black",
+			image: "/Background_Main.jpeg",
+			link: "",
 		},
 		{
 			name: "Kagoshima Ceremonial Grade",
 			weight: "25g",
-			price: "THB 590",
-			color: "#d1b24a",
+			price: "699",
+			color: "black",
+			image: "/Background_Main2.jpeg",
+			link: "",
 		},
 		{
 			name: "Mie Ceremonial Grade",
 			weight: "25g",
-			price: "THB 590",
-			color: "#e2c94e",
+			price: "699",
+			color: "black",
+			image: "/Golden Matcha Logo.jpg",
+			link: "",
+		},
+	];
+
+	const premiumProducts: Product[] = [
+		{
+			name: "Golden Yame",
+			weight: "30g",
+			price: "499",
+			color: "black",
+			image: "/Golden Matcha Logo.jpg",
+			link: "",
 		},
 	];
 
@@ -137,100 +170,48 @@ function HomeContent() {
 	];
 
 	return (
-		<div className="min-h-screen bg-black text-yellow-400">
+		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed text-yellow-400 relative overflow-hidden">
 			<NavBar />
 
-			{/* Hero Section */}
+			{/* Hero Section - Right Flush with Custom Fonts */}
 			<motion.section
 				id="home"
-				className="pt-16 min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-yellow-900 to-black px-4 sm:px-6 lg:px-8 py-20 text-center"
+				className="pt-16 min-h-screen flex items-center justify-center relative"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
 				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
-				<div className="max-w-7xl mx-auto">
-					<Image
-						src="/Golden Matcha Logo.jpg"
-						alt="Golden Matcha Logo"
-						width={200}
-						height={200}
-						className="rounded-full mx-auto"
-						priority
-					/>
-					<h2 className="text-5xl md:text-7xl font-bold text-yellow-400 mb-6">
-						A Golden Moment
-						<br />
-						with <span className="text-yellow-500">Golden Matcha</span>
-					</h2>
-					<p className="text-xl text-yellow-300 mb-12 max-w-2xl mx-auto">
-						Premium Japanese matcha sourced directly from tea farms in Japan,
-						bringing you the finest quality at an affordable price.
-					</p>
-					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<button
-							onClick={() => router.push("/?scrollTo=our-story")}
-							className="px-8 py-4 bg-yellow-500 text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105"
-						>
-							Our Story
-						</button>
-						<button
-							onClick={() => router.push("/products")}
-							className="px-8 py-4 bg-yellow-700 text-black rounded-full font-semibold hover:bg-yellow-800 transition transform hover:scale-105 flex items-center justify-center gap-2"
-						>
-							<ShoppingBag size={20} />
-							Shop Products
-						</button>
-					</div>
-				</div>
-			</motion.section>
+				<div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+					<div className="hidden md:block" />
+					<div className="md:col-span-2">
+						<div className="space-y-10">
+							<div className="bg-black/70 border border-[#ceb072]/30 rounded-3xl p-8 shadow-xl">
+								<div className="absolute inset-0 bg-black/70 z-10"></div>
+								<div className="max-w-xl mx-1 relative z-20 px-4 sm:px-6 lg:px-8 py-20 text-center">
+									<h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#ceb072] leading-tight mb-4">
+										A Golden Moment
+										<br />
+										with <span className="text-yellow-500">Golden Matcha</span>
+									</h2>
 
-			{/* Our Story Section */}
-			<motion.section
-				id="our-story"
-				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
-			>
-				<div className="max-w-4xl mx-auto">
-					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
-						Our Story
-					</h2>
-					<div className="prose prose-lg max-w-none text-yellow-300 leading-relaxed space-y-6">
-						<p className="text-xl font-semibold text-yellow-500">
-							A Golden Moment with Golden Matcha
-						</p>
-						<p>
-							Golden Matcha started off in the humble streets of Bangkok,
-							founded by 2 individuals from very different backgrounds. One of
-							us with a deep love of matcha since a very young age and the other
-							started off his matcha journey after a simple sip which changed
-							his perspective of Matcha.
-						</p>
-						<p>
-							Intrigued by the different nodes that different varieties of
-							matcha can offer, we explored matcha across Japan and China in
-							search of quality products that we can share with you at an
-							affordable price, in a time where Matcha has gained tremendous
-							popularity.
-						</p>
-						<p>
-							For matcha lovers, we would like to make matcha enjoyable and
-							accessible for your daily ritual. At Golden Matcha, that's our
-							goal and mission.
-						</p>
-						<p>
-							We take pride in sourcing our Matcha from the tea farms and
-							producers of Japan, building a relationship with them to ensure
-							the high quality of matcha we promise to our community.
-						</p>
-						<p>
-							With a mixture of creativity and expertise, we aim to serve you
-							with a variety of the finest matcha that you can enjoy with your
-							loved ones at the Golden Moment of your day.
-						</p>
+									<p className="font-['Calibri','Segoe_UI','system-ui'] text-xl text-[#ceb072] mb-12 max-w-2xl mx-auto">
+										Premium Japanese matcha sourced directly from tea farms in
+										Japan, bringing you the finest quality at an affordable
+										price.
+									</p>
+
+									<div className="flex flex-col sm:flex-row gap-4 justify-center">
+										<button
+											onClick={() => router.push("/our-story")}
+											className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105"
+										>
+											Our Story
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</motion.section>
@@ -238,56 +219,89 @@ function HomeContent() {
 			{/* Shop Section */}
 			<motion.section
 				id="shop"
-				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
+				className="py-40 relative bg-black/80"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
 				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
-				<div className="max-w-7xl mx-auto">
-					<h2 className="text-4xl font-bold text-yellow-400 mb-12 text-center">
-						Shop Our Matcha
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<h2 className="text-5xl text-[#ceb072] font-serif mb-20 text-center">
+						Our Golden Collection
 					</h2>
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-						{products.map((product, i) => (
-							<MotionProductCard key={i} product={product} />
-						))}
+
+					{/* CEREMONIAL GRADE Section */}
+					<div className="mb-20">
+						<h3 className="text-3xl md:text-4xl text-[#ceb072] font-serif mb-12 text-center underline underline-offset-8 decoration-2 decoration-[#ceb072]">
+							CEREMONIAL GRADE
+						</h3>
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+							{ceremonialProducts.map((product, i) => (
+								<MotionProductCard key={i} product={product} />
+							))}
+						</div>
+					</div>
+
+					{/* PREMIUM GRADE Section */}
+					<div>
+						<h3 className="text-3xl md:text-4xl text-[#ceb072] font-serif mb-12 text-center underline underline-offset-8 decoration-2 decoration-[#ceb072]">
+							PREMIUM GRADE
+						</h3>
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-m mx-auto">
+							{premiumProducts.map((product, i) => (
+								<MotionProductCard key={i} product={product} />
+							))}
+						</div>
 					</div>
 				</div>
 			</motion.section>
 
-			{/* Wholesale Section */}
+			{/* Wholesale Hero Section - Increased button gap */}
 			<motion.section
 				id="wholesale"
-				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
+				className="min-h-screen flex items-center justify-center relative"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
 				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
-				<div className="max-w-4xl mx-auto">
-					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
-						Wholesale
-					</h2>
-					<div className="bg-yellow-900 border-2 border-yellow-700 rounded-lg p-6 mb-8">
-						<p className="text-center text-lg font-semibold text-yellow-500">
-							For wholesale inquiries and pricing, please contact us via LINE
-						</p>
-						<p className="text-center text-yellow-400 mt-2">
-							LINE: goldenmatchaofficial
-						</p>
-					</div>
-					<div className="space-y-4">
-						{wholesaleProducts.map((product, index) => (
-							<div
-								key={index}
-								className="bg-yellow-800 border border-yellow-700 rounded-lg p-4 hover:shadow-md transition"
-							>
-								<h3 className="text-lg font-semibold text-yellow-300">
-									{product}
-								</h3>
+				<div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div className="bg-black/70 border border-[#ceb072]/30 rounded-3xl p-12 shadow-xl">
+						<div className="absolute inset-0 bg-black/70 z-10"></div>
+						<div className="max-w-4xl mx-auto relative z-20 px-8 sm:px-12 lg:px-16 pt-2 pb-24 text-center">
+							<h2 className="text-5xl text-[#ceb072] font-serif mb-20 text-center">
+								Wholesale
+							</h2>
+							<p className="text-xl md:text-2xl text-[#ceb072] mb-8 leading-relaxed font-serif">
+								For wholesale inquiries and pricing, please contact us via LINE
+								or fill up our enquiry form. MOQ 1KG
+								<br className="sm:hidden" />
+								<span className="block sm:inline"></span>
+							</p>
+
+							<div className="space-y-4 max-w-2xl mx-auto mb-20">
+								{" "}
+								{/* Added mb-20 for button spacing */}
+								{wholesaleProducts.map((product, index) => (
+									<div key={index} className="text-center">
+										<h3 className="text-xl md:text-2xl text-[#ceb072] font-serif">
+											{product}
+										</h3>
+									</div>
+								))}
 							</div>
-						))}
+
+							<div className="flex flex-col sm:flex-row gap-6 justify-center">
+								{" "}
+								{/* Fixed gap-1 → gap-6 */}
+								<button
+									onClick={() => router.push("/our-story")}
+									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+								>
+									Order Now
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</motion.section>
@@ -295,20 +309,20 @@ function HomeContent() {
 			{/* Contact Section */}
 			<motion.section
 				id="contact-Us"
-				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
+				className="py-20 relative bg-black/80"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
 				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
-				<div className="max-w-4xl mx-auto">
-					<h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
+				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+					<h2 className="text-5xl text-[#ceb072] font-serif mb-20 text-center">
 						Contact Us
 					</h2>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-						<div className="bg-yellow-900 rounded-lg p-6 shadow-md">
-							<h3 className="text-xl font-semibold mb-4 text-yellow-300">
+						<div className="bg-black rounded-lg p-6 shadow-md">
+							<h3 className="text-xl font-semibold mb-4 text-[#ceb072]">
 								Connect with us
 							</h3>
 							<div className="space-y-3">
@@ -316,7 +330,7 @@ function HomeContent() {
 									href="https://line.me/ti/p/goldenmatchaofficial"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="flex items-center text-green-600 hover:text-green-700 gap-2"
+									className="flex items-center text-[#ceb072] hover:text-green-300 gap-2"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -336,7 +350,7 @@ function HomeContent() {
 									href="https://instagram.com/goldenmatchaofficial"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="flex items-center text-pink-600 hover:text-pink-700 gap-2"
+									className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
 								>
 									<SiInstagram size={20} />
 									<span className="font-semibold">Instagram:</span>
@@ -345,7 +359,7 @@ function HomeContent() {
 							</div>
 						</div>
 
-						<div className="bg-yellow-900 rounded-lg p-6 shadow-md">
+						<div className="bg-black rounded-lg p-6 shadow-md">
 							<form onSubmit={handleFormSubmit}>
 								<input
 									type="text"
@@ -354,7 +368,7 @@ function HomeContent() {
 									value={formData.name}
 									onChange={handleFormChange}
 									required
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
+									className="w-full px-4 py-2 border border-black rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
 								/>
 								<input
 									type="email"
@@ -363,7 +377,7 @@ function HomeContent() {
 									value={formData.email}
 									onChange={handleFormChange}
 									required
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
 								/>
 								<input
 									type="text"
@@ -371,7 +385,7 @@ function HomeContent() {
 									placeholder="Company"
 									value={formData.company}
 									onChange={handleFormChange}
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
 								/>
 								<input
 									type="text"
@@ -379,7 +393,7 @@ function HomeContent() {
 									placeholder="Contact Number"
 									value={formData.number}
 									onChange={handleFormChange}
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
 								/>
 								<textarea
 									name="message"
@@ -388,7 +402,7 @@ function HomeContent() {
 									onChange={handleFormChange}
 									rows={4}
 									required
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-yellow-800 text-yellow-200 mb-3"
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
 								/>
 								<button
 									type="submit"
@@ -398,12 +412,12 @@ function HomeContent() {
 									Send Message
 								</button>
 								{formSubmitted && (
-									<p className="text-green-600 text-center font-semibold mt-2">
+									<p className="text-green-400 text-center font-semibold mt-2">
 										Thank you! We'll be in touch soon.
 									</p>
 								)}
 								{error && (
-									<p className="text-red-600 text-center font-semibold mt-2">
+									<p className="text-red-400 text-center font-semibold mt-2">
 										{error}
 									</p>
 								)}
@@ -414,13 +428,7 @@ function HomeContent() {
 			</motion.section>
 
 			{/* Footer */}
-			<footer className="bg-black text-yellow-400 py-8 px-4 sm:px-6 lg:px-8 text-center">
-				<p className="text-lg font-semibold mb-2">Golden Matcha</p>
-				<p className="text-yellow-300">Premium Japanese Matcha from Bangkok</p>
-				<p className="text-yellow-600 text-sm mt-4">
-					© 2024 Golden Matcha. All rights reserved.
-				</p>
-			</footer>
+			<Footer />
 		</div>
 	);
 }

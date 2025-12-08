@@ -7,6 +7,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			backgroundImage: {
+				"main-bg": "url('/Background_Main2.jpeg')",
+			},
 			colors: {
 				gold: { matcha: "#ceb072" },
 				black: "#000000",
