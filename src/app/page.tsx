@@ -259,7 +259,7 @@ function HomeContent() {
 			{/* Wholesale Hero Section - Increased button gap */}
 			<motion.section
 				id="wholesale"
-				className="min-h-screen flex items-center justify-center relative"
+				className="min-h-screen flex pt items-center justify-center relative"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
@@ -309,7 +309,7 @@ function HomeContent() {
 			{/* Contact Section */}
 			<motion.section
 				id="contact-Us"
-				className="py-20 relative bg-black/80"
+				className="py-2 relative bg-black/80"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
