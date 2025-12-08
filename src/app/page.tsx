@@ -294,7 +294,7 @@ function HomeContent() {
 
 			{/* Contact Section */}
 			<motion.section
-				id="contact"
+				id="contact-Us"
 				className="py-20 bg-black px-4 sm:px-6 lg:px-8"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
