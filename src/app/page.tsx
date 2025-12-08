@@ -169,6 +169,22 @@ function HomeContent() {
 		"Top 1 Ceremonial (From Zhejiang, Hangzhou)",
 	];
 
+	const handleLinkClickShopee = () => {
+		// Open the desired URL in a new tab
+		window.open(
+			"https://shopee.sg/lauboonheng96j?is_from_login=true",
+			"_blank"
+		);
+	};
+
+	const handleLinkClickLazada = () => {
+		// Open the desired URL in a new tab
+		window.open(
+			"https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp",
+			"_blank"
+		);
+	};
+
 	return (
 		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed text-yellow-400 relative overflow-hidden">
 			<NavBar />
@@ -229,7 +245,6 @@ function HomeContent() {
 					<h2 className="text-5xl text-[#ceb072] font-serif mb-20 text-center">
 						Our Golden Collection
 					</h2>
-
 					{/* CEREMONIAL GRADE Section */}
 					<div className="mb-20">
 						<h3 className="text-3xl md:text-4xl text-[#ceb072] font-serif mb-12 text-center underline underline-offset-8 decoration-2 decoration-[#ceb072]">
@@ -241,7 +256,6 @@ function HomeContent() {
 							))}
 						</div>
 					</div>
-
 					{/* PREMIUM GRADE Section */}
 					<div>
 						<h3 className="text-3xl md:text-4xl text-[#ceb072] font-serif mb-12 text-center underline underline-offset-8 decoration-2 decoration-[#ceb072]">
@@ -252,6 +266,49 @@ function HomeContent() {
 								<MotionProductCard key={i} product={product} />
 							))}
 						</div>
+					</div>
+					{/* Shopee & Lazada Logos - Bottom Center Same Line */}
+					<div className="flex justify-center gap-8 pt-12 font-serif text-[#ceb072] text-xl md:text-2xl">
+						Find us on Shopee & Tiktok Shop:
+					</div>
+					<div className="flex justify-center gap-8 pt-1 pb-8 ">
+						<motion.a
+							href="https://shopee.sg/lauboonheng96j?is_from_login=true"
+							target="_blank"
+							rel="noopener noreferrer"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ scale: 1.1 }}
+							transition={{ duration: 0.5 }}
+							className="flex items-center p-3 hover:shadow-lg rounded-xl transition-all duration-300"
+						>
+							<Image
+								src="/medias/shopee.webp"
+								alt="Shopee"
+								width={120}
+								height={40}
+								className="object-contain"
+							/>
+						</motion.a>
+
+						<motion.a
+							href="https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp"
+							target="_blank"
+							rel="noopener noreferrer"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							whileHover={{ scale: 1.1 }}
+							transition={{ duration: 0.5, delay: 0.1 }}
+							className="flex items-center p-3 hover:shadow-lg rounded-xl transition-all duration-300"
+						>
+							<Image
+								src="/medias/lazada.webp"
+								alt="Lazada"
+								width={120}
+								height={40}
+								className="object-contain"
+							/>
+						</motion.a>
 					</div>
 				</div>
 			</motion.section>

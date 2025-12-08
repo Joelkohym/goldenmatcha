@@ -3,8 +3,24 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { SiInstagram } from "react-icons/si";
+import { motion } from "framer-motion";
 
 export default function Footer() {
+	const handleLinkClickShopee = () => {
+		// Open the desired URL in a new tab
+		window.open(
+			"https://shopee.sg/lauboonheng96j?is_from_login=true",
+			"_blank"
+		);
+	};
+
+	const handleLinkClickLazada = () => {
+		// Open the desired URL in a new tab
+		window.open(
+			"https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp",
+			"_blank"
+		);
+	};
 	const router = useRouter();
 
 	const navItems = ["home", "our-story", "shop", "wholesale", "contact-Us"];
@@ -83,6 +99,70 @@ export default function Footer() {
 							<path d="M12 2C6.48 2 2 5.91 2 10.53c0 2.63 1.77 4.93 4.45 6.23-.13.9-.7 2.8-1.3 4.1 0 0-.09.38.52.18 1.54-1.18 2.71-2.13 3.77-2.86A10.5 10.5 0 0012 19c5.52 0 10-3.91 10-8.47S17.52 2 12 2z" />
 						</svg>
 					</a>
+					<motion.div
+						initial={{ x: "-100vh", opacity: 0 }}
+						animate={{
+							x: 0,
+							opacity: 1,
+						}}
+						transition={{
+							delay: 0,
+							duration: 1,
+							type: "spring",
+							stiffness: 120,
+						}}
+						whileHover={{
+							scale: 1.1,
+						}}
+						whileTap={{ scale: 0.9 }}
+						onClick={handleLinkClickShopee}
+						className="flex flex-col items-center"
+					>
+						<a
+							href="https://shopee.sg/lauboonheng96j?is_from_login=true" // Replace 'YOURNUMBER' with your phone number
+							className="text-white hover:underline text-shadow-outline mr-5 mt-2.5"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								src={"/medias/shopee.webp"}
+								alt="Lazada Icon"
+								className="w-18 h-6"
+							/>
+						</a>
+					</motion.div>
+					<motion.div
+						initial={{ x: "-100vh", opacity: 0 }}
+						animate={{
+							x: 0,
+							opacity: 1,
+						}}
+						transition={{
+							delay: 0,
+							duration: 1,
+							type: "spring",
+							stiffness: 120,
+						}}
+						whileHover={{
+							scale: 1.1,
+						}}
+						whileTap={{ scale: 0.9 }}
+						onClick={handleLinkClickLazada}
+						className="flex flex-col items-center"
+					>
+						<a
+							href="https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp" // Replace 'YOURNUMBER' with your phone number
+							className="text-white mt-3.5 hover:underline text-shadow-outline"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								src="/medias/lazada.webp"
+								alt="Lazada Icon"
+								className="w-19 h-5.5"
+							/>
+						</a>
+					</motion.div>
 				</div>
 
 				{/* Logo/Brand + Copyright */}
