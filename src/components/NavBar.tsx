@@ -30,13 +30,13 @@ export default function NavBar() {
 			router.push("/products");
 		} else if (section === "our-story") {
 			// Navigate to home with a query parameter
-			router.push("/?scrollTo=our-story");
+			router.push("/our-story");
 		} else if (section === "contact") {
 			// Navigate to home with a query parameter
-			router.push("/?scrollTo=contact");
+			router.push("/home?scrollTo=contact-Us");
 		} else if (section === "wholesale") {
 			// Navigate to home with a query parameter
-			router.push("/?scrollTo=wholesale");
+			router.push("/wholesale");
 		} else {
 			scrollToSection(section);
 		}

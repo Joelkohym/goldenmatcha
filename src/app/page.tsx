@@ -352,10 +352,16 @@ function HomeContent() {
 								{" "}
 								{/* Fixed gap-1 → gap-6 */}
 								<button
-									onClick={() => router.push("/our-story")}
+									onClick={() => router.push("/wholesale?scrollTo=get-a-quote")}
 									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
 								>
-									Order Now
+									Get Enquiry Now
+								</button>
+								<button
+									onClick={() => router.push("/wholesale")}
+									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+								>
+									Wholesale Catalogue
 								</button>
 							</div>
 						</div>

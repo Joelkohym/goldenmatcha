@@ -34,9 +34,9 @@ export default function Footer() {
 		} else if (section === "our-story") {
 			router.push("/?scrollTo=our-story");
 		} else if (section === "contact") {
-			router.push("/?scrollTo=contact");
+			router.push("/?scrollTo=contact-Us");
 		} else if (section === "wholesale") {
-			router.push("/?scrollTo=wholesale");
+			router.push("/wholesale");
 		} else {
 			const element = document.getElementById(section);
 			element?.scrollIntoView({ behavior: "smooth" });
@@ -127,8 +127,10 @@ export default function Footer() {
 						>
 							<Image
 								src={"/medias/shopee.webp"}
+								width={18}
+								height={6}
 								alt="Lazada Icon"
-								className="w-18 h-6"
+								className="object-contain"
 							/>
 						</a>
 					</motion.div>
@@ -160,7 +162,9 @@ export default function Footer() {
 							<Image
 								src="/medias/lazada.webp"
 								alt="Lazada Icon"
-								className="w-19 h-5.5"
+								width={19}
+								height={5.5}
+								className="object-contain"
 							/>
 						</a>
 					</motion.div>

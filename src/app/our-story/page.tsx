@@ -2,6 +2,7 @@
 
 import React from "react";
 import NavBar from "../../components/NavBar";
+import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
 
 export default function OurStory() {
@@ -11,7 +12,7 @@ export default function OurStory() {
 
 			{/* Our Story Section */}
 			<motion.section
-				className="pt-32 pb-20 relative bg-black/80 min-h-screen"
+				className="pt-57 pb-20 relative bg-black/80 min-h-screen"
 				initial={{ opacity: 0, y: 50 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
@@ -58,15 +59,7 @@ export default function OurStory() {
 			</motion.section>
 
 			{/* Footer */}
-			<footer className="relative bg-black/90 py-8 px-4 sm:px-6 lg:px-8 text-center border-t border-yellow-900">
-				<p className="text-lg font-semibold mb-2 text-yellow-300">
-					Golden Matcha
-				</p>
-				<p className="text-yellow-400">Premium Japanese Matcha from Bangkok</p>
-				<p className="text-yellow-600 text-sm mt-4">
-					© 2024 Golden Matcha. All rights reserved.
-				</p>
-			</footer>
+			<Footer />
 		</div>
 	);
 }
