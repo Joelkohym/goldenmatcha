@@ -35,6 +35,7 @@ const wholesaleProducts = [
 		description: "",
 	},
 ];
+
 export default function WholesaleContent() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -50,12 +51,10 @@ export default function WholesaleContent() {
 	return (
 		<div className="min-h-screen bg-black text-yellow-400">
 			<NavBar />
-
 			<main className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 				<h1 className="text-4xl font-bold mb-12 text-center">
 					Our Wholesale Collection
 				</h1>
-
 				<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-20">
 					{wholesaleProducts.map((product, i) => (
 						<div
@@ -80,10 +79,8 @@ export default function WholesaleContent() {
 						</div>
 					))}
 				</div>
-
 				<ContactUsSection id="get-a-quote" />
 			</main>
-
 			<Footer />
 		</div>
 	);
