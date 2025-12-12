@@ -355,7 +355,7 @@ function HomeContent() {
 									onClick={() => router.push("/wholesale?scrollTo=get-a-quote")}
 									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
 								>
-									Get Enquiry Now
+									Enquire Now
 								</button>
 								<button
 									onClick={() => router.push("/wholesale")}
