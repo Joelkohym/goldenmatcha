@@ -5,30 +5,51 @@ import Image from "next/image";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import ContactUsSection from "../../components/ContactUs";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+
 // import NavBar from "@/components/NavBar";
 
-const products = [
+const wholesaleProducts = [
 	{
-		name: "Uji Ceremonial Grade",
-		description: "Premium ceremonial grade matcha from Uji.",
-		price: "THB 590",
+		name: "Yame A Premium",
 		imageUrl: "/Golden Matcha Logo.jpg",
+		description: "",
 	},
 	{
-		name: "Kagoshima Ceremonial Grade",
-		description: "Rich and smooth ceremonial matcha from Kagoshima.",
-		price: "THB 590",
+		name: "Yame B Premium",
 		imageUrl: "/Golden Matcha Logo.jpg",
+		description: "",
 	},
 	{
-		name: "Mie Ceremonial Grade",
-		description: "Vibrant flavor with umami notes from Mie.",
-		price: "THB 590",
+		name: "Yame A Ceremonial (1st Harvest Okumidori)",
 		imageUrl: "/Golden Matcha Logo.jpg",
+		description: "",
+	},
+	{
+		name: "Uji A Ceremonial (1st Harvest Okumidori)",
+		imageUrl: "/Golden Matcha Logo.jpg",
+		description: "",
+	},
+	{
+		name: "Top 1 Ceremonial (From Zhejiang, Hangzhou)",
+		imageUrl: "/Golden Matcha Logo.jpg",
+		description: "",
 	},
 ];
 
-export default function ProductsPage() {
+export default function WholesalePage() {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const scrollToSectionId = searchParams.get("scrollTo");
+
+	useEffect(() => {
+		if (scrollToSectionId) {
+			const element = document.getElementById(scrollToSectionId);
+			element?.scrollIntoView({ behavior: "smooth" });
+			router.replace("/wholesale", { scroll: false });
+		}
+	}, [scrollToSectionId, router]);
 	return (
 		<div className="min-h-screen bg-black text-yellow-400">
 			<NavBar />
@@ -38,7 +59,7 @@ export default function ProductsPage() {
 					Our Wholesale Collection
 				</h1>
 				<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-20">
-					{products.map((product, i) => (
+					{wholesaleProducts.map((product, i) => (
 						<div
 							key={i}
 							className="bg-yellow-900 rounded-lg shadow-lg overflow-hidden flex flex-col"
@@ -57,16 +78,15 @@ export default function ProductsPage() {
 								<p className="text-yellow-300 flex-grow">
 									{product.description}
 								</p>
-								<p className="text-yellow-400 font-bold mt-4 text-xl">
-									{product.price}
-								</p>
 							</div>
 						</div>
 					))}
 				</div>
-				{/* Footer */}
-				<Footer />
+				{/* Contact Section */}
+				<ContactUsSection id="get-a-quote" />
 			</main>
+			{/* Footer */}
+			<Footer />
 		</div>
 	);
 }

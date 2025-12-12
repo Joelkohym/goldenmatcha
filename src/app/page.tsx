@@ -3,7 +3,7 @@
 export const dynamic = "force-dynamic";
 
 import React, { useState, useEffect, Suspense } from "react";
-import { ShoppingBag, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import Image from "next/image"; // Uncommented for image usage
 import { SiInstagram } from "react-icons/si";
 import emailjs from "emailjs-com";
@@ -12,6 +12,8 @@ import NavBar from "../components/NavBar";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
+import ContactUsSection from "../components/ContactUs";
+
 interface Product {
 	name: string;
 	weight: string;
@@ -352,10 +354,16 @@ function HomeContent() {
 								{" "}
 								{/* Fixed gap-1 → gap-6 */}
 								<button
-									onClick={() => router.push("/our-story")}
+									onClick={() => router.push("/wholesale?scrollTo=get-a-quote")}
 									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
 								>
-									Order Now
+									Get a Quote
+								</button>
+								<button
+									onClick={() => router.push("/wholesale")}
+									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+								>
+									Wholesale Catalogue
 								</button>
 							</div>
 						</div>
