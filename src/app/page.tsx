@@ -3,7 +3,7 @@
 export const dynamic = "force-dynamic";
 
 import React, { useState, useEffect, Suspense } from "react";
-import { ShoppingBag, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import Image from "next/image"; // Uncommented for image usage
 import { SiInstagram } from "react-icons/si";
 import emailjs from "emailjs-com";
@@ -169,21 +169,21 @@ function HomeContent() {
 		"Top 1 Ceremonial (From Zhejiang, Hangzhou)",
 	];
 
-	const handleLinkClickShopee = () => {
-		// Open the desired URL in a new tab
-		window.open(
-			"https://shopee.sg/lauboonheng96j?is_from_login=true",
-			"_blank"
-		);
-	};
+	// const handleLinkClickShopee = () => {
+	// 	// Open the desired URL in a new tab
+	// 	window.open(
+	// 		"https://shopee.sg/lauboonheng96j?is_from_login=true",
+	// 		"_blank"
+	// 	);
+	// };
 
-	const handleLinkClickLazada = () => {
-		// Open the desired URL in a new tab
-		window.open(
-			"https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp",
-			"_blank"
-		);
-	};
+	// const handleLinkClickLazada = () => {
+	// 	// Open the desired URL in a new tab
+	// 	window.open(
+	// 		"https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp",
+	// 		"_blank"
+	// 	);
+	// };
 
 	return (
 		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed text-yellow-400 relative overflow-hidden">
@@ -470,7 +470,7 @@ function HomeContent() {
 								</button>
 								{formSubmitted && (
 									<p className="text-green-400 text-center font-semibold mt-2">
-										Thank you! We'll be in touch soon.
+										Thank you! We&apos;ll be in touch soon.
 									</p>
 								)}
 								{error && (

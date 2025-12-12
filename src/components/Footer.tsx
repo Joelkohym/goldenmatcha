@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { SiInstagram } from "react-icons/si";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Footer() {
 	const handleLinkClickShopee = () => {
@@ -124,7 +125,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<img
+							<Image
 								src={"/medias/shopee.webp"}
 								alt="Lazada Icon"
 								className="w-18 h-6"
@@ -156,7 +157,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<img
+							<Image
 								src="/medias/lazada.webp"
 								alt="Lazada Icon"
 								className="w-19 h-5.5"

@@ -40,8 +40,8 @@ export default function OurStory() {
 						</p>
 						<p>
 							For matcha lovers, we would like to make matcha enjoyable and
-							accessible for your daily ritual. At Golden Matcha, that's our
-							goal and mission.
+							accessible for your daily ritual. At Golden Matcha, that&apos;s
+							our goal and mission.
 						</p>
 						<p>
 							We take pride in sourcing our Matcha from the tea farms and
