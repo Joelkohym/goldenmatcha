@@ -32,7 +32,7 @@ export default function ProductsPage() {
 		<div className="min-h-screen bg-black text-yellow-400">
 			<NavBar />
 
-			<main className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+			<main className="pt-37 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 				<h1 className="text-4xl font-bold mb-12 text-center">
 					Our Matcha Collection
 				</h1>

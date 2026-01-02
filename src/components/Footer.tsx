@@ -1,12 +1,15 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { SiInstagram } from "react-icons/si";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Footer() {
+	const router = useRouter();
+	const pathname = usePathname();
+
 	const handleLinkClickShopee = () => {
 		// Open the desired URL in a new tab
 		window.open(
@@ -22,9 +25,13 @@ export default function Footer() {
 			"_blank"
 		);
 	};
-	const router = useRouter();
 
-	const navItems = ["home", "our-story", "shop", "wholesale", "contact-Us"];
+	const navItems = ["home", "our-story", "shop", "wholesale", "contact-us"];
+
+	const scrollToSection = (id: string) => {
+		const element = document.getElementById(id);
+		element?.scrollIntoView({ behavior: "smooth" });
+	};
 
 	const handleNavClick = (section: string) => {
 		if (section === "home") {
@@ -32,14 +39,18 @@ export default function Footer() {
 		} else if (section === "shop") {
 			router.push("/products");
 		} else if (section === "our-story") {
-			router.push("/?scrollTo=our-story");
-		} else if (section === "contact") {
-			router.push("/?scrollTo=contact-Us");
+			router.push("/our-story");
+		} else if (section === "contact-us") {
+			// Check if already on home page
+			if (pathname === "/") {
+				scrollToSection("contact-us");
+			} else {
+				router.push("/#contact-us");
+			}
 		} else if (section === "wholesale") {
 			router.push("/wholesale");
 		} else {
-			const element = document.getElementById(section);
-			element?.scrollIntoView({ behavior: "smooth" });
+			scrollToSection(section);
 		}
 	};
 

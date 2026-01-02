@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 // import localFont from "next/font/local";
 // import "../app/page.module.css";
 
@@ -15,7 +15,19 @@ import { useRouter } from "next/navigation";
 
 export default function NavBar() {
 	const router = useRouter();
+	const pathname = usePathname();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	// Handle hash navigation after route change
+	useEffect(() => {
+		if (pathname === "/" && window.location.hash) {
+			const id = window.location.hash.substring(1);
+			setTimeout(() => {
+				const element = document.getElementById(id);
+				element?.scrollIntoView({ behavior: "smooth" });
+			}, 100);
+		}
+	}, [pathname]);
 
 	const scrollToSection = (id: string) => {
 		const element = document.getElementById(id);
@@ -30,8 +42,13 @@ export default function NavBar() {
 			router.push("/products");
 		} else if (section === "our-story") {
 			router.push("/our-story");
-		} else if (section === "contact") {
-			router.push("/#contact-us"); // no query, just hash
+		} else if (section === "contact-us") {
+			// Check if already on home page
+			if (pathname === "/") {
+				scrollToSection("contact-us");
+			} else {
+				router.push("/#contact-us");
+			}
 		} else if (section === "wholesale") {
 			router.push("/wholesale");
 		} else {
@@ -40,7 +57,7 @@ export default function NavBar() {
 		setIsMenuOpen(false);
 	};
 
-	const navItems = ["home", "our-story", "shop", "wholesale", "contact-Us"];
+	const navItems = ["home", "our-story", "shop", "wholesale", "contact-us"];
 
 	return (
 		<nav className="fixed w-full bg-black/95 backdrop-blur-sm shadow-md z-50 flex items-center h-35 px-4 sm:px-6 lg:px-8">
