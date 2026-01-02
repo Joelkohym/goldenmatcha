@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 import React, { useState, useEffect, Suspense } from "react";
 import { Send } from "lucide-react";
 import Image from "next/image"; // Uncommented for image usage
-import { SiInstagram } from "react-icons/si";
+import { SiInstagram, SiTiktok, SiShopee, SiFacebook } from "react-icons/si";
 import emailjs from "emailjs-com";
 import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
@@ -192,39 +192,35 @@ function HomeContent() {
 			{/* Hero Section - Right Flush with Custom Fonts */}
 			<motion.section
 				id="home"
-				className="pt-16 min-h-screen flex items-center justify-center relative"
+				className="pt-20 min-h-screen flex items-center justify-end relative"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
 				viewport={{ amount: 0.5, once: true, margin: "0px 0px -100px 0px" }}
 			>
-				<div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-					<div className="hidden md:block" />
-					<div className="md:col-span-2">
-						<div className="space-y-10">
-							<div className="bg-black/70 border border-[#ceb072]/30 rounded-3xl p-8 shadow-xl">
-								<div className="absolute inset-0 bg-black/70 z-10"></div>
-								<div className="max-w-xl mx-1 relative z-20 px-4 sm:px-6 lg:px-8 py-20 text-center">
-									<h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#ceb072] leading-tight mb-4">
-										A Golden Moment
-										<br />
-										with <span className="text-yellow-500">Golden Matcha</span>
-									</h2>
+				<div className="w-full px-4 sm:px-6 lg:px-8">
+					<div className="ml-auto max-w-2xl">
+						<div className="bg-black/70 border border-[#ceb072]/30 rounded-3xl p-8 shadow-xl">
+							<div className="absolute inset-0 bg-black/70 z-10"></div>
+							<div className="relative z-20 py-20 text-center">
+								<h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#ceb072] leading-tight mb-4">
+									A Golden Moment
+									<br />
+									with <span className="text-yellow-500">Golden Matcha</span>
+								</h2>
 
-									<p className="font-['Calibri','Segoe_UI','system-ui'] text-xl text-[#ceb072] mb-12 max-w-2xl mx-auto">
-										Premium Japanese matcha sourced directly from tea farms in
-										Japan, bringing you the finest quality at an affordable
-										price.
-									</p>
+								<p className="font-['Calibri','Segoe_UI','system-ui'] text-xl text-[#ceb072] mb-12">
+									Premium Japanese matcha sourced directly from tea farms in
+									Japan, bringing you the finest quality at an affordable price.
+								</p>
 
-									<div className="flex flex-col sm:flex-row gap-4 justify-center">
-										<button
-											onClick={() => router.push("/our-story")}
-											className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105"
-										>
-											Our Story
-										</button>
-									</div>
+								<div className="flex flex-col sm:flex-row gap-4 justify-center">
+									<button
+										onClick={() => router.push("/our-story")}
+										className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105"
+									>
+										Our Story
+									</button>
 								</div>
 							</div>
 						</div>
@@ -302,18 +298,17 @@ function HomeContent() {
 							className="flex items-center p-3 hover:shadow-lg rounded-xl transition-all duration-300"
 						>
 							<Image
-								src="/medias/lazada.webp"
-								alt="Lazada"
-								width={120}
-								height={40}
+								src="/medias/tiktok.svg"
+								alt="Tiktok"
+								width={150}
+								height={50}
 								className="object-contain"
 							/>
 						</motion.a>
 					</div>
 				</div>
 			</motion.section>
-
-			{/* Wholesale Hero Section - Increased button gap */}
+			{/* Wholesale Hero Section - Split layout with image */}
 			<motion.section
 				id="wholesale"
 				className="min-h-screen flex pt items-center justify-center relative"
@@ -322,47 +317,56 @@ function HomeContent() {
 				transition={{ duration: 0.6, ease: "easeOut" }}
 				viewport={{ amount: 0.5, once: false, margin: "0px 0px -100px 0px" }}
 			>
-				<div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="bg-black/70 border border-[#ceb072]/30 rounded-3xl p-12 shadow-xl">
+				<div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+					<div className="bg-black/70 border border-[#ceb072]/30 rounded-3xl shadow-xl overflow-hidden">
 						<div className="absolute inset-0 bg-black/70 z-10"></div>
-						<div className="max-w-4xl mx-auto relative z-20 px-8 sm:px-12 lg:px-16 pt-2 pb-24 text-center">
-							<h2 className="text-5xl text-[#ceb072] font-serif mb-20 text-center">
-								Wholesale
-							</h2>
-							<p className="text-xl md:text-2xl text-[#ceb072] mb-8 leading-relaxed font-serif">
-								For wholesale inquiries and pricing, please contact us via LINE
-								or fill up our enquiry form. MOQ 1KG
-								<br className="sm:hidden" />
-								<span className="block sm:inline"></span>
-							</p>
-
-							<div className="space-y-4 max-w-2xl mx-auto mb-20">
-								{" "}
-								{/* Added mb-20 for button spacing */}
-								{wholesaleProducts.map((product, index) => (
-									<div key={index} className="text-center">
-										<h3 className="text-xl md:text-2xl text-[#ceb072] font-serif">
-											{product}
-										</h3>
-									</div>
-								))}
+						<div className="relative z-20 grid grid-cols-1 md:grid-cols-2">
+							{/* Image Side */}
+							<div className="relative h-64 md:h-auto">
+								<Image
+									src="/Background_Main.jpeg"
+									alt="Wholesale Matcha"
+									fill
+									className="object-cover"
+								/>
 							</div>
 
-							<div className="flex flex-col sm:flex-row gap-6 justify-center">
-								{" "}
-								{/* Fixed gap-1 → gap-6 */}
-								<button
-									onClick={() => router.push("/wholesale?scrollTo=get-a-quote")}
-									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
-								>
-									Enquire Now
-								</button>
-								<button
-									onClick={() => router.push("/wholesale")}
-									className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
-								>
-									Wholesale Catalogue
-								</button>
+							{/* Text Side */}
+							<div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+								<h2 className="text-5xl text-[#ceb072] font-serif mb-8 text-center md:text-left">
+									Wholesale
+								</h2>
+								<p className="text-xl md:text-2xl text-[#ceb072] mb-8 leading-relaxed font-serif text-center md:text-left">
+									For wholesale inquiries and pricing, please contact us via
+									LINE or fill up our enquiry form. MOQ 1KG
+								</p>
+
+								<div className="space-y-4 mb-12">
+									{wholesaleProducts.map((product, index) => (
+										<div key={index} className="text-center md:text-left">
+											<h3 className="text-xl md:text-2xl text-[#ceb072] font-serif">
+												{product}
+											</h3>
+										</div>
+									))}
+								</div>
+
+								<div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start">
+									<button
+										onClick={() =>
+											router.push("/wholesale?scrollTo=get-a-quote")
+										}
+										className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+									>
+										Enquire Now
+									</button>
+									<button
+										onClick={() => router.push("/wholesale")}
+										className="px-10 py-5 bg-[#ceb072] text-black rounded-full font-semibold text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+									>
+										Wholesale Catalogue
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -371,7 +375,7 @@ function HomeContent() {
 
 			{/* Contact Section */}
 			<motion.section
-				id="contact-Us"
+				id="contact-us"
 				className="py-2 relative bg-black/80"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
@@ -408,7 +412,37 @@ function HomeContent() {
 									<span className="font-semibold">LINE:</span>
 									<span className="ml-2">goldenmatchaofficial</span>
 								</a>
+								<a
+									href="https://instagram.com/goldenmatchaofficial"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
+								>
+									<SiFacebook size={20} />
+									<span className="font-semibold">Facebook:</span>
+									<span className="ml-2">@goldenmatchaofficial</span>
+								</a>
 
+								<a
+									href="https://instagram.com/goldenmatchaofficial"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
+								>
+									<SiTiktok size={20} />
+									<span className="font-semibold">Shopee:</span>
+									<span className="ml-2">@goldenmatchaofficial</span>
+								</a>
+								<a
+									href="https://instagram.com/goldenmatchaofficial"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
+								>
+									<SiShopee size={20} />
+									<span className="font-semibold">TikTok Shop:</span>
+									<span className="ml-2">@goldenmatchaofficial</span>
+								</a>
 								<a
 									href="https://instagram.com/goldenmatchaofficial"
 									target="_blank"

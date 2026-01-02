@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Send } from "lucide-react";
-import { SiInstagram } from "react-icons/si";
+import { SiInstagram, SiTiktok, SiShopee, SiFacebook } from "react-icons/si";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
 
@@ -110,7 +110,37 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								<span className="font-semibold">LINE:</span>
 								<span className="ml-2">goldenmatchaofficial</span>
 							</a>
+							<a
+								href="https://instagram.com/goldenmatchaofficial"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
+							>
+								<SiFacebook size={20} />
+								<span className="font-semibold">Facebook:</span>
+								<span className="ml-2">@goldenmatchaofficial</span>
+							</a>
 
+							<a
+								href="https://instagram.com/goldenmatchaofficial"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
+							>
+								<SiTiktok size={20} />
+								<span className="font-semibold">Shopee:</span>
+								<span className="ml-2">@goldenmatchaofficial</span>
+							</a>
+							<a
+								href="https://instagram.com/goldenmatchaofficial"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
+							>
+								<SiShopee size={20} />
+								<span className="font-semibold">TikTok Shop:</span>
+								<span className="ml-2">@goldenmatchaofficial</span>
+							</a>
 							<a
 								href="https://instagram.com/goldenmatchaofficial"
 								target="_blank"

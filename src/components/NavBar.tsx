@@ -29,13 +29,10 @@ export default function NavBar() {
 		} else if (section === "shop") {
 			router.push("/products");
 		} else if (section === "our-story") {
-			// Navigate to home with a query parameter
 			router.push("/our-story");
 		} else if (section === "contact") {
-			// Navigate to home with a query parameter
-			router.push("/home?scrollTo=contact-Us");
+			router.push("/#contact-us"); // no query, just hash
 		} else if (section === "wholesale") {
-			// Navigate to home with a query parameter
 			router.push("/wholesale");
 		} else {
 			scrollToSection(section);
