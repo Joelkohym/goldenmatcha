@@ -5,6 +5,7 @@ import { Send } from "lucide-react";
 import { SiInstagram, SiTiktok, SiShopee, SiFacebook } from "react-icons/si";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 interface EnquiryFormData extends Record<string, string> {
 	name: string;
@@ -20,6 +21,9 @@ interface EnquiryFormProps {
 }
 
 export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
+	const pathname = usePathname();
+	const isWholesalePage = pathname === "/wholesale";
+
 	const [formData, setFormData] = useState<EnquiryFormData>({
 		name: "",
 		email: "",
@@ -61,7 +65,9 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 					quantity: "",
 					message: "",
 				});
-				onSuccess?.();
+				if (onSuccess) {
+					onSuccess();
+				}
 				setTimeout(() => setFormSubmitted(false), 3000);
 			},
 			(err) => {
@@ -73,7 +79,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 
 	return (
 		<motion.section
-			id="contact-Us"
+			id="contact-us"
 			className="py-57 relative bg-black/80"
 			initial={{ opacity: 0, y: 50 }}
 			whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +88,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 		>
 			<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 				<h2 className="text-5xl text-[#ceb072] font-serif mb-20 text-center">
-					Wholesale Enquiry Form
+					{isWholesalePage ? "Wholesale Enquiry Form" : "Contact Us"}
 				</h2>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -190,14 +196,16 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								onChange={handleFormChange}
 								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
 							/>
-							<input
-								type="text"
-								name="number"
-								placeholder="Expected Quantity (KG)"
-								value={formData.quantity}
-								onChange={handleFormChange}
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
-							/>
+							{isWholesalePage && (
+								<input
+									type="text"
+									name="quantity"
+									placeholder="Expected Quantity/Month (KG)"
+									value={formData.quantity}
+									onChange={handleFormChange}
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
+								/>
+							)}
 							<textarea
 								name="message"
 								placeholder="Your Message"
