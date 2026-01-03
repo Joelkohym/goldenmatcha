@@ -80,7 +80,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 	return (
 		<motion.section
 			id="contact-us"
-			className="py-57 relative bg-black/80"
+			className="py-57 relative bg-black/77"
 			initial={{ opacity: 0, y: 50 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6, ease: "easeOut" }}

@@ -174,7 +174,7 @@ function HomeContent() {
 			{/* Hero Section - Mobile optimized, desktop unchanged */}
 			<motion.section
 				id="home"
-				className="pt-20 min-h-screen flex items-center md:justify-end justify-center relative px-4 md:px-0 bg-black/80"
+				className="pt-20 min-h-screen flex items-center md:justify-end justify-center relative px-4 md:px-0 bg-black/77"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
@@ -182,12 +182,12 @@ function HomeContent() {
 			>
 				<div className="w-full md:px-4 sm:px-6 lg:px-8">
 					<div className="md:ml-auto md:max-w-2xl w-full max-w-xl">
-						<div className="bg-black/70 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl">
+						<div className="bg-black/77 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl">
 							<div className="relative z-20 py-12 md:py-20 text-center">
 								<h2 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#ceb072] leading-tight mb-4">
 									A Golden Moment
 									<br />
-									with <span className="text-[#ceb072]">Golden Matcha</span>
+									with <span className="text-[#ffb31a]">Golden Matcha</span>
 								</h2>
 
 								<p className="font-['Calibri','Segoe_UI','system-ui'] text-base md:text-xl text-[#ceb072] mb-8 md:mb-12 px-2 md:px-0">
@@ -212,7 +212,7 @@ function HomeContent() {
 			{/* Shop Section - Mobile optimized, desktop unchanged */}
 			<motion.section
 				id="shop"
-				className="py-20 md:py-40 relative bg-black/80"
+				className="py-20 md:py-40 relative bg-black/77"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
@@ -298,14 +298,14 @@ function HomeContent() {
 			{/* Wholesale Section - Mobile optimized, desktop unchanged */}
 			<motion.section
 				id="wholesale"
-				className="min-h-screen flex items-center justify-center relative py-12 md:py-0 bg-black/80"
+				className="min-h-screen flex items-center justify-center relative py-12 md:py-0 bg-black/77"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
 				viewport={{ amount: 0.1, once: false }}
 			>
 				<div className="max-w-7xl lg:max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-					<div className="bg-black/70 rounded-2xl md:rounded-3xl shadow-xl overflow-hidden">
+					<div className="bg-black/77 rounded-2xl md:rounded-3xl shadow-xl overflow-hidden">
 						<div className="grid grid-cols-1 md:grid-cols-2">
 							{/* Image Side */}
 							<div className="relative h-56 md:h-auto min-h-[250px] md:min-h-0">
@@ -362,7 +362,7 @@ function HomeContent() {
 			{/* Contact Section - Mobile optimized */}
 			<motion.section
 				id="contact-us"
-				className="relative bg-black/1"
+				className="relative"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
