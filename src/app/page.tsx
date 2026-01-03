@@ -174,7 +174,7 @@ function HomeContent() {
 			{/* Hero Section - Mobile optimized, desktop unchanged */}
 			<motion.section
 				id="home"
-				className="pt-20 min-h-screen flex items-center md:justify-end justify-center relative px-4 md:px-0"
+				className="pt-20 min-h-screen flex items-center md:justify-end justify-center relative px-4 md:px-0 bg-black/80"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
