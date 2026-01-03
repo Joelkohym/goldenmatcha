@@ -7,7 +7,7 @@ import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import EnquiryForm from "../../components/EnquiryForm";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const wholesaleProducts = [
 	{
@@ -38,7 +38,7 @@ const wholesaleProducts = [
 ];
 
 // Page-level variants for enter transition
-const pageVariants = {
+const pageVariants: Variants = {
 	hidden: { opacity: 0, y: 1 },
 	show: {
 		opacity: 1,
@@ -46,26 +46,35 @@ const pageVariants = {
 		transition: {
 			duration: 0.6,
 			ease: "easeOut",
-			when: "beforeChildren",
 			staggerChildren: 0.15,
 		},
 	},
 };
 
 // Section / block variants (used by hero, headings, form)
-const blockVariants = {
+const blockVariants: Variants = {
 	hidden: { opacity: 0, y: 25 },
-	show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.5,
+			ease: "easeOut",
+		},
+	},
 };
 
 // Card variants for product grid
-const cardVariants = {
+const cardVariants: Variants = {
 	hidden: { opacity: 0, y: 20, scale: 0.95 },
 	show: {
 		opacity: 1,
 		y: 0,
 		scale: 1,
-		transition: { duration: 0.4, ease: "easeOut" },
+		transition: {
+			duration: 0.4,
+			ease: "easeOut",
+		},
 	},
 };
 
