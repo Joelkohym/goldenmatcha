@@ -32,7 +32,7 @@ const MotionProductCard = ({ product }: { product: Product }) => {
 			initial={{ opacity: 0, y: 40 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5, ease: "easeOut" }}
-			viewport={{ amount: 0.3, once: true }}
+			viewport={{ amount: 0.3, once: false }}
 		>
 			<div className="relative h-56 md:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg">
 				<Image
@@ -168,7 +168,7 @@ function HomeContent() {
 	];
 
 	return (
-		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed text-yellow-400 relative overflow-hidden">
+		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed text-[#ceb072] relative overflow-hidden">
 			<NavBar />
 
 			{/* Hero Section - Mobile optimized, desktop unchanged */}
@@ -187,7 +187,7 @@ function HomeContent() {
 								<h2 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#ceb072] leading-tight mb-4">
 									A Golden Moment
 									<br />
-									with <span className="text-yellow-500">Golden Matcha</span>
+									with <span className="text-[#ceb072]">Golden Matcha</span>
 								</h2>
 
 								<p className="font-['Calibri','Segoe_UI','system-ui'] text-base md:text-xl text-[#ceb072] mb-8 md:mb-12 px-2 md:px-0">
@@ -216,7 +216,7 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.1, once: true }}
+				viewport={{ amount: 0.1, once: false }}
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 className="text-3xl md:text-5xl text-[#ceb072] font-serif mb-12 md:mb-20 text-center">
@@ -298,11 +298,11 @@ function HomeContent() {
 			{/* Wholesale Section - Mobile optimized, desktop unchanged */}
 			<motion.section
 				id="wholesale"
-				className="min-h-screen flex items-center justify-center relative py-12 md:py-0"
+				className="min-h-screen flex items-center justify-center relative py-12 md:py-0 bg-black/80"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.1, once: true }}
+				viewport={{ amount: 0.1, once: false }}
 			>
 				<div className="max-w-7xl lg:max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 					<div className="bg-black/70 rounded-2xl md:rounded-3xl shadow-xl overflow-hidden">
@@ -362,7 +362,7 @@ function HomeContent() {
 			{/* Contact Section - Mobile optimized */}
 			<motion.section
 				id="contact-us"
-				className="relative bg-black/60"
+				className="relative bg-black/1"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
@@ -387,7 +387,7 @@ export default function Home() {
 		<Suspense
 			fallback={
 				<div className="min-h-screen bg-black flex items-center justify-center">
-					<div className="text-yellow-400 text-xl">Loading...</div>
+					<div className="text-[#ceb072] text-xl">Loading...</div>
 				</div>
 			}
 		>

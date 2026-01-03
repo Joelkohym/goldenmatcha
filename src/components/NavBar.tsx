@@ -99,7 +99,7 @@ export default function NavBar() {
 			<div className="md:hidden">
 				<button
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
-					className="text-yellow-300"
+					className="text-[#ceb072]"
 					aria-label="Toggle menu"
 				>
 					{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -114,7 +114,7 @@ export default function NavBar() {
 							<button
 								key={section}
 								onClick={() => handleNavClick(section)}
-								className="block w-full text-left px-3 py-2 text-yellow-300 hover:bg-yellow-900 rounded font-semibold"
+								className="block w-full text-left px-3 py-2 text-[#ceb072] hover:bg-yellow-900 rounded font-semibold"
 							>
 								{section.charAt(0).toUpperCase() +
 									section.slice(1).replace("-", " ")}
