@@ -74,15 +74,14 @@ export default function NavBar() {
 			<div className="flex-grow" />
 
 			{/* Desktop navigation */}
-			<div className="hidden md:flex space-x-8 mr-8 font-serif text-[#ceb072] text-lg">
+			<div className="hidden md:flex space-x-8 mr-8 font-serif text-[#ceb072] text-xs">
 				{navItems.map((section) => (
 					<button
 						key={section}
 						onClick={() => handleNavClick(section)}
 						className="text-golden-matcha hover:text-yellow-500 transition"
 					>
-						{section.charAt(0).toUpperCase() +
-							section.slice(1).replace("-", " ")}
+						{section.slice(0).toUpperCase().replace("-", " ")}
 					</button>
 				))}
 			</div>
