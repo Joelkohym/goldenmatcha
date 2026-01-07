@@ -101,7 +101,7 @@ export default function Footer() {
 						className="flex flex-col items-center"
 					>
 						<a
-							href="https://tiktok.com/@goldenmatchaofficial"
+							href="https://vt.tiktok.com/ZS5HXxV7t/?page=TikTokShop"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-[#ff0050] hover:text-pink-300 transition p-3 rounded-full bg-black/50 hover:bg-black/70"
