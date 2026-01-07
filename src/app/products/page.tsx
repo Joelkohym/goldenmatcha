@@ -153,15 +153,17 @@ export default function ProductsPage() {
 						))}
 					</div>
 				</div>
-				<div className="mb-16 md:mb-20">
-					<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center">
+				{/* PREMIUM GRADE Section */}
+				<div>
+					<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 						PREMIUM GRADE
 					</h3>
-
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-						{premiumProducts.map((product, i) => (
-							<MotionProductCard key={i} product={product} />
-						))}
+					<div className="flex justify-center">
+						<div className="w-full max-w-[265px]">
+							{premiumProducts.map((product, i) => (
+								<MotionProductCard key={i} product={product} />
+							))}
+						</div>
 					</div>
 				</div>
 				{/* Shopee & TikTok Logos - Mobile optimized */}
