@@ -14,6 +14,9 @@ module.exports = {
 				gold: { matcha: "#ceb072" },
 				black: "#000000",
 			},
+			screens: {
+				"2xl": "1920px",
+			},
 		},
 	},
 	plugins: [],
