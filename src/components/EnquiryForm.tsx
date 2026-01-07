@@ -116,16 +116,6 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								<span className="font-semibold">LINE:</span>
 								<span className="ml-2">goldenmatchaofficial</span>
 							</a>
-							<a
-								href="https://instagram.com/goldenmatchaofficial"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
-							>
-								<SiFacebook size={20} />
-								<span className="font-semibold">Facebook:</span>
-								<span className="ml-2">@goldenmatchaofficial</span>
-							</a>
 
 							<a
 								href="https://instagram.com/goldenmatchaofficial"
@@ -138,7 +128,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								<span className="ml-2">@goldenmatchaofficial</span>
 							</a>
 							<a
-								href="https://instagram.com/goldenmatchaofficial"
+								href="https://vt.tiktok.com/ZS5HXxV7t/?page=TikTokShop"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"

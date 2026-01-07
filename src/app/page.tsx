@@ -219,13 +219,13 @@ function HomeContent() {
 				viewport={{ amount: 0.1, once: true }}
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-3xl md:text-5xl text-[#ceb072] font-serif mb-12 md:mb-20 text-center">
+					<h2 className="text-lg md:text-2xl text-[#ceb072] font-serif mb-12 md:mb-20 text-center uppercase">
 						Our Golden Collection
 					</h2>
 
 					{/* CEREMONIAL GRADE Section */}
 					<div className="mb-16 md:mb-20">
-						<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center underline underline-offset-8 decoration-2 decoration-[#ceb072]">
+						<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 							CEREMONIAL GRADE
 						</h3>
 						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
@@ -237,7 +237,7 @@ function HomeContent() {
 
 					{/* PREMIUM GRADE Section */}
 					<div>
-						<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center underline underline-offset-8 decoration-2 decoration-[#ceb072]">
+						<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 							PREMIUM GRADE
 						</h3>
 						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-sm sm:max-w-md md:max-w-none mx-auto">
@@ -319,15 +319,21 @@ function HomeContent() {
 
 							{/* Text Side */}
 							<div className="p-6 md:p-8 lg:p-12 xl:p-16 flex flex-col justify-center">
-								<h2 className="text-3xl md:text-5xl text-[#ceb072] font-serif mb-6 md:mb-8 text-center md:text-left">
+								<h2 className="text-xl md:text-3xl text-[#ceb072] font-serif mb-6 md:mb-8 text-center md:text-left uppercase">
 									Wholesale
 								</h2>
-								<p className="text-base md:text-xl lg:text-2xl text-[#ceb072] mb-6 md:mb-8 leading-relaxed font-serif text-center md:text-left">
-									For wholesale inquiries and pricing, please contact us via
-									LINE or fill up our enquiry form. MOQ 1KG
+								<p className="text-base md:text-sm lg:text-md text-[#ceb072] mb-6 md:mb-8 leading-relaxed font-serif text-center md:text-left">
+									We specialise in providing high-quality matcha powder for
+									businesses.
+								</p>
+								<p className="text-base md:text-sm lg:text-md text-[#ceb072] mb-6 md:mb-8 leading-relaxed font-serif text-center md:text-left">
+									At Golden Matcha, we’re committed to partnering with you to
+									discover the matcha that best complements your brand and
+									supports your growth. Tell us what you're looking for and we
+									will do our best to meet your needs.
 								</p>
 
-								<div className="space-y-2 md:space-y-4 mb-6 md:mb-12">
+								{/* <div className="space-y-2 md:space-y-4 mb-6 md:mb-12">
 									{wholesaleProducts.map((product, index) => (
 										<div key={index} className="text-center md:text-left">
 											<h3 className="text-sm md:text-xl lg:text-2xl text-[#ceb072] font-serif">
@@ -335,20 +341,20 @@ function HomeContent() {
 											</h3>
 										</div>
 									))}
-								</div>
+								</div> */}
 
-								<div className="flex flex-col sm:flex-row gap-3 md:gap-4 lg:gap-6 justify-center md:justify-start">
+								<div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
 									<button
 										onClick={() =>
 											router.push("/wholesale?scrollTo=get-a-quote")
 										}
-										className="px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base lg:text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+										className="px-5 md:px-6 lg:px-6py-2.5 md:py-3 lg:py-2.5 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base lg:text-md hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
 									>
 										Enquire Now
 									</button>
 									<button
 										onClick={() => router.push("/wholesale")}
-										className="px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base lg:text-lg hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+										className="px-5 md:px-6 lg:px-6 py-2.5 md:py-3 lg:py-2.5 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base lg:text-md hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
 									>
 										Wholesale Catalogue
 									</button>
