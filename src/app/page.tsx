@@ -32,7 +32,7 @@ const MotionProductCard = ({ product }: { product: Product }) => {
 			initial={{ opacity: 0, y: 40 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5, ease: "easeOut" }}
-			viewport={{ amount: 0.3, once: false }}
+			viewport={{ amount: 0.3, once: true }}
 		>
 			<div className="relative h-56 md:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg">
 				<Image
@@ -216,7 +216,7 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.1, once: false }}
+				viewport={{ amount: 0.1, once: true }}
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 className="text-3xl md:text-5xl text-[#ceb072] font-serif mb-12 md:mb-20 text-center">
@@ -302,7 +302,6 @@ function HomeContent() {
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ amount: 0.1, once: false }}
 			>
 				<div className="max-w-7xl lg:max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 					<div className="bg-black/77 rounded-2xl md:rounded-3xl shadow-xl overflow-hidden">

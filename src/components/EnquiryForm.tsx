@@ -84,7 +84,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 			initial={{ opacity: 0, y: 50 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6, ease: "easeOut" }}
-			viewport={{ amount: 0.1, once: false, margin: "0px 0px -300px 0px" }}
+			viewport={{ amount: 0.1, once: true, margin: "0px 0px -300px 0px" }}
 		>
 			<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 				<h2 className="text-5xl text-[#ceb072] font-serif mb-20 text-center">
