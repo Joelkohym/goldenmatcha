@@ -58,15 +58,14 @@ export default function Footer() {
 		<footer className="relative bg-black/90 py-8 px-4 sm:px-6 lg:px-8 text-center border-t border-yellow-900">
 			<div className="max-w-6xl mx-auto">
 				{/* Navigation Links - Centered */}
-				<div className="flex flex-wrap justify-center gap-6 mb-8 font-serif text-[#ceb072] text-lg">
+				<div className="flex flex-wrap justify-center gap-6 mb-8 font-serif text-[#ceb072] text-xs">
 					{navItems.map((section) => (
 						<button
 							key={section}
 							onClick={() => handleNavClick(section)}
-							className="hover:text-yellow-500 transition hover:underline"
+							className="hover:text-yellow-500 transition hover:underline uppercase"
 						>
-							{section.charAt(0).toUpperCase() +
-								section.slice(1).replace("-", " ")}
+							{section.replace("-", " ")}
 						</button>
 					))}
 				</div>
@@ -77,9 +76,9 @@ export default function Footer() {
 						href="https://instagram.com/goldenmatchaofficial"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-pink-400 hover:text-pink-300 transition p-3 rounded-full bg-black/50 hover:bg-black/70"
+						className="text-pink-400 hover:text-pink-300 transition p-3  hover:bg-black/70"
 					>
-						<SiInstagram size={24} />
+						<SiInstagram size={20} />
 					</a>
 
 					<motion.div
@@ -104,45 +103,15 @@ export default function Footer() {
 							href="https://vt.tiktok.com/ZS5HXxV7t/?page=TikTokShop"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-[#ff0050] hover:text-pink-300 transition p-3 rounded-full bg-black/50 hover:bg-black/70"
+							className="text-[#ff0050] hover:text-pink-300 transition p-3 rounded-full hover:bg-black/70"
 						>
 							<Image
-								src="/medias/tiktok.svg"
+								src="/medias/tik-tok.png"
 								alt="Tiktok"
-								width={150}
-								height={50}
+								width={22}
+								height={20}
 								className="object-contain"
 							/>
-						</a>
-					</motion.div>
-
-					<motion.div
-						initial={{ x: "-100vh", opacity: 0 }}
-						animate={{
-							x: 0,
-							opacity: 1,
-						}}
-						transition={{
-							delay: 0,
-							duration: 1,
-							type: "spring",
-							stiffness: 120,
-						}}
-						whileHover={{
-							scale: 1.1,
-						}}
-						whileTap={{ scale: 0.9 }}
-						className="flex flex-col items-center"
-					>
-						<a
-							href="https://facebook.com/goldenmatchaofficial"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-blue-400 hover:text-blue-300 transition p-3 rounded-full bg-black/50 hover:bg-black/70"
-						>
-							<svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
-								<path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808C8.954 2 7.5 3.454 7.5 5.333V8z" />
-							</svg>
 						</a>
 					</motion.div>
 
@@ -168,12 +137,12 @@ export default function Footer() {
 							href="https://line.me/ti/p/goldenmatchaofficial"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-green-400 hover:text-green-300 transition p-3 rounded-full bg-black/50 hover:bg-black/70"
+							className="text-green-400 hover:text-green-300 transition p-3 hover:bg-black/70"
 						>
 							<Image
 								src={"/medias/line.svg"}
-								width={25}
-								height={8}
+								width={20}
+								height={6}
 								alt="Lazada Icon"
 								className="object-contain"
 							/>
@@ -200,13 +169,13 @@ export default function Footer() {
 					>
 						<a
 							href="https://shopee.sg/lauboonheng96j?is_from_login=true" // Replace 'YOURNUMBER' with your phone number
-							className="text-white hover:underline text-shadow-outline mr-5 mt-2.5"
+							className="text-white hover:underline text-shadow-outline ml-4 mt-2.5"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<Image
 								src={"/medias/shopee.webp"}
-								width={90}
+								width={70}
 								height={6}
 								alt="Lazada Icon"
 								className="object-contain"

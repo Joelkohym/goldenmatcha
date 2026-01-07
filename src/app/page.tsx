@@ -23,6 +23,9 @@ interface Product {
 
 const MotionProductCard = ({ product }: { product: Product }) => {
 	const [isHovered, setIsHovered] = useState(false);
+	const words = product.name.split(" ");
+	const firstLine = words.slice(0, words.length - 2).join(" ");
+	const secondLine = words.slice(-2).join(" ");
 	return (
 		<motion.div
 			className="rounded-lg shadow-md overflow-hidden cursor-pointer transform transition hover:scale-105 relative"
@@ -47,9 +50,12 @@ const MotionProductCard = ({ product }: { product: Product }) => {
 				/>
 			</div>
 			<div className="p-4 md:p-6 text-center">
-				<h3 className="text-lg md:text-xl font-semibold text-[#ceb072] mb-2 md:mb-4 font-serif">
-					{product.name} {product.weight}
+				<h3 className="text-sm md:text-md text-[#ceb072] font-serif uppercase leading-tight text-center">
+					{firstLine}
 				</h3>
+				<p className="text-xs md:text-sm text-[#ceb072] font-serif uppercase text-center mb-2 md:mb-4">
+					{secondLine} {product.weight}
+				</p>
 				<p className="text-lg md:text-xl text-[#ceb072] font-serif">
 					<span className="text-[16px] md:text-[18px]">฿</span>
 					{product.price}
@@ -123,23 +129,39 @@ function HomeContent() {
 
 	const ceremonialProducts: Product[] = [
 		{
-			name: "Uji Ceremonial Grade",
+			name: "Uji Gold Ceremonial Grade",
 			weight: "25g",
 			price: "699",
 			color: "black",
-			image: "/Background_Main.jpeg",
+			image: "/Uji Final v2.jpg",
 			link: "",
 		},
 		{
-			name: "Kagoshima Ceremonial Grade",
+			name: "Kagoshima Gold Ceremonial Grade",
 			weight: "25g",
 			price: "699",
 			color: "black",
-			image: "/Background_Main2.jpeg",
+			image: "/Kago Final v2.jpg",
 			link: "",
 		},
 		{
-			name: "Mie Ceremonial Grade",
+			name: "Mie Gold Ceremonial Grade",
+			weight: "25g",
+			price: "699",
+			color: "black",
+			image: "/Mie Final v2.jpg",
+			link: "",
+		},
+		{
+			name: "Yame Okumidori Ceremonial Grade",
+			weight: "25g",
+			price: "699",
+			color: "black",
+			image: "/Golden Matcha Logo.jpg",
+			link: "",
+		},
+		{
+			name: "Yame Sakimidori Ceremonial Grade",
 			weight: "25g",
 			price: "699",
 			color: "black",
@@ -150,11 +172,11 @@ function HomeContent() {
 
 	const premiumProducts: Product[] = [
 		{
-			name: "Golden Yame",
+			name: "Golden Yame Premium Blend",
 			weight: "30g",
 			price: "499",
 			color: "black",
-			image: "/Golden Matcha Logo.jpg",
+			image: "/Golden Yame Final v2.jpg",
 			link: "",
 		},
 	];
@@ -184,15 +206,16 @@ function HomeContent() {
 					<div className="md:ml-auto md:max-w-2xl w-full max-w-xl">
 						<div className="bg-black/77 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl">
 							<div className="relative z-20 py-12 md:py-20 text-center">
-								<h2 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#ceb072] leading-tight mb-4">
+								<h2 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-5xl text-[#ceb072] leading-tight mb-4">
 									A Golden Moment
 									<br />
 									with <span className="text-[#ffb31a]">Golden Matcha</span>
 								</h2>
 
-								<p className="font-['Calibri','Segoe_UI','system-ui'] text-base md:text-xl text-[#ceb072] mb-8 md:mb-12 px-2 md:px-0">
+								<p className="font-['Calibri','Segoe_UI','system-ui'] text-base md:text-l text-[#ceb072] mb-8 md:mb-12 px-2 md:px-0">
 									Premium Japanese matcha sourced directly from tea farms in
-									Japan, bringing you the finest quality at an affordable price.
+									Japan, <br></br>bringing you the finest quality at an
+									affordable price.
 								</p>
 
 								<div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -212,7 +235,7 @@ function HomeContent() {
 			{/* Shop Section - Mobile optimized, desktop unchanged */}
 			<motion.section
 				id="shop"
-				className="py-20 md:py-40 relative bg-black/77"
+				className="py-5 md:py-10 relative bg-black/77"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
@@ -228,7 +251,7 @@ function HomeContent() {
 						<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 							CEREMONIAL GRADE
 						</h3>
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
 							{ceremonialProducts.map((product, i) => (
 								<MotionProductCard key={i} product={product} />
 							))}
@@ -240,7 +263,7 @@ function HomeContent() {
 						<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 							PREMIUM GRADE
 						</h3>
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-sm sm:max-w-md md:max-w-none mx-auto">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
 							{premiumProducts.map((product, i) => (
 								<MotionProductCard key={i} product={product} />
 							))}
@@ -248,7 +271,7 @@ function HomeContent() {
 					</div>
 
 					{/* Shopee & TikTok Logos - Mobile optimized */}
-					<div className="flex justify-center gap-4 md:gap-8 pt-8 md:pt-12 font-serif text-[#ceb072] text-lg md:text-xl lg:text-2xl text-center px-4">
+					<div className="flex justify-center gap-4 md:gap-8 pt-8 md:pt-12 font-serif text-[#ceb072] text-md md:text-lg lg:text-xl text-center px-4 uppercase">
 						Find us on Shopee & Tiktok Shop:
 					</div>
 					<div className="flex justify-center gap-4 md:gap-8 pt-1 pb-8">
@@ -266,14 +289,14 @@ function HomeContent() {
 							<Image
 								src="/medias/shopee.webp"
 								alt="Shopee"
-								width={120}
-								height={40}
-								className="object-contain w-[90px] h-[30px] md:w-[120px] md:h-[40px]"
+								width={100}
+								height={20}
+								className="object-contain w-[90px] h-[30px] md:w-[120px] md:h-[30px]"
 							/>
 						</motion.a>
 
 						<motion.a
-							href="https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp"
+							href="https://vt.tiktok.com/ZS5HXxV7t/?page=TikTokShop"
 							target="_blank"
 							rel="noopener noreferrer"
 							initial={{ opacity: 0, y: 20 }}
@@ -286,9 +309,9 @@ function HomeContent() {
 							<Image
 								src="/medias/tiktok.svg"
 								alt="Tiktok"
-								width={150}
-								height={50}
-								className="object-contain w-[110px] h-[37px] md:w-[150px] md:h-[50px]"
+								width={100}
+								height={30}
+								className="object-contain w-[110px] h-[37px] md:w-[150px] md:h-[40px]"
 							/>
 						</motion.a>
 					</div>
@@ -298,14 +321,14 @@ function HomeContent() {
 			{/* Wholesale Section - Mobile optimized, desktop unchanged */}
 			<motion.section
 				id="wholesale"
-				className="min-h-screen flex items-center justify-center relative py-12 md:py-0 bg-black/77"
+				className="pt-1 md:pt-1 items-center justify-center relative py-1 md:py-0 bg-black/77"
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true }}
 				transition={{ duration: 0.6, ease: "easeOut" }}
 			>
-				<div className="max-w-7xl lg:max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-					<div className="bg-black/77 rounded-2xl md:rounded-3xl shadow-xl overflow-hidden">
+				<div className="w-full py-20">
+					<div className="bg-black/77 shadow-xl overflow-hidden">
 						<div className="grid grid-cols-1 md:grid-cols-2">
 							{/* Image Side */}
 							<div className="relative h-56 md:h-auto min-h-[250px] md:min-h-0">

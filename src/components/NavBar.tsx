@@ -55,20 +55,20 @@ export default function NavBar() {
 		<nav className="fixed w-full bg-black/95 backdrop-blur-sm shadow-md z-50 flex items-center h-35 px-4 sm:px-6 lg:px-8">
 			{/* Logo */}
 			<div
-				className="flex items-center gap-2 cursor-pointer"
+				className="flex items-center gap-2 cursor-pointer -ml-6 sm:-ml-9 lg:-ml-12"
 				onClick={() => router.push("/")}
 			>
 				<Image
-					src="/favicon.ico"
+					src="/GOLDEN MATCHA LOGO.png"
 					alt="Golden Matcha Logo"
-					width={80}
-					height={80}
+					width={200}
+					height={200}
 					className="object-contain"
 					priority
 				/>
-				<h1 className="hidden md:flex space-x-8 mr-8 font-serif text-[#ceb072] text-2xl">
+				{/* <h1 className="hidden md:flex space-x-8 mr-8 font-serif text-[#ceb072] text-2xl">
 					Golden Matcha
-				</h1>
+				</h1> */}
 			</div>
 
 			<div className="flex-grow" />
