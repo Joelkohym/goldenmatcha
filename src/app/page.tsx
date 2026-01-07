@@ -19,6 +19,7 @@ interface Product {
 	color: string;
 	image?: string;
 	link: string;
+	awardWinning?: boolean; // 👈 add this
 }
 
 const MotionProductCard = ({ product }: { product: Product }) => {
@@ -37,6 +38,13 @@ const MotionProductCard = ({ product }: { product: Product }) => {
 			transition={{ duration: 0.5, ease: "easeOut" }}
 			viewport={{ amount: 0.3, once: true }}
 		>
+			{product.awardWinning && (
+				<div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
+					<span className="bg-[#ceb072] text-black text-[10px] md:text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full shadow-lg">
+						Award Winner
+					</span>
+				</div>
+			)}
 			<div className="relative h-56 md:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg">
 				<Image
 					src={
@@ -56,8 +64,8 @@ const MotionProductCard = ({ product }: { product: Product }) => {
 				<p className="text-xs md:text-sm text-[#ceb072] font-serif uppercase text-center mb-2 md:mb-4">
 					{secondLine} {product.weight}
 				</p>
-				<p className="text-lg md:text-xl text-[#ceb072] font-serif">
-					<span className="text-[16px] md:text-[18px]">฿</span>
+				<p className="text-xs md:text-sm text-[#ceb072] font-serif">
+					<span className="text-xs md:text-sm">฿</span>
 					{product.price}
 				</p>
 			</div>
@@ -129,6 +137,23 @@ function HomeContent() {
 
 	const ceremonialProducts: Product[] = [
 		{
+			name: "Yame Okumidori Ceremonial Grade",
+			weight: "25g",
+			price: "699",
+			color: "black",
+			image: "/Golden Matcha Logo.jpg",
+			link: "",
+			awardWinning: true,
+		},
+		{
+			name: "Yame Sakimidori Ceremonial Grade",
+			weight: "25g",
+			price: "699",
+			color: "black",
+			image: "/Golden Matcha Logo.jpg",
+			link: "",
+		},
+		{
 			name: "Uji Gold Ceremonial Grade",
 			weight: "25g",
 			price: "699",
@@ -150,22 +175,6 @@ function HomeContent() {
 			price: "699",
 			color: "black",
 			image: "/Mie Final v2.jpg",
-			link: "",
-		},
-		{
-			name: "Yame Okumidori Ceremonial Grade",
-			weight: "25g",
-			price: "699",
-			color: "black",
-			image: "/Golden Matcha Logo.jpg",
-			link: "",
-		},
-		{
-			name: "Yame Sakimidori Ceremonial Grade",
-			weight: "25g",
-			price: "699",
-			color: "black",
-			image: "/Golden Matcha Logo.jpg",
 			link: "",
 		},
 	];

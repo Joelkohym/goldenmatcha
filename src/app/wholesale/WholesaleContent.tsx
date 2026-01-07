@@ -1,4 +1,3 @@
-// app/wholesale/WholesaleContent.tsx
 "use client";
 
 import React, { useEffect } from "react";
@@ -8,38 +7,166 @@ import Footer from "../../components/Footer";
 import EnquiryForm from "../../components/EnquiryForm";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, Variants } from "framer-motion";
+import { useState } from "react";
 
 const wholesaleProducts = [
 	{
-		name: "Yame A Premium",
-		imageUrl: "/Golden Matcha Logo.jpg",
-		description: "",
+		name: "Yame 04",
+		imageUrl: "/Golden Yame v2.jpg",
+		description: (
+			<div className="space-y-3">
+				<div>
+					<strong>Origin:</strong> Yame Blend
+				</div>
+
+				<div>
+					<strong>Grade:</strong> Premium
+				</div>
+
+				<div>
+					<strong>Taste Notes:</strong>
+					<ul className="list-disc list-inside mt-1 space-y-1">
+						<li>Balanced nutty umami</li>
+						<li>Medium body</li>
+						<li>Creamy</li>
+						<li>Hint of roasted</li>
+					</ul>
+				</div>
+			</div>
+		),
 	},
 	{
-		name: "Yame B Premium",
-		imageUrl: "/Golden Matcha Logo.jpg",
-		description: "",
+		name: "Yame 06",
+		imageUrl: "/Golden Yame v2.jpg",
+		description: (
+			<div className="space-y-3">
+				<div>
+					<strong>Origin:</strong> Yame
+					<div className="text-sm opacity-90">Single Cultivar – Sakimidori</div>
+				</div>
+
+				<div>
+					<strong>Grade:</strong> Ceremonial
+				</div>
+
+				<div>
+					<strong>Taste Notes:</strong>
+					<ul className="list-disc list-inside mt-1 space-y-1">
+						<li>Excellent colour</li>
+						<li>Medium–Strong body</li>
+						<li>Smooth & creamy</li>
+						<li>Nutty umami</li>
+					</ul>
+				</div>
+			</div>
+		),
 	},
 	{
-		name: "Yame A Ceremonial (1st Harvest Okumidori)",
-		imageUrl: "/Golden Matcha Logo.jpg",
-		description: "",
+		name: "Yame 07",
+		imageUrl: "/Golden Yame v2.jpg",
+		description: (
+			<div className="space-y-3">
+				<div>
+					<strong>Origin:</strong> Yame
+					<div className="text-sm opacity-90">Single Cultivar – Okumidori</div>
+				</div>
+
+				<div>
+					<strong>Grade:</strong> Ceremonial
+				</div>
+
+				<div>
+					<strong>Taste Notes:</strong>
+					<ul className="list-disc list-inside mt-1 space-y-1">
+						<li>Well balanced body</li>
+						<li>Smooth, clear & creamy</li>
+						<li>Not astringent & bitter</li>
+						<li>Nutty umami</li>
+					</ul>
+				</div>
+			</div>
+		),
 	},
 	{
-		name: "Uji A Ceremonial (1st Harvest Okumidori)",
-		imageUrl: "/Golden Matcha Logo.jpg",
-		description: "",
+		name: "Mie 01",
+		imageUrl: "/Mie v2.jpg",
+		description: (
+			<div className="space-y-3">
+				<div>
+					<strong>Origin:</strong> Mie Blend
+				</div>
+
+				<div>
+					<strong>Grade:</strong> Ceremonial
+				</div>
+
+				<div>
+					<strong>Taste Notes:</strong>
+					<ul className="list-disc list-inside mt-1 space-y-1">
+						<li>Rich umami, savory</li>
+						<li>Strong body</li>
+						<li>Light floral, fruity notes</li>
+						<li>Creamy</li>
+					</ul>
+				</div>
+			</div>
+		),
 	},
 	{
-		name: "Top 1 Ceremonial (From Zhejiang, Hangzhou)",
-		imageUrl: "/Golden Matcha Logo.jpg",
-		description: "",
+		name: "Uji 01",
+		imageUrl: "/Uji v2.jpg",
+		description: (
+			<div className="space-y-3">
+				<div>
+					<strong>Origin:</strong> Uji Blend
+				</div>
+
+				<div>
+					<strong>Grade:</strong> Ceremonial
+				</div>
+
+				<div>
+					<strong>Taste Notes:</strong>
+					<ul className="list-disc list-inside mt-1 space-y-1">
+						<li>Well-balanced</li>
+						<li>Hint of seaweed</li>
+						<li>Smooth roasted</li>
+						<li>Refreshing aftertaste</li>
+					</ul>
+				</div>
+			</div>
+		),
+	},
+	{
+		name: "Kagoshima 03",
+		imageUrl: "/Kago v2.jpg",
+		description: (
+			<div className="space-y-3">
+				<div>
+					<strong>Origin:</strong> Kagoshima Blend
+				</div>
+
+				<div>
+					<strong>Grade:</strong> Ceremonial
+				</div>
+
+				<div>
+					<strong>Taste Notes:</strong>
+					<ul className="list-disc list-inside mt-1 space-y-1">
+						<li>Rich umami, savory</li>
+						<li>Roasted & creamy</li>
+						<li>Nutty undertones</li>
+						<li>Mild sweetness</li>
+					</ul>
+				</div>
+			</div>
+		),
 	},
 ];
 
-// Page-level variants for enter transition
+// Page animation
 const pageVariants: Variants = {
-	hidden: { opacity: 0, y: 1 },
+	hidden: { opacity: 0, y: 10 },
 	show: {
 		opacity: 1,
 		y: 0,
@@ -51,7 +178,7 @@ const pageVariants: Variants = {
 	},
 };
 
-// Section / block variants (used by hero, headings, form)
+// Section animation
 const blockVariants: Variants = {
 	hidden: { opacity: 0, y: 25 },
 	show: {
@@ -64,24 +191,12 @@ const blockVariants: Variants = {
 	},
 };
 
-// Card variants for product grid
-const cardVariants: Variants = {
-	hidden: { opacity: 0, y: 20, scale: 0.95 },
-	show: {
-		opacity: 1,
-		y: 0,
-		scale: 1,
-		transition: {
-			duration: 0.4,
-			ease: "easeOut",
-		},
-	},
-};
-
 export default function WholesaleContent() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const scrollToSectionId = searchParams.get("scrollTo");
+	const [activeImage, setActiveImage] = React.useState<string | null>(null);
+	const [scale, setScale] = React.useState(1);
 
 	useEffect(() => {
 		if (!scrollToSectionId) return;
@@ -91,106 +206,186 @@ export default function WholesaleContent() {
 	}, [scrollToSectionId, router]);
 
 	return (
-		<div className="min-h-screen bg-black text-yellow-400">
+		<div className="min-h-screen bg-black text-[#ceb072] relative overflow-hidden">
 			<NavBar />
 
-			{/* Page wrapper animation */}
+			{/* HERO */}
+			<section className="relative h-screen w-full">
+				<Image
+					src="/Wholesale header photo.jpg"
+					alt="Golden Matcha Wholesale"
+					fill
+					priority
+					className="object-cover"
+				/>
+				<div className="absolute inset-0 bg-black/55" />
+
+				<div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-4 px-4">
+					<h1 className="text-4xl md:text-6xl lg:text-7xl font-serif uppercase">
+						Wholesale
+					</h1>
+					<h2 className="text-md md:text-xl lg:text-2xl font-serif max-w-3xl">
+						Your trusted wholesale partner for ceremonial and premium matcha
+					</h2>
+				</div>
+			</section>
+
+			{/* CONTENT */}
 			<motion.main
-				className="pt-37 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative"
+				className="pt-37 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
 				variants={pageVariants}
 				initial="hidden"
 				animate="show"
 			>
-				{/* First section: hero + text + enquiry form */}
+				{/* INTRO + FORM */}
 				<motion.section
 					id="home"
 					className="mt-0 md:mt-2"
 					variants={blockVariants}
 				>
-					{/* Hero background image */}
-					<div className="relative w-full h-[30vh] sm:h-[20vh] md:h-[30vh] overflow-hidden rounded-3xl">
-						<Image
-							src="/Background_Main2.jpeg"
-							alt="Wholesale Matcha"
-							fill
-							className="object-cover"
-							priority
-						/>
-						{/* Dark overlay for better text contrast */}
-						<div className="absolute inset-0 bg-black/40" />
-					</div>
-
-					{/* Text + form in one block */}
-					<div className="mt-8 md:mt-10 max-w-4xl mx-auto text-center space-y-6">
-						<h1 className="text-3xl sm:text-4xl md:text-5xl text-[#ceb072] font-serif">
+					<div className="max-w-4xl mx-auto text-center space-y-6">
+						<h1 className="text-3xl sm:text-4xl md:text-5xl font-serif">
 							GOLDEN MATCHA WHOLESALE
 						</h1>
+
 						<p className="text-sm sm:text-base md:text-lg text-[#f6e6b5] max-w-2xl mx-auto">
 							Tell us how we can help you grow your business and we will do our
-							best to help.
+							best to support you.
 						</p>
 
-						{/* Enquiry form is now part of the first section */}
 						<div id="get-a-quote" className="mt-6">
 							<EnquiryForm />
 						</div>
 					</div>
 				</motion.section>
 
-				{/* Product list heading */}
+				{/* PRODUCT LIST HEADER */}
 				<motion.div className="mt-20 text-center" variants={blockVariants}>
-					<h2 className="text-3xl md:text-4xl text-[#ceb072] font-serif mb-4">
+					<h2 className="text-3xl md:text-4xl font-serif mb-4">
 						Wholesale Product List
 					</h2>
-					<p className="text-[#ceb072] max-w-2xl mx-auto">
-						Samples are available in bags. Please take note of the product
-						numbers you&apos;d like to sample &amp; reach out via the enquiry
-						form.
+					<p className="max-w-2xl mx-auto">
+						Samples are available in 6g bags (depending on product).
+						<br />
+						Please note the product numbers and contact us via the enquiry form.
 					</p>
 				</motion.div>
 
-				{/* Product grid with staggered cards */}
-				<motion.div
-					className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-20 mt-10"
-					variants={{
-						hidden: {},
-						show: {
-							transition: {
-								staggerChildren: 0.1,
-							},
-						},
-					}}
-				>
-					{wholesaleProducts.map((product, i) => (
-						<motion.div
-							key={i}
-							className="bg-yellow-900/80 rounded-xl shadow-lg overflow-hidden flex flex-col border border-[#ceb072]/30 hover:border-[#ceb072]/70 transition-colors duration-300"
-							variants={cardVariants}
-							whileHover={{ y: -4, scale: 1.01 }}
-							transition={{ type: "spring", stiffness: 260, damping: 20 }}
-						>
-							<div className="relative h-56 w-full">
-								<Image
-									src={product.imageUrl}
-									alt={product.name}
-									fill
-									className="object-cover"
-									priority
-								/>
-							</div>
-							<div className="p-6 flex flex-col flex-grow">
-								<h3 className="text-2xl font-semibold mb-2 text-[#f8e8b8]">
-									{product.name}
-								</h3>
-								<p className="text-yellow-300 flex-grow text-sm md:text-base">
-									{product.description ||
-										"Premium matcha curated for cafés, bakeries, and beverage brands."}
-								</p>
-							</div>
-						</motion.div>
-					))}
+				{/* PRODUCT TABLE */}
+				<motion.div className="mt-12 overflow-x-auto" variants={blockVariants}>
+					<table className="w-full border border-[#ceb072]/30 rounded-xl overflow-hidden table-fixed">
+						{/* COLUMN WIDTH CONTROL */}
+						{/* Product | Description | Image */}
+						<colgroup>
+							<col className="w-[30%]" />
+							<col className="w-[30%]" />
+							<col className="w-[40%]" />
+						</colgroup>
+
+						<thead className="bg-[#ceb072]/10">
+							<tr>
+								<th className="px-4 py-3 text-left font-serif uppercase text-sm">
+									Product
+								</th>
+								<th className="px-4 py-3 text-left font-serif uppercase text-sm hidden sm:table-cell">
+									Description
+								</th>
+								<th className="px-4 py-3 text-center font-serif uppercase text-sm">
+									Image
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{wholesaleProducts.map((product, index) => (
+								<tr
+									key={index}
+									className="border-t border-[#ceb072]/20 hover:bg-[#ceb072]/5 transition"
+								>
+									{/* PRODUCT */}
+									<td className="px-4 py-4 font-serif text-sm md:text-base align-top">
+										<span className="mr-2 text-[#f6e6b5]">{index + 1}.</span>
+										{product.name}
+									</td>
+
+									{/* DESCRIPTION */}
+									<td className="px-4 py-4 text-xs md:text-sm text-[#f6e6b5] hidden sm:table-cell align-top">
+										{product.description}
+									</td>
+
+									{/* IMAGE (WIDER + BIGGER IMAGE) */}
+									<td className="px-4 py-4">
+										<div
+											onClick={() => setActiveImage(product.imageUrl)}
+											className="group relative w-70 h-50 mx-auto rounded-lg overflow-hidden border border-[#ceb072]/40 cursor-pointer transition-transform hover:scale-105"
+										>
+											<Image
+												src={product.imageUrl}
+												alt={product.name}
+												fill
+												className="object-cover"
+											/>
+
+											{/* Hover overlay */}
+											<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+												<span className="text-black text-sm font-serif tracking-wide">
+													Click to view
+												</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
 				</motion.div>
 			</motion.main>
+			{activeImage && (
+				<div
+					className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center"
+					onClick={() => {
+						setActiveImage(null);
+						setScale(1);
+					}}
+				>
+					<div
+						className="relative max-w-5xl max-h-[90vh]"
+						onClick={(e) => e.stopPropagation()}
+					>
+						<Image
+							src={activeImage}
+							alt="Product image"
+							width={1200}
+							height={1200}
+							className="rounded-lg transition-transform duration-200 ease-out"
+							style={{
+								transform: `scale(${scale})`,
+								cursor: scale > 1 ? "zoom-out" : "zoom-in",
+							}}
+							onClick={() => {
+								setScale((prev) => Math.min(prev + 0.5, 3));
+							}}
+							onWheel={(e) => {
+								e.preventDefault();
+								setScale((prev) =>
+									Math.min(Math.max(prev + (e.deltaY < 0 ? 0.1 : -0.1), 1), 3)
+								);
+							}}
+						/>
+
+						{/* Close button */}
+						<button
+							onClick={() => {
+								setActiveImage(null);
+								setScale(1);
+							}}
+							className="absolute top-3 right-3 text-[#ceb072] text-xl hover:opacity-80"
+						>
+							✕
+						</button>
+					</div>
+				</div>
+			)}
 
 			<Footer />
 		</div>
