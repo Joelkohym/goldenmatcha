@@ -4,14 +4,6 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
-// import localFont from "next/font/local";
-// import "../app/page.module.css";
-
-// const trajanPro = localFont({
-// 	src: "/fonts/TrajanPro-Regular.ttf",
-// 	variable: "--font-trajan-pro",
-// 	display: "swap",
-// });
 
 export default function NavBar() {
 	const router = useRouter();
