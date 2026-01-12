@@ -81,45 +81,125 @@ function HomeContent() {
 			<NavBar />
 
 			{/* Mobile Hero Section - Full screen with background image and centered block */}
-			<section className="md:hidden relative min-h-screen pt-16">
-				{/* Background Image */}
-				<Image
-					src="/Background_Main2.jpeg"
-					alt="Golden Matcha Hero"
-					fill
-					priority
-					className="object-cover"
+			<section className="md:hidden relative min-h-screen pt-16 overflow-hidden">
+				{/* Background Image with subtle zoom animation */}
+				<motion.div
+					className="absolute inset-0"
+					initial={{ scale: 1.1 }}
+					animate={{ scale: 1 }}
+					transition={{ duration: 1.5, ease: "easeOut" }}
+				>
+					<Image
+						src="/Background_Main2.jpeg"
+						alt="Golden Matcha Hero"
+						fill
+						priority
+						className="object-cover"
+					/>
+				</motion.div>
+
+				{/* Gradient overlay for depth */}
+				<div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+
+				{/* Floating decorative elements */}
+				<motion.div
+					className="absolute top-24 left-6 w-20 h-20 rounded-full bg-[#ceb072]/10 blur-2xl"
+					animate={{ y: [0, -15, 0], opacity: [0.3, 0.6, 0.3] }}
+					transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
 				/>
-				{/* Dark overlay for better text readability */}
-				<div className="absolute inset-0 bg-black/50" />
+				<motion.div
+					className="absolute bottom-32 right-8 w-28 h-28 rounded-full bg-[#ffb31a]/10 blur-2xl"
+					animate={{ y: [0, 20, 0], opacity: [0.2, 0.5, 0.2] }}
+					transition={{
+						duration: 5,
+						repeat: Infinity,
+						ease: "easeInOut",
+						delay: 1,
+					}}
+				/>
 
 				{/* Centered Content Block */}
-				<div className="absolute inset-0 flex items-center justify-center px-6 pt-40 pb-10">
+				<div className="absolute inset-0 flex items-center justify-center px-5">
 					<motion.div
-						className="bg-black/80 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-[#ceb072]/20 max-w-sm w-full"
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, ease: "easeOut" }}
+						className="bg-black/70 backdrop-blur-md rounded-3xl p-7 shadow-2xl border border-[#ceb072]/30 max-w-sm w-full relative overflow-hidden"
+						initial={{ opacity: 0, y: 40, scale: 0.95 }}
+						animate={{ opacity: 1, y: 0, scale: 1 }}
+						transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
 					>
-						<div className="text-center">
-							<h1 className="font-serif text-3xl text-[#ceb072] leading-tight mb-3">
-								A Golden Moment
-								<br />
-								with <span className="text-[#ffb31a]">Golden Matcha</span>
-							</h1>
-							<p className="text-[#ceb072]/90 text-sm mb-6 leading-relaxed">
+						{/* Decorative corner accents */}
+						<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#ceb072]/40 rounded-tl-3xl" />
+						<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#ceb072]/40 rounded-br-3xl" />
+
+						<div className="text-center relative z-10">
+							{/* Optional: Add logo here */}
+							{/* <Image src="/GOLDEN MATCHA LOGO.png" alt="Logo" width={80} height={80} className="mx-auto mb-4" /> */}
+
+							<motion.div
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.6, delay: 0.6 }}
+							>
+								<h1 className="font-serif text-3xl text-[#ceb072] leading-tight mb-2">
+									A Golden Moment
+								</h1>
+								<h1 className="font-serif text-3xl leading-tight mb-4">
+									with <span className="text-[#ffb31a]">Golden Matcha</span>
+								</h1>
+							</motion.div>
+
+							<motion.p
+								className="text-[#ceb072]/80 text-sm mb-6 leading-relaxed"
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.6, delay: 0.9 }}
+							>
 								Premium Japanese matcha sourced directly from tea farms in
 								Japan, bringing you the finest quality at an affordable price.
-							</p>
-							<button
+							</motion.p>
+
+							<motion.button
 								onClick={() => router.push("/our-story")}
-								className="px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105 text-sm shadow-lg"
+								className="px-8 py-3 bg-gradient-to-r from-[#ceb072] to-[#e6c880] text-black rounded-full font-semibold text-sm shadow-lg shadow-[#ceb072]/20"
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.6, delay: 1.1 }}
+								whileTap={{ scale: 0.95 }}
 							>
 								Our Story
-							</button>
+							</motion.button>
 						</div>
 					</motion.div>
 				</div>
+
+				{/* Scroll Indicator */}
+				<motion.div
+					className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ delay: 1.5, duration: 0.6 }}
+				>
+					<span className="text-[#ceb072]/60 text-xs uppercase tracking-widest">
+						Scroll
+					</span>
+					<motion.div
+						animate={{ y: [0, 8, 0] }}
+						transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+					>
+						<svg
+							className="w-5 h-5 text-[#ceb072]/60"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M19 14l-7 7m0 0l-7-7m7 7V3"
+							/>
+						</svg>
+					</motion.div>
+				</motion.div>
 			</section>
 
 			{/* Hero Section - Desktop only */}
