@@ -35,7 +35,6 @@ export default function NavBar() {
 		} else if (section === "our-story") {
 			router.push("/our-story");
 		} else if (section === "contact-us") {
-			// Check if already on home page
 			if (pathname === "/") {
 				scrollToSection("contact-us");
 			} else {
@@ -47,6 +46,11 @@ export default function NavBar() {
 			scrollToSection(section);
 		}
 		setIsMenuOpen(false);
+	};
+
+	// Helper function to format nav item text - ALL CAPS with proper spacing
+	const formatNavText = (section: string) => {
+		return section.replace(/-/g, " ").toUpperCase();
 	};
 
 	const navItems = ["home", "our-story", "shop", "wholesale", "contact-us"];
@@ -66,22 +70,19 @@ export default function NavBar() {
 					className="object-contain"
 					priority
 				/>
-				{/* <h1 className="hidden md:flex space-x-8 mr-8 font-serif text-[#ceb072] text-2xl">
-					Golden Matcha
-				</h1> */}
 			</div>
 
 			<div className="flex-grow" />
 
-			{/* Desktop navigation */}
-			<div className="hidden md:flex space-x-8 mr-8 font-serif text-[#ceb072] text-xs">
+			{/* Desktop navigation - ALL CAPS */}
+			<div className="hidden md:flex space-x-8 mr-8 font-serif text-[#ceb072] text-xs tracking-wide">
 				{navItems.map((section) => (
 					<button
 						key={section}
 						onClick={() => handleNavClick(section)}
 						className="text-golden-matcha hover:text-yellow-500 transition"
 					>
-						{section.slice(0).toUpperCase().replace("-", " ")}
+						{formatNavText(section)}
 					</button>
 				))}
 			</div>
@@ -90,14 +91,14 @@ export default function NavBar() {
 			<div className="md:hidden">
 				<button
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
-					className="text-[#ceb072]"
+					className="text-[#ceb072] hover:text-yellow-500 transition"
 					aria-label="Toggle menu"
 				>
 					{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
 				</button>
 			</div>
 
-			{/* Mobile navigation menu */}
+			{/* Mobile navigation menu - ALL CAPS */}
 			{isMenuOpen && (
 				<div className="md:hidden fixed top-25 left-0 right-0 bg-black border-t border-yellow-700 shadow-md z-50 font-serif">
 					<div className="px-4 pt-4 pb-6 space-y-1">
@@ -105,10 +106,9 @@ export default function NavBar() {
 							<button
 								key={section}
 								onClick={() => handleNavClick(section)}
-								className="block w-full text-left px-3 py-2 text-[#ceb072] hover:bg-yellow-900 rounded font-semibold"
+								className="block w-full text-left px-3 py-2 text-[#ceb072] hover:bg-yellow-900 rounded font-semibold uppercase tracking-wide"
 							>
-								{section.charAt(0).toUpperCase() +
-									section.slice(1).replace("-", " ")}
+								{formatNavText(section)}
 							</button>
 						))}
 					</div>

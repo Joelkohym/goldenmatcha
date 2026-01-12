@@ -36,7 +36,7 @@ const MotionProductCard: React.FC<MotionProductCardProps> = ({
 			{/* Award badge */}
 			{product.awardWinning && (
 				<div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
-					<span className="bg-[#ceb072] text-black text-[10px] md:text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full shadow-lg">
+					<span className="bg-[#ceb072] text-black text-[9px] md:text-xs font-semibold tracking-wide uppercase px-2 md:px-3 py-1 rounded-full shadow-lg whitespace-nowrap">
 						Award Winner
 					</span>
 				</div>

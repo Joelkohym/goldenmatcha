@@ -264,21 +264,65 @@ export default function WholesaleContent() {
 					<h2 className="text-3xl md:text-4xl font-serif mb-4">
 						Wholesale Product List
 					</h2>
-					<p className="max-w-2xl mx-auto">
+					<p className="max-w-2xl mx-auto text-sm md:text-base">
 						Samples are available in 6g bags (depending on product).
 						<br />
 						Please note the product numbers and contact us via the enquiry form.
 					</p>
 				</motion.div>
 
-				{/* PRODUCT TABLE */}
-				<motion.div className="mt-12 overflow-x-auto" variants={blockVariants}>
+				{/* MOBILE PRODUCT CARDS - Visible only on mobile */}
+				<motion.div
+					className="mt-12 sm:hidden space-y-6"
+					variants={blockVariants}
+				>
+					{wholesaleProducts.map((product, index) => (
+						<div
+							key={index}
+							className="bg-[#ceb072]/5 border border-[#ceb072]/30 rounded-xl overflow-hidden"
+						>
+							{/* Product Image */}
+							<div
+								onClick={() => setActiveImage(product.imageUrl)}
+								className="relative w-full h-48 cursor-pointer"
+							>
+								<Image
+									src={product.imageUrl}
+									alt={product.name}
+									fill
+									className="object-cover"
+								/>
+								<div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 active:opacity-100 transition">
+									<span className="text-white text-sm font-serif">
+										Tap to view
+									</span>
+								</div>
+							</div>
+
+							{/* Product Info */}
+							<div className="p-4 space-y-3">
+								<h3 className="font-serif text-lg text-[#ceb072]">
+									<span className="text-[#f6e6b5] mr-2">{index + 1}.</span>
+									{product.name}
+								</h3>
+								<div className="text-xs text-[#f6e6b5]">
+									{product.description}
+								</div>
+							</div>
+						</div>
+					))}
+				</motion.div>
+
+				{/* DESKTOP PRODUCT TABLE - Hidden on mobile */}
+				<motion.div
+					className="mt-12 overflow-x-auto hidden sm:block"
+					variants={blockVariants}
+				>
 					<table className="w-full border border-[#ceb072]/30 rounded-xl overflow-hidden table-fixed">
 						{/* COLUMN WIDTH CONTROL */}
-						{/* Product | Description | Image */}
 						<colgroup>
-							<col className="w-[30%]" />
-							<col className="w-[30%]" />
+							<col className="w-[25%]" />
+							<col className="w-[35%]" />
 							<col className="w-[40%]" />
 						</colgroup>
 
@@ -287,7 +331,7 @@ export default function WholesaleContent() {
 								<th className="px-4 py-3 text-left font-serif uppercase text-sm">
 									Product
 								</th>
-								<th className="px-4 py-3 text-left font-serif uppercase text-sm hidden sm:table-cell">
+								<th className="px-4 py-3 text-left font-serif uppercase text-sm">
 									Description
 								</th>
 								<th className="px-4 py-3 text-center font-serif uppercase text-sm">
@@ -309,11 +353,11 @@ export default function WholesaleContent() {
 									</td>
 
 									{/* DESCRIPTION */}
-									<td className="px-4 py-4 text-xs md:text-sm text-[#f6e6b5] hidden sm:table-cell align-top">
+									<td className="px-4 py-4 text-xs md:text-sm text-[#f6e6b5] align-top">
 										{product.description}
 									</td>
 
-									{/* IMAGE (WIDER + BIGGER IMAGE) */}
+									{/* IMAGE */}
 									<td className="px-4 py-4">
 										<div
 											onClick={() => setActiveImage(product.imageUrl)}
@@ -328,7 +372,7 @@ export default function WholesaleContent() {
 
 											{/* Hover overlay */}
 											<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-												<span className="text-black text-sm font-serif tracking-wide">
+												<span className="text-white text-sm font-serif tracking-wide">
 													Click to view
 												</span>
 											</div>
@@ -340,9 +384,11 @@ export default function WholesaleContent() {
 					</table>
 				</motion.div>
 			</motion.main>
+
+			{/* Image Modal */}
 			{activeImage && (
 				<div
-					className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center"
+					className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
 					onClick={() => {
 						setActiveImage(null);
 						setScale(1);
@@ -379,7 +425,7 @@ export default function WholesaleContent() {
 								setActiveImage(null);
 								setScale(1);
 							}}
-							className="absolute top-3 right-3 text-[#ceb072] text-xl hover:opacity-80"
+							className="absolute top-3 right-3 bg-black/50 rounded-full w-8 h-8 flex items-center justify-center text-[#ceb072] text-xl hover:opacity-80"
 						>
 							✕
 						</button>
