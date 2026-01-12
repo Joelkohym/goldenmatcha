@@ -163,7 +163,14 @@ function HomeContent() {
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.6, delay: 1.1 }}
-								whileTap={{ scale: 0.95 }}
+								whileTap={{
+									scale: 0.92,
+									boxShadow: "0 0 20px rgba(206, 176, 114, 0.6)",
+								}}
+								whileHover={{
+									scale: 1.05,
+									boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+								}}
 							>
 								Our Story
 							</motion.button>
@@ -287,7 +294,7 @@ function HomeContent() {
 					</div>
 					<div className="flex justify-center gap-4 md:gap-8 pt-1 pb-8">
 						<motion.a
-							href="https://th.shp.ee/evN7DXG"
+							href="https://shopee.sg/lauboonheng96j?is_from_login=true"
 							target="_blank"
 							rel="noopener noreferrer"
 							initial={{ opacity: 0, y: 20 }}
