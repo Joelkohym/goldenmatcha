@@ -11,67 +11,8 @@ import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import EnquiryForm from "../components/EnquiryForm";
-
-interface Product {
-	name: string;
-	weight: string;
-	price: string;
-	color: string;
-	image?: string;
-	link: string;
-	awardWinning?: boolean; // 👈 add this
-}
-
-const MotionProductCard = ({ product }: { product: Product }) => {
-	const [isHovered, setIsHovered] = useState(false);
-	const words = product.name.split(" ");
-	const firstLine = words.slice(0, words.length - 2).join(" ");
-	const secondLine = words.slice(-2).join(" ");
-	return (
-		<motion.div
-			className="rounded-lg shadow-md overflow-hidden cursor-pointer transform transition hover:scale-105 relative"
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			style={{ backgroundColor: isHovered ? product.color : "black" }}
-			initial={{ opacity: 0, y: 40 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5, ease: "easeOut" }}
-			viewport={{ amount: 0.3, once: true }}
-		>
-			{product.awardWinning && (
-				<div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
-					<span className="bg-[#ceb072] text-black text-[10px] md:text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full shadow-lg">
-						Award Winner
-					</span>
-				</div>
-			)}
-			<div className="relative h-56 md:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg">
-				<Image
-					src={
-						isHovered
-							? "/Hover_picture1.jpeg"
-							: product.image || "/placeholder.jpeg"
-					}
-					alt={product.name}
-					fill
-					className="object-cover rounded-t-lg transition-opacity duration-300"
-				/>
-			</div>
-			<div className="p-4 md:p-6 text-center">
-				<h3 className="text-sm md:text-md text-[#ceb072] font-serif uppercase leading-tight text-center">
-					{firstLine}
-				</h3>
-				<p className="text-xs md:text-sm text-[#ceb072] font-serif uppercase text-center mb-2 md:mb-4">
-					{secondLine} {product.weight}
-				</p>
-				<p className="text-xs md:text-sm text-[#ceb072] font-serif">
-					<span className="text-xs md:text-sm">฿</span>
-					{product.price}
-				</p>
-			</div>
-		</motion.div>
-	);
-};
+import { ceremonialProducts, premiumProducts } from "@/data/products";
+import MotionProductCard from "@/components/MotionProductCard";
 
 function HomeContent() {
 	const router = useRouter();
@@ -135,68 +76,66 @@ function HomeContent() {
 		);
 	};
 
-	const ceremonialProducts: Product[] = [
-		{
-			name: "Yame Okumidori Ceremonial Grade",
-			weight: "25g",
-			price: "699",
-			color: "black",
-			image: "/Golden Matcha Logo.jpg",
-			link: "",
-			awardWinning: true,
-		},
-		{
-			name: "Yame Sakimidori Ceremonial Grade",
-			weight: "25g",
-			price: "699",
-			color: "black",
-			image: "/Golden Matcha Logo.jpg",
-			link: "",
-		},
-		{
-			name: "Uji Gold Ceremonial Grade",
-			weight: "25g",
-			price: "699",
-			color: "black",
-			image: "/Uji Final v2.jpg",
-			link: "",
-		},
-		{
-			name: "Kagoshima Gold Ceremonial Grade",
-			weight: "25g",
-			price: "699",
-			color: "black",
-			image: "/Kago Final v2.jpg",
-			link: "",
-		},
-		{
-			name: "Mie Gold Ceremonial Grade",
-			weight: "25g",
-			price: "699",
-			color: "black",
-			image: "/Mie Final v2.jpg",
-			link: "",
-		},
-	];
+	// const ceremonialProducts: Product[] = [
+	// 	{
+	// 		name: "Yame Okumidori Ceremonial Grade",
+	// 		weight: "25g",
+	// 		price: "699",
+	// 		color: "black",
+	// 		image: "/Golden Matcha Logo.jpg",
+	// 		link: "",
+	// 		awardWinning: true,
+	// 		hoverImage: "/Golden Yame v2.jpg", // 👈 ADD THIS
+	// 	},
+	// 	{
+	// 		name: "Yame Sakimidori Ceremonial Grade",
+	// 		weight: "25g",
+	// 		price: "699",
+	// 		color: "black",
+	// 		image: "/Golden Matcha Logo.jpg",
+	// 		link: "",
+	// 		hoverImage: "/Golden Yame v2.jpg",
+	// 	},
+	// 	{
+	// 		name: "Uji Gold Ceremonial Grade",
+	// 		weight: "25g",
+	// 		price: "699",
+	// 		color: "black",
+	// 		image: "/Uji Final v2.jpg",
+	// 		link: "",
+	// 		hoverImage: "/Uji v2.jpg",
+	// 	},
+	// 	{
+	// 		name: "Kagoshima Gold Ceremonial Grade",
+	// 		weight: "25g",
+	// 		price: "699",
+	// 		color: "black",
+	// 		image: "/Kago Final v2.jpg",
+	// 		link: "",
+	// 		hoverImage: "/Kago v2.jpg",
+	// 	},
+	// 	{
+	// 		name: "Mie Gold Ceremonial Grade",
+	// 		weight: "25g",
+	// 		price: "699",
+	// 		color: "black",
+	// 		image: "/Mie Final v2.jpg",
+	// 		link: "",
+	// 		hoverImage: "/Mie v2.jpg",
+	// 	},
+	// ];
 
-	const premiumProducts: Product[] = [
-		{
-			name: "Golden Yame Premium Blend",
-			weight: "30g",
-			price: "499",
-			color: "black",
-			image: "/Golden Yame Final v2.jpg",
-			link: "",
-		},
-	];
-
-	const wholesaleProducts = [
-		"Yame A Premium",
-		"Yame B Premium",
-		"Yame A Ceremonial (1st Harvest Okumidori)",
-		"Uji A Ceremonial (1st Harvest Okumidori)",
-		"Top 1 Ceremonial (From Zhejiang, Hangzhou)",
-	];
+	// const premiumProducts: Product[] = [
+	// 	{
+	// 		name: "Golden Yame Premium Blend",
+	// 		weight: "30g",
+	// 		price: "499",
+	// 		color: "black",
+	// 		image: "/Golden Yame Final v2.jpg",
+	// 		link: "",
+	// 		hoverImage: "/Golden Yame v2.jpg",
+	// 	},
+	// ];
 
 	return (
 		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed text-[#ceb072] relative overflow-hidden">
