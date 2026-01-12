@@ -90,7 +90,7 @@ function HomeContent() {
 					transition={{ duration: 1.5, ease: "easeOut" }}
 				>
 					<Image
-						src="/Background_Main2.jpeg"
+						src="/Background_Main.jpeg"
 						alt="Golden Matcha Hero"
 						fill
 						priority
@@ -164,8 +164,8 @@ function HomeContent() {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.6, delay: 1.1 }}
 								whileTap={{
-									scale: 0.92,
-									boxShadow: "0 0 20px rgba(206, 176, 114, 0.6)",
+									scale: 1.05,
+									boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
 								}}
 								whileHover={{
 									scale: 1.05,
@@ -235,12 +235,20 @@ function HomeContent() {
 								</p>
 
 								<div className="flex flex-col sm:flex-row gap-4 justify-center">
-									<button
+									<motion.button
 										onClick={() => router.push("/our-story")}
-										className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold hover:bg-yellow-600 transition transform hover:scale-105 text-base"
+										className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold text-base"
+										whileTap={{
+											scale: 1.05,
+											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+										}}
+										whileHover={{
+											scale: 1.05,
+											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+										}}
 									>
 										Our Story
-									</button>
+									</motion.button>
 								</div>
 							</div>
 						</div>
@@ -300,9 +308,16 @@ function HomeContent() {
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							whileHover={{ scale: 1.1 }}
+							whileTap={{
+								scale: 1.1,
+								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+							}}
+							whileHover={{
+								scale: 1.1,
+								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+							}}
 							transition={{ duration: 0.5 }}
-							className="flex items-center p-2 md:p-3 hover:shadow-lg rounded-xl transition-all duration-300"
+							className="flex items-center p-2 md:p-3 rounded-xl transition-all duration-300"
 						>
 							<Image
 								src="/medias/shopee.webp"
@@ -320,9 +335,16 @@ function HomeContent() {
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							whileHover={{ scale: 1.1 }}
+							whileTap={{
+								scale: 1.1,
+								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+							}}
+							whileHover={{
+								scale: 1.1,
+								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+							}}
 							transition={{ duration: 0.5, delay: 0.1 }}
-							className="flex items-center p-2 md:p-3 hover:shadow-lg rounded-xl transition-all duration-300"
+							className="flex items-center p-2 md:p-3 rounded-xl transition-all duration-300"
 						>
 							<Image
 								src="/medias/tiktok.svg"
@@ -374,22 +396,38 @@ function HomeContent() {
 									will do our best to meet your needs.
 								</p>
 
-								{/* FIXED: Both buttons now have identical sizing */}
+								{/* Both buttons with matching tap/hover effects */}
 								<div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
-									<button
+									<motion.button
 										onClick={() =>
 											router.push("/wholesale?scrollTo=get-a-quote")
 										}
-										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg"
+										whileTap={{
+											scale: 1.05,
+											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+										}}
+										whileHover={{
+											scale: 1.05,
+											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+										}}
 									>
 										Enquire Now
-									</button>
-									<button
+									</motion.button>
+									<motion.button
 										onClick={() => router.push("/wholesale")}
-										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base hover:bg-yellow-600 transition transform hover:scale-105 shadow-lg"
+										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg"
+										whileTap={{
+											scale: 1.05,
+											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+										}}
+										whileHover={{
+											scale: 1.05,
+											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+										}}
 									>
 										Wholesale Catalogue
-									</button>
+									</motion.button>
 								</div>
 							</div>
 						</div>
