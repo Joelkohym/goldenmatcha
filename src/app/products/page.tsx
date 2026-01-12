@@ -48,7 +48,7 @@ export default function ProductsPage() {
 				</div>
 				<div className="flex justify-center gap-4 md:gap-8 pt-1 pb-8">
 					<motion.a
-						href="https://shopee.sg/lauboonheng96j?is_from_login=true"
+						href="https://th.shp.ee/evN7DXG"
 						target="_blank"
 						rel="noopener noreferrer"
 						initial={{ opacity: 0, y: 20 }}

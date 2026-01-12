@@ -9,23 +9,6 @@ import Image from "next/image";
 export default function Footer() {
 	const router = useRouter();
 	const pathname = usePathname();
-
-	const handleLinkClickShopee = () => {
-		// Open the desired URL in a new tab
-		window.open(
-			"https://shopee.sg/lauboonheng96j?is_from_login=true",
-			"_blank"
-		);
-	};
-
-	const handleLinkClickTiktok = () => {
-		// Open the desired URL in a new tab
-		window.open(
-			"https://www.lazada.sg/shop/lau-boon-heng-kwei-teow-noodle-manufactory/?spm=a2o42.pdp_revamp.seller.1.7bd93d552gpxRX&itemId=1640680496&channelSource=pdp",
-			"_blank"
-		);
-	};
-
 	const navItems = ["home", "our-story", "shop", "wholesale", "contact-us"];
 
 	const scrollToSection = (id: string) => {
@@ -164,11 +147,10 @@ export default function Footer() {
 							scale: 1.1,
 						}}
 						whileTap={{ scale: 0.9 }}
-						onClick={handleLinkClickShopee}
 						className="flex flex-col items-center"
 					>
 						<a
-							href="https://shopee.sg/lauboonheng96j?is_from_login=true" // Replace 'YOURNUMBER' with your phone number
+							href="https://th.shp.ee/evN7DXG" // Replace 'YOURNUMBER' with your phone number
 							className="text-white hover:underline text-shadow-outline ml-4 mt-2.5"
 							target="_blank"
 							rel="noopener noreferrer"
