@@ -32,6 +32,10 @@ const MotionProductCard: React.FC<MotionProductCardProps> = ({
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5, ease: "easeOut" }}
 			viewport={{ amount: 0.3, once: true }}
+			whileTap={{
+				scale: 1.05,
+				boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+			}}
 		>
 			{/* Award badge */}
 			{product.awardWinning && (

@@ -182,7 +182,7 @@ function HomeContent() {
 
 				{/* Scroll Indicator */}
 				<motion.div
-					className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+					className="absolute bottom-27 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 1.5, duration: 0.6 }}
