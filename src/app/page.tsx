@@ -158,7 +158,9 @@ function HomeContent() {
 							</motion.p>
 
 							<motion.button
-								onClick={() => router.push("/our-story")}
+								onClick={() => {
+									setTimeout(() => router.push("/our-story"), 150);
+								}}
 								className="px-8 py-3 bg-gradient-to-r from-[#ceb072] to-[#e6c880] text-black rounded-full font-semibold text-sm shadow-lg shadow-[#ceb072]/20"
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -180,7 +182,7 @@ function HomeContent() {
 
 				{/* Scroll Indicator */}
 				<motion.div
-					className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+					className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 1.5, duration: 0.6 }}
@@ -236,7 +238,9 @@ function HomeContent() {
 
 								<div className="flex flex-col sm:flex-row gap-4 justify-center">
 									<motion.button
-										onClick={() => router.push("/our-story")}
+										onClick={() => {
+											setTimeout(() => router.push("/our-story"), 150);
+										}}
 										className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold text-base"
 										whileTap={{
 											scale: 1.05,
@@ -399,9 +403,12 @@ function HomeContent() {
 								{/* Both buttons with matching tap/hover effects */}
 								<div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
 									<motion.button
-										onClick={() =>
-											router.push("/wholesale?scrollTo=get-a-quote")
-										}
+										onClick={() => {
+											setTimeout(
+												() => router.push("/wholesale?scrollTo=get-a-quote"),
+												150
+											);
+										}}
 										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg"
 										whileTap={{
 											scale: 1.05,
@@ -415,7 +422,9 @@ function HomeContent() {
 										Enquire Now
 									</motion.button>
 									<motion.button
-										onClick={() => router.push("/wholesale")}
+										onClick={() => {
+											setTimeout(() => router.push("/wholesale"), 150);
+										}}
 										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg"
 										whileTap={{
 											scale: 1.05,
