@@ -90,7 +90,7 @@ function HomeContent() {
 					transition={{ duration: 1.5, ease: "easeOut" }}
 				>
 					<Image
-						src="/Background_Main.jpeg"
+						src="/Background_Main2.jpeg"
 						alt="Golden Matcha Hero"
 						fill
 						priority
