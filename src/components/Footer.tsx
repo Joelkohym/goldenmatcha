@@ -59,7 +59,7 @@ export default function Footer() {
 						href="https://instagram.com/goldenmatchaofficial"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-pink-400 hover:text-pink-300 transition p-3  hover:bg-black/70"
+						className="text-pink-400 hover:text-pink-300 transition p-3"
 					>
 						<SiInstagram size={20} />
 					</a>
@@ -168,10 +168,10 @@ export default function Footer() {
 
 				{/* Logo/Brand + Copyright */}
 				<div className="space-y-2">
-					<p className="text-2xl md:text-3xl font-serif text-[#ceb072]">
+					<p className="text-l md:text-3xl font-serif text-[#ceb072]">
 						Golden Matcha
 					</p>
-					<p className="text-yellow-600 text-sm">
+					<p className="text-yellow-600 text-xs">
 						© 2025 Golden Matcha. All rights reserved.
 					</p>
 				</div>
