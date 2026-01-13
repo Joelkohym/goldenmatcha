@@ -77,7 +77,7 @@ function HomeContent() {
 	};
 
 	return (
-		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-contain md:bg-cover bg-center bg-no-repeat bg-fixed text-[#ceb072] relative overflow-hidden">
+		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover md:bg-cover bg-center bg-no-repeat bg-fixed text-[#ceb072] relative overflow-hidden">
 			<NavBar />
 
 			{/* Mobile Hero Section - Full screen without block */}
