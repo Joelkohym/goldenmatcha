@@ -118,7 +118,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 							</a>
 
 							<a
-								href="https://instagram.com/goldenmatchaofficial"
+								href="https://th.shp.ee/evN7DXG"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center text-[#ceb072] hover:text-orange-500 gap-2"
