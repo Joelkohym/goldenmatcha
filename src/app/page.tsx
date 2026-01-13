@@ -296,7 +296,98 @@ function HomeContent() {
 						</h3>
 						{/* Mobile: Horizontal scroll */}
 						<div className="md:hidden relative">
-							<div className="overflow-x-auto overflow-y-hidden scrollbar-hide snap-x snap-mandatory">
+							{/* Left Arrow Button */}
+							<button
+								id="ceremonial-left-arrow"
+								onClick={() => {
+									const container =
+										document.getElementById("ceremonial-scroll");
+									if (container) {
+										container.scrollBy({ left: -200, behavior: "smooth" });
+									}
+								}}
+								className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/70 backdrop-blur-sm p-2 rounded-full shadow-lg active:scale-95 transition-all opacity-0"
+								aria-label="Scroll left"
+							>
+								<svg
+									className="w-6 h-6 text-[#ceb072]"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M15 19l-7-7 7-7"
+									/>
+								</svg>
+							</button>
+
+							{/* Right Arrow Button */}
+							<button
+								id="ceremonial-right-arrow"
+								onClick={() => {
+									const container =
+										document.getElementById("ceremonial-scroll");
+									if (container) {
+										container.scrollBy({ left: 200, behavior: "smooth" });
+									}
+								}}
+								className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/70 backdrop-blur-sm p-2 rounded-full shadow-lg active:scale-95 transition-all opacity-100"
+								aria-label="Scroll right"
+							>
+								<svg
+									className="w-6 h-6 text-[#ceb072]"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M9 5l7 7-7 7"
+									/>
+								</svg>
+							</button>
+
+							<div
+								id="ceremonial-scroll"
+								className="overflow-x-auto overflow-y-hidden scrollbar-hide snap-x snap-mandatory"
+								onScroll={(e) => {
+									const container = e.currentTarget;
+									const leftArrow = document.getElementById(
+										"ceremonial-left-arrow"
+									);
+									const rightArrow = document.getElementById(
+										"ceremonial-right-arrow"
+									);
+
+									if (leftArrow && rightArrow) {
+										// Hide left arrow if scrolled to the start
+										if (container.scrollLeft <= 10) {
+											leftArrow.style.opacity = "0";
+											leftArrow.style.pointerEvents = "none";
+										} else {
+											leftArrow.style.opacity = "1";
+											leftArrow.style.pointerEvents = "auto";
+										}
+
+										// Hide right arrow if scrolled to the end
+										const isAtEnd =
+											container.scrollLeft + container.clientWidth >=
+											container.scrollWidth - 10;
+										if (isAtEnd) {
+											rightArrow.style.opacity = "0";
+											rightArrow.style.pointerEvents = "none";
+										} else {
+											rightArrow.style.opacity = "1";
+											rightArrow.style.pointerEvents = "auto";
+										}
+									}
+								}}
+							>
 								<div className="flex gap-3 pb-4 px-2">
 									{ceremonialProducts.map((product, i) => (
 										<div key={i} className="flex-shrink-0 w-[70%] snap-start">
@@ -305,10 +396,6 @@ function HomeContent() {
 									))}
 								</div>
 							</div>
-							{/* Fixed scroll indicator for mobile */}
-							<p className="text-center text-[#ceb072]/60 text-xs mt-2 sticky left-0 right-0">
-								← Swipe to browse →
-							</p>
 						</div>
 
 						{/* Desktop: Grid layout */}
