@@ -80,8 +80,8 @@ function HomeContent() {
 		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed text-[#ceb072] relative overflow-hidden">
 			<NavBar />
 
-			{/* Mobile Hero Section - Full screen with background image and centered block */}
-			<section className="md:hidden relative min-h-screen pt-16 overflow-hidden">
+			{/* Mobile Hero Section - Full screen without block */}
+			<section className="md:hidden relative min-h-screen pt-16 overflow-hidden ">
 				{/* Background Image with subtle zoom animation */}
 				<motion.div
 					className="absolute inset-0"
@@ -97,9 +97,10 @@ function HomeContent() {
 						className="object-cover"
 					/>
 				</motion.div>
-
-				{/* Gradient overlay for depth */}
-				<div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+				{/* Black overlay layer */}
+				<div className="absolute inset-0 bg-black/60" />
+				{/* Enhanced gradient overlay for better text readability */}
+				<div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
 
 				{/* Floating decorative elements */}
 				<motion.div
@@ -118,37 +119,45 @@ function HomeContent() {
 					}}
 				/>
 
-				{/* Centered Content Block */}
+				{/* Centered Content WITHOUT Block */}
 				<div className="absolute inset-0 flex items-center justify-center px-5">
 					<motion.div
-						className="bg-black/70 backdrop-blur-md rounded-3xl p-7 shadow-2xl border border-[#ceb072]/30 max-w-sm w-full relative overflow-hidden"
-						initial={{ opacity: 0, y: 40, scale: 0.95 }}
-						animate={{ opacity: 1, y: 0, scale: 1 }}
+						className="max-w-sm w-full relative"
+						initial={{ opacity: 0, y: 40 }}
+						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
 					>
-						{/* Decorative corner accents */}
-						<div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#ceb072]/40 rounded-tl-3xl" />
-						<div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#ceb072]/40 rounded-br-3xl" />
-
 						<div className="text-center relative z-10">
-							{/* Optional: Add logo here */}
-							{/* <Image src="/GOLDEN MATCHA LOGO.png" alt="Logo" width={80} height={80} className="mx-auto mb-4" /> */}
+							{/* Optional: Add logo here with glow effect */}
+							{/* <motion.div
+					initial={{ opacity: 0, scale: 0.8 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{ duration: 0.6, delay: 0.4 }}
+				>
+					<Image 
+						src="/GOLDEN MATCHA LOGO.png" 
+						alt="Logo" 
+						width={100} 
+						height={100} 
+						className="mx-auto mb-6 drop-shadow-[0_0_15px_rgba(206,176,114,0.5)]" 
+					/>
+				</motion.div> */}
 
 							<motion.div
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.6, delay: 0.6 }}
 							>
-								<h1 className="font-serif text-3xl text-[#ceb072] leading-tight mb-2">
+								<h1 className="font-serif text-2xl text-[#ceb072] leading-tight mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
 									A Golden Moment
 								</h1>
-								<h1 className="font-serif text-3xl leading-tight mb-4">
+								<h1 className="font-serif text-2xl leading-tight mb-5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
 									with <span className="text-[#ffb31a]">Golden Matcha</span>
 								</h1>
 							</motion.div>
 
 							<motion.p
-								className="text-[#ceb072]/80 text-sm mb-6 leading-relaxed"
+								className="text-[#ceb072] text-xs mb-6 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] px-4"
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{ duration: 0.6, delay: 0.9 }}
@@ -157,37 +166,46 @@ function HomeContent() {
 								Japan, bringing you the finest quality at an affordable price.
 							</motion.p>
 
-							<motion.button
-								onClick={() => {
-									setTimeout(() => router.push("/our-story"), 150);
-								}}
-								className="px-8 py-3 bg-gradient-to-r from-[#ceb072] to-[#e6c880] text-black rounded-full font-semibold text-sm shadow-lg shadow-[#ceb072]/20"
-								initial={{ opacity: 0, y: 10 }}
+							<motion.div
+								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.6, delay: 1.1 }}
-								whileTap={{
-									scale: 1.05,
-									boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
-								}}
-								whileHover={{
-									scale: 1.05,
-									boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
-								}}
 							>
-								Our Story
-							</motion.button>
+								<motion.button
+									onClick={() => {
+										setTimeout(() => router.push("/our-story"), 150);
+									}}
+									className="px-7 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm active:bg-yellow-600 transition-colors shadow-xl"
+									whileTap={{
+										scale: 0.95,
+										transition: { duration: 0.1 },
+									}}
+									whileHover={{
+										scale: 1.05,
+										boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+										transition: { duration: 0.2 },
+									}}
+									transition={{
+										type: "spring",
+										stiffness: 400,
+										damping: 17,
+									}}
+								>
+									Our Story
+								</motion.button>
+							</motion.div>
 						</div>
 					</motion.div>
 				</div>
 
 				{/* Scroll Indicator */}
 				<motion.div
-					className="absolute bottom-27 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+					className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 1.5, duration: 0.6 }}
 				>
-					<span className="text-[#ceb072]/60 text-xs uppercase tracking-widest">
+					<span className="text-[#ceb072]/80 text-xs uppercase tracking-widest drop-shadow-lg">
 						Scroll
 					</span>
 					<motion.div
@@ -195,7 +213,7 @@ function HomeContent() {
 						transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
 					>
 						<svg
-							className="w-5 h-5 text-[#ceb072]/60"
+							className="w-5 h-5 text-[#ceb072]/80 drop-shadow-lg"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -210,7 +228,6 @@ function HomeContent() {
 					</motion.div>
 				</motion.div>
 			</section>
-
 			{/* Hero Section - Desktop only */}
 			<motion.section
 				id="home"
@@ -241,14 +258,20 @@ function HomeContent() {
 										onClick={() => {
 											setTimeout(() => router.push("/our-story"), 150);
 										}}
-										className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold text-base"
+										className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold text-base active:bg-yellow-600 transition-colors"
 										whileTap={{
-											scale: 1.05,
-											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+											scale: 0.95,
+											transition: { duration: 0.1 },
 										}}
 										whileHover={{
 											scale: 1.05,
 											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+											transition: { duration: 0.2 },
+										}}
+										transition={{
+											type: "spring",
+											stiffness: 400,
+											damping: 17,
 										}}
 									>
 										Our Story
@@ -285,7 +308,7 @@ function HomeContent() {
 							<div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
 								<div className="flex gap-3 pb-4 px-2">
 									{ceremonialProducts.map((product, i) => (
-										<div key={i} className="flex-shrink-0 w-[45%] snap-start">
+										<div key={i} className="flex-shrink-0 w-[70%] snap-start">
 											<MotionProductCard product={product} />
 										</div>
 									))}
@@ -304,17 +327,6 @@ function HomeContent() {
 							))}
 						</div>
 					</div>
-
-					{/* <div className="mb-16 md:mb-20">
-						<h3 className="text-xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
-							CEREMONIAL GRADE
-						</h3>
-						<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
-							{ceremonialProducts.map((product, i) => (
-								<MotionProductCard key={i} product={product} />
-							))}
-						</div>
-					</div> */}
 
 					{/* PREMIUM GRADE Section */}
 					<div>
@@ -343,14 +355,19 @@ function HomeContent() {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							whileTap={{
-								scale: 1.1,
-								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+								scale: 0.95,
+								transition: { duration: 0.1 },
 							}}
 							whileHover={{
 								scale: 1.1,
 								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+								transition: { duration: 0.2 },
 							}}
-							transition={{ duration: 0.5 }}
+							transition={{
+								type: "spring",
+								stiffness: 400,
+								damping: 17,
+							}}
 							className="flex items-center p-2 md:p-3 rounded-xl transition-all duration-300"
 						>
 							<Image
@@ -370,14 +387,20 @@ function HomeContent() {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							whileTap={{
-								scale: 1.1,
-								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+								scale: 0.95,
+								transition: { duration: 0.1 },
 							}}
 							whileHover={{
 								scale: 1.1,
 								boxShadow: "0 0 20px rgba(206, 176, 114, 0.4)",
+								transition: { duration: 0.2 },
 							}}
-							transition={{ duration: 0.5, delay: 0.1 }}
+							transition={{
+								type: "spring",
+								stiffness: 400,
+								damping: 17,
+								delay: 0.1,
+							}}
 							className="flex items-center p-2 md:p-3 rounded-xl transition-all duration-300"
 						>
 							<Image
@@ -439,14 +462,20 @@ function HomeContent() {
 												150
 											);
 										}}
-										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg"
+										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg active:bg-yellow-600 transition-colors"
 										whileTap={{
-											scale: 1.05,
-											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+											scale: 0.95,
+											transition: { duration: 0.1 },
 										}}
 										whileHover={{
 											scale: 1.05,
 											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+											transition: { duration: 0.2 },
+										}}
+										transition={{
+											type: "spring",
+											stiffness: 400,
+											damping: 17,
 										}}
 									>
 										Enquire Now
@@ -455,14 +484,20 @@ function HomeContent() {
 										onClick={() => {
 											setTimeout(() => router.push("/wholesale"), 150);
 										}}
-										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg"
+										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg active:bg-yellow-600 transition-colors"
 										whileTap={{
-											scale: 1.05,
-											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+											scale: 0.95,
+											transition: { duration: 0.1 },
 										}}
 										whileHover={{
 											scale: 1.05,
 											boxShadow: "0 0 25px rgba(206, 176, 114, 0.5)",
+											transition: { duration: 0.2 },
+										}}
+										transition={{
+											type: "spring",
+											stiffness: 400,
+											damping: 17,
 										}}
 									>
 										Wholesale Catalogue
