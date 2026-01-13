@@ -39,15 +39,15 @@ const MotionProductCard: React.FC<MotionProductCardProps> = ({
 		>
 			{/* Award badge */}
 			{product.awardWinning && (
-				<div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
-					<span className="bg-[#ceb072] text-black text-[9px] md:text-xs font-semibold tracking-wide uppercase px-2 md:px-3 py-1 rounded-full shadow-lg whitespace-nowrap">
+				<div className="absolute top-2 md:top-3 left-1/2 -translate-x-1/2 z-20">
+					<span className="bg-[#ceb072] text-black text-[8px] md:text-xs font-semibold tracking-wide uppercase px-1.5 md:px-3 py-0.5 md:py-1 rounded-full shadow-lg whitespace-nowrap">
 						Award Winner
 					</span>
 				</div>
 			)}
 
-			{/* Image */}
-			<div className="relative h-56 md:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg">
+			{/* Image - Reduced height on mobile, object-contain instead of object-cover */}
+			<div className="relative h-40 sm:h-48 md:h-56 lg:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg bg-black">
 				<Image
 					src={
 						isHovered && product.hoverImage
@@ -56,20 +56,20 @@ const MotionProductCard: React.FC<MotionProductCardProps> = ({
 					}
 					alt={product.name}
 					fill
-					className="object-cover rounded-t-lg transition-opacity duration-300"
+					className="rounded-t-lg transition-opacity duration-300 object-contain md:object-cover p-2 md:p-0"
 				/>
 			</div>
 
 			{/* Info */}
-			<div className="p-4 md:p-6 text-center">
-				<h3 className="text-sm md:text-md text-[#ceb072] font-serif uppercase leading-tight">
+			<div className="p-3 md:p-4 lg:p-6 text-center">
+				<h3 className="text-xs md:text-sm lg:text-md text-[#ceb072] font-serif uppercase leading-tight">
 					{firstLine}
 				</h3>
-				<p className="text-xs md:text-sm text-[#ceb072] font-serif uppercase mb-2 md:mb-4">
+				<p className="text-[10px] md:text-xs lg:text-sm text-[#ceb072] font-serif uppercase mb-1 md:mb-2 lg:mb-4">
 					{secondLine} {product.weight}
 				</p>
 				<p className="text-xs md:text-sm text-[#ceb072] font-serif">
-					<span className="text-xs md:text-sm">฿</span>
+					<span className="text-[10px] md:text-xs lg:text-sm">฿</span>
 					{product.price}
 				</p>
 			</div>

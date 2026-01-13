@@ -279,12 +279,42 @@ function HomeContent() {
 						<h3 className="text-xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 							CEREMONIAL GRADE
 						</h3>
-						<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
+
+						{/* Mobile: Horizontal scroll */}
+						<div className="md:hidden relative">
+							<div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+								<div className="flex gap-3 pb-4 px-2">
+									{ceremonialProducts.map((product, i) => (
+										<div key={i} className="flex-shrink-0 w-[45%] snap-start">
+											<MotionProductCard product={product} />
+										</div>
+									))}
+								</div>
+							</div>
+							{/* Fixed scroll indicator for mobile */}
+							<p className="text-center text-[#ceb072]/60 text-xs mt-2 sticky left-0 right-0">
+								← Swipe to browse →
+							</p>
+						</div>
+
+						{/* Desktop: Grid layout */}
+						<div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
 							{ceremonialProducts.map((product, i) => (
 								<MotionProductCard key={i} product={product} />
 							))}
 						</div>
 					</div>
+
+					{/* <div className="mb-16 md:mb-20">
+						<h3 className="text-xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
+							CEREMONIAL GRADE
+						</h3>
+						<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
+							{ceremonialProducts.map((product, i) => (
+								<MotionProductCard key={i} product={product} />
+							))}
+						</div>
+					</div> */}
 
 					{/* PREMIUM GRADE Section */}
 					<div>
@@ -306,7 +336,7 @@ function HomeContent() {
 					</div>
 					<div className="flex justify-center gap-4 md:gap-8 pt-1 pb-8">
 						<motion.a
-							href="https://shopee.sg/lauboonheng96j?is_from_login=true"
+							href="https://th.shp.ee/evN7DXG"
 							target="_blank"
 							rel="noopener noreferrer"
 							initial={{ opacity: 0, y: 20 }}
