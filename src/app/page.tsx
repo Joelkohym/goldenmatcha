@@ -89,6 +89,13 @@ function HomeContent() {
 					animate={{ scale: 1 }}
 					transition={{ duration: 1.5, ease: "easeOut" }}
 				></motion.div>
+				<Image
+					src="/Background_Main2.jpeg"
+					alt="Golden Matcha Hero"
+					fill
+					priority
+					className="object-cover"
+				/>
 				{/* Black overlay layer */}
 				<div className="absolute inset-0 bg-black/30" />
 				{/* Enhanced gradient overlay for better text readability */}
