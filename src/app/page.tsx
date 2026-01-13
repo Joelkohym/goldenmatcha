@@ -192,7 +192,7 @@ function HomeContent() {
 
 				{/* Scroll Indicator */}
 				<motion.div
-					className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+					className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 1.5, duration: 0.6 }}
@@ -296,10 +296,10 @@ function HomeContent() {
 						</h3>
 						{/* Mobile: Horizontal scroll */}
 						<div className="md:hidden relative">
-							<div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+							<div className="overflow-x-auto overflow-y-hidden scrollbar-hide snap-x snap-mandatory">
 								<div className="flex gap-3 pb-4 px-2">
 									{ceremonialProducts.map((product, i) => (
-										<div key={i} className="flex-shrink-0 w-[45%] snap-start">
+										<div key={i} className="flex-shrink-0 w-[70%] snap-start">
 											<MotionProductCard product={product} className="h-full" />
 										</div>
 									))}
