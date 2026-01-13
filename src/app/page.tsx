@@ -88,17 +88,9 @@ function HomeContent() {
 					initial={{ scale: 1.1 }}
 					animate={{ scale: 1 }}
 					transition={{ duration: 1.5, ease: "easeOut" }}
-				>
-					<Image
-						src="/Background_Main2.jpeg"
-						alt="Golden Matcha Hero"
-						fill
-						priority
-						className="object-cover"
-					/>
-				</motion.div>
+				></motion.div>
 				{/* Black overlay layer */}
-				<div className="absolute inset-0 bg-black/60" />
+				<div className="absolute inset-0 bg-black/30" />
 				{/* Enhanced gradient overlay for better text readability */}
 				<div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
 
@@ -302,14 +294,13 @@ function HomeContent() {
 						<h3 className="text-xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 							CEREMONIAL GRADE
 						</h3>
-
 						{/* Mobile: Horizontal scroll */}
 						<div className="md:hidden relative">
 							<div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
 								<div className="flex gap-3 pb-4 px-2">
 									{ceremonialProducts.map((product, i) => (
-										<div key={i} className="flex-shrink-0 w-[70%] snap-start">
-											<MotionProductCard product={product} />
+										<div key={i} className="flex-shrink-0 w-[45%] snap-start">
+											<MotionProductCard product={product} className="h-full" />
 										</div>
 									))}
 								</div>
@@ -453,8 +444,7 @@ function HomeContent() {
 									will do our best to meet your needs.
 								</p>
 
-								{/* Both buttons with matching tap/hover effects */}
-								<div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
+								<div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
 									<motion.button
 										onClick={() => {
 											setTimeout(
@@ -462,7 +452,7 @@ function HomeContent() {
 												150
 											);
 										}}
-										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg active:bg-yellow-600 transition-colors"
+										className="w-[50%] sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg active:bg-yellow-600 transition-colors"
 										whileTap={{
 											scale: 0.95,
 											transition: { duration: 0.1 },
@@ -484,7 +474,7 @@ function HomeContent() {
 										onClick={() => {
 											setTimeout(() => router.push("/wholesale"), 150);
 										}}
-										className="w-full sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg active:bg-yellow-600 transition-colors"
+										className="w-[50%] sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg active:bg-yellow-600 transition-colors"
 										whileTap={{
 											scale: 0.95,
 											transition: { duration: 0.1 },
