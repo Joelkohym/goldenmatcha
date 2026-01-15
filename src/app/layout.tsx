@@ -1,21 +1,23 @@
-// app/layout.tsx
 import type { Metadata } from "next";
-import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Golden Matcha - Premium Japanese Matcha from Bangkok",
+	title: {
+		default: "Golden Matcha",
+		template: "%s | Golden Matcha",
+	},
 	description:
-		"Premium Japanese matcha sourced directly from tea farms in Japan, bringing you the finest quality at an affordable price.",
+		"Premium ceremonial-grade matcha. Sustainably sourced. Crafted for wellness and focus.",
+	keywords: ["matcha", "ceremonial matcha", "green tea", "golden matcha"],
+	metadataBase: new URL("https://goldenmatcha.vercel.app"),
+	openGraph: {
+		title: "Golden Matcha",
+		description: "Premium ceremonial-grade matcha for modern wellness.",
+		url: "https://goldenmatcha.vercel.app",
+		siteName: "Golden Matcha",
+		type: "website",
+	},
+	robots: {
+		index: true,
+		follow: true,
+	},
 };
-
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
-	return (
-		<html lang="en">
-			<body>{children}</body>
-		</html>
-	);
-}
