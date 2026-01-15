@@ -89,13 +89,23 @@ function HomeContent() {
 					animate={{ scale: 1 }}
 					transition={{ duration: 1.5, ease: "easeOut" }}
 				></motion.div>
-				<Image
+				{/* <Image
 					src="/Background_Main2.jpeg"
 					alt="Golden Matcha Hero"
 					fill
 					priority
 					className="object-cover"
-				/>
+				/> */}
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="absolute inset-0 w-full h-full object-cover"
+				>
+					<source src="Main Video.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
 				{/* Black overlay layer */}
 				<div className="absolute inset-0 bg-black/30" />
 				{/* Enhanced gradient overlay for better text readability */}
