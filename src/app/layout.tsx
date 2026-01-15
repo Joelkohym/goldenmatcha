@@ -20,4 +20,8 @@ export const metadata: Metadata = {
 		index: true,
 		follow: true,
 	},
+	verification: {
+		google:
+			'<meta name="google-site-verification" content="hKqn1ZCYLbXGNZhTvcnCuh_zhpRdDA7giZOQQ2gjXm4" />',
+	},
 };
