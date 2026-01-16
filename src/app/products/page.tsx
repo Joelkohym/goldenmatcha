@@ -43,7 +43,7 @@ export default function ProductsPage() {
 					</div>
 				</div>
 				{/* Shopee & TikTok Logos - Mobile optimized */}
-				<div className="flex justify-center gap-4 md:gap-8 pt-8 md:pt-12 font-serif text-[#ceb072] text-md md:text-lg lg:text-xl text-center px-4 uppercase">
+				<div className="flex justify-center gap-4 md:gap-8 pt-15 md:pt-12 font-serif text-[#ceb072] text-md md:text-lg lg:text-xl text-center px-4 uppercase">
 					Place your orders here:
 				</div>
 				<div className="flex justify-center gap-4 md:gap-8 pt-1 pb-8">
