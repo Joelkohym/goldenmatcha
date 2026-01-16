@@ -34,12 +34,10 @@ export default function ProductsPage() {
 					<h3 className="pt-10 text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 						PREMIUM GRADE
 					</h3>
-					<div className="flex justify-center">
-						<div className="w-full max-w-[265px]">
-							{premiumProducts.map((product, i) => (
-								<MotionProductCard key={i} product={product} />
-							))}
-						</div>
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 max-w-[400px] sm:max-w-none mx-auto">
+						{premiumProducts.map((product, i) => (
+							<MotionProductCard key={i} product={product} />
+						))}
 					</div>
 				</div>
 				{/* Shopee & TikTok Logos - Mobile optimized */}
