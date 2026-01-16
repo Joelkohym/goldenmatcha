@@ -407,7 +407,10 @@ function HomeContent() {
 							>
 								<div className="flex gap-3 pb-4 px-2">
 									{ceremonialProducts.map((product, i) => (
-										<div key={i} className="flex-shrink-0 w-[70%] snap-start">
+										<div
+											key={i}
+											className="flex-shrink-0 w-[70%] snap-start min-h-[420px]"
+										>
 											<MotionProductCard product={product} className="h-full" />
 										</div>
 									))}
@@ -429,7 +432,7 @@ function HomeContent() {
 							PREMIUM GRADE
 						</h3>
 						<div className="flex justify-center">
-							<div className="w-full max-w-[200px] md:max-w-[265px]">
+							<div className="w-full max-w-[270px] md:max-w-[265px]">
 								{premiumProducts.map((product, i) => (
 									<MotionProductCard key={i} product={product} />
 								))}
@@ -438,9 +441,10 @@ function HomeContent() {
 					</div>
 
 					{/* Shopee & TikTok Logos - Mobile optimized */}
-					<div className="flex justify-center gap-4 md:gap-8 pt-8 md:pt-12 font-serif text-[#ceb072] text-sm md:text-lg lg:text-xl text-center px-4 uppercase">
+					<div className="flex justify-center gap-4 md:gap-8 pt-20 md:pt-12 font-serif text-[#ceb072] text-sm md:text-lg lg:text-xl text-center px-4 uppercase">
 						Find us on Shopee & Tiktok Shop:
 					</div>
+
 					<div className="flex justify-center gap-4 md:gap-8 pt-1 pb-8">
 						<motion.a
 							href="https://th.shp.ee/evN7DXG"

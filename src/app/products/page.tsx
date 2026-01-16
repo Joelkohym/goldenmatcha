@@ -31,7 +31,7 @@ export default function ProductsPage() {
 				</div>
 				{/* PREMIUM GRADE Section */}
 				<div>
-					<h3 className="text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
+					<h3 className="pt-10 text-2xl md:text-3xl lg:text-4xl text-[#ceb072] font-serif mb-8 md:mb-12 text-center decoration-[#ceb072]">
 						PREMIUM GRADE
 					</h3>
 					<div className="flex justify-center">
@@ -43,7 +43,7 @@ export default function ProductsPage() {
 					</div>
 				</div>
 				{/* Shopee & TikTok Logos - Mobile optimized */}
-				<div className="flex justify-center gap-4 md:gap-8 pt-15 md:pt-12 font-serif text-[#ceb072] text-md md:text-lg lg:text-xl text-center px-4 uppercase">
+				<div className="flex justify-center gap-4 md:gap-8 pt-17 md:pt-12 font-serif text-[#ceb072] text-md md:text-lg lg:text-xl text-center px-4 uppercase">
 					Place your orders here:
 				</div>
 				<div className="flex justify-center gap-4 md:gap-8 pt-1 pb-8">
