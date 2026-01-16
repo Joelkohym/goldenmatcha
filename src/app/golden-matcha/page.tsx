@@ -161,7 +161,7 @@ export default function OurStory() {
 										src="/About us page 3.jpg"
 										alt="Wholesale Matcha"
 										fill
-										className="object-cover"
+										className="object-contain"
 										priority
 									/>
 								</motion.div>

@@ -47,7 +47,7 @@ const MotionProductCard: React.FC<MotionProductCardProps> = ({
 			)}
 
 			{/* Image - object-cover by default (zoomed), object-contain when hovered (fit) */}
-			<div className="relative h-40 sm:h-48 md:h-56 lg:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg bg-[#fefefe] sm:bg-black">
+			<div className="relative h-52 sm:h-48 md:h-56 lg:h-64 flex items-center justify-center overflow-hidden transition-colors duration-300 rounded-t-lg bg-[#fefefe] sm:bg-black">
 				<Image
 					src={
 						isHovered && product.hoverImage
@@ -59,7 +59,7 @@ const MotionProductCard: React.FC<MotionProductCardProps> = ({
 					className={`rounded-t-lg transition-all duration-300 ${
 						isHovered && product.hoverImage
 							? "object-contain p-2"
-							: "object-contain sm:object-cover p-0"
+							: "object-cover md:object-cover p-0"
 					}`}
 				/>
 			</div>
