@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function Footer() {
 	const router = useRouter();
 	const pathname = usePathname();
-	const navItems = ["home", "our-story", "shop", "wholesale", "contact-us"];
+	const navItems = ["home", "golden-matcha", "shop", "wholesale", "contact-us"];
 
 	const scrollToSection = (id: string) => {
 		const element = document.getElementById(id);
@@ -21,8 +21,8 @@ export default function Footer() {
 			router.push("/");
 		} else if (section === "shop") {
 			router.push("/products");
-		} else if (section === "our-story") {
-			router.push("/our-story");
+		} else if (section === "golden-matcha") {
+			router.push("/golden-matcha");
 		} else if (section === "contact-us") {
 			// Check if already on home page
 			if (pathname === "/") {

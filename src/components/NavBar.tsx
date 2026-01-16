@@ -32,8 +32,8 @@ export default function NavBar() {
 			router.push("/");
 		} else if (section === "shop") {
 			router.push("/products");
-		} else if (section === "our-story") {
-			router.push("/our-story");
+		} else if (section === "golden-matcha") {
+			router.push("/golden-matcha");
 		} else if (section === "contact-us") {
 			if (pathname === "/") {
 				scrollToSection("contact-us");
@@ -53,7 +53,7 @@ export default function NavBar() {
 		return section.replace(/-/g, " ").toUpperCase();
 	};
 
-	const navItems = ["home", "our-story", "shop", "wholesale", "contact-us"];
+	const navItems = ["home", "golden-matcha", "shop", "wholesale", "contact-us"];
 
 	return (
 		<nav className="fixed w-full bg-black/95 backdrop-blur-sm shadow-md z-50 flex items-center h-35 px-4 sm:px-6 lg:px-8">

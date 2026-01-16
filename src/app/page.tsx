@@ -182,7 +182,7 @@ function HomeContent() {
 							>
 								<motion.button
 									onClick={() => {
-										setTimeout(() => router.push("/our-story"), 150);
+										setTimeout(() => router.push("/golden-matcha"), 150);
 									}}
 									className="px-7 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm active:bg-yellow-600 transition-colors shadow-xl"
 									whileTap={{
@@ -265,7 +265,7 @@ function HomeContent() {
 								<div className="flex flex-col sm:flex-row gap-4 justify-center">
 									<motion.button
 										onClick={() => {
-											setTimeout(() => router.push("/our-story"), 150);
+											setTimeout(() => router.push("/golden-matcha"), 150);
 										}}
 										className="px-8 py-4 bg-[#ceb072] text-black rounded-full font-semibold text-base active:bg-yellow-600 transition-colors"
 										whileTap={{
