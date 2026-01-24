@@ -7,7 +7,6 @@ import Footer from "../../components/Footer";
 import EnquiryForm from "../../components/EnquiryForm";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, Variants } from "framer-motion";
-import { useState } from "react";
 
 const wholesaleProducts = [
 	{
@@ -37,7 +36,7 @@ const wholesaleProducts = [
 	},
 	{
 		name: "Yame 06",
-		imageUrl: "/Golden Yame v2.jpg",
+		imageUrl: "/Sakimidori Powder v2.png",
 		description: (
 			<div className="space-y-3">
 				<div>
@@ -63,7 +62,7 @@ const wholesaleProducts = [
 	},
 	{
 		name: "Yame 07",
-		imageUrl: "/Golden Yame v2.jpg",
+		imageUrl: "/Okumidori Powder v2.png",
 		description: (
 			<div className="space-y-3">
 				<div>
