@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 import { SiInstagram, SiTiktok, SiShopee, SiFacebook } from "react-icons/si";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
@@ -33,6 +33,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 		message: "",
 	});
 	const [formSubmitted, setFormSubmitted] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [error, setError] = useState("");
 
 	const handleFormChange = (
@@ -41,9 +42,10 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 		setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 	};
 
-	const handleFormSubmit = (e: React.FormEvent) => {
+	const handleFormSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setError("");
+		setIsSubmitting(true);
 
 		const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
 		const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
@@ -51,30 +53,33 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 
 		if (!serviceId || !templateId || !publicKey) {
 			setError("Email service is not configured properly.");
+			setIsSubmitting(false);
 			return;
 		}
 
-		emailjs.send(serviceId, templateId, formData, publicKey).then(
-			() => {
-				setFormSubmitted(true);
-				setFormData({
-					name: "",
-					email: "",
-					company: "",
-					number: "",
-					quantity: "",
-					message: "",
-				});
-				if (onSuccess) {
-					onSuccess();
-				}
-				setTimeout(() => setFormSubmitted(false), 3000);
-			},
-			(err) => {
-				console.error(err.text);
-				setError("Failed to send message. Please try again later.");
-			},
-		);
+		try {
+			await emailjs.send(serviceId, templateId, formData, publicKey);
+			setFormSubmitted(true);
+			setFormData({
+				name: "",
+				email: "",
+				company: "",
+				number: "",
+				quantity: "",
+				message: "",
+			});
+			if (onSuccess) {
+				onSuccess();
+			}
+			setTimeout(() => {
+				setFormSubmitted(false);
+			}, 5000);
+		} catch (err: any) {
+			console.error(err.text);
+			setError("Failed to send message. Please try again later.");
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -86,6 +91,18 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 			transition={{ duration: 0.6, ease: "easeOut" }}
 			viewport={{ amount: 0.1, once: true, margin: "0px 0px -300px 0px" }}
 		>
+			{/* Loading Overlay */}
+			{isSubmitting && (
+				<div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center rounded-lg">
+					<div className="bg-black/80 p-8 rounded-lg flex flex-col items-center gap-4">
+						<Loader2 className="w-12 h-12 text-[#ceb072] animate-spin" />
+						<p className="text-[#ceb072] font-semibold text-lg">
+							Sending your message...
+						</p>
+					</div>
+				</div>
+			)}
+
 			<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 				<h2 className="text-3xl text-[#ceb072] font-serif mb-10 text-center">
 					{isWholesalePage ? "Wholesale Enquiry Form" : "CONTACT US"}
@@ -101,7 +118,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								href="https://line.me/ti/p/goldenmatchaofficial"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center text-[#ceb072] hover:text-green-300 gap-2"
+								className="flex items-center text-[#ceb072] hover:text-green-300 gap-2 transition-colors"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +140,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 										href="https://th.shp.ee/evN7DXG"
 										target="_blank"
 										rel="noopener noreferrer"
-										className="flex items-center text-[#ceb072] hover:text-orange-500 gap-2"
+										className="flex items-center text-[#ceb072] hover:text-orange-500 gap-2 transition-colors"
 									>
 										<SiTiktok size={20} />
 										<span className="font-semibold">Shopee:</span>
@@ -133,7 +150,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 										href="https://vt.tiktok.com/ZS5HXxV7t/?page=TikTokShop"
 										target="_blank"
 										rel="noopener noreferrer"
-										className="flex items-center text-[#ceb072] hover:text-white gap-2"
+										className="flex items-center text-[#ceb072] hover:text-white gap-2 transition-colors"
 									>
 										<SiShopee size={20} />
 										<span className="font-semibold">TikTok Shop:</span>
@@ -145,7 +162,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								href="https://instagram.com/goldenmatchaofficial"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2"
+								className="flex items-center text-[#ceb072] hover:text-pink-300 gap-2 transition-colors"
 							>
 								<SiInstagram size={20} />
 								<span className="font-semibold">Instagram:</span>
@@ -163,7 +180,8 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								value={formData.name}
 								onChange={handleFormChange}
 								required
-								className="w-full px-4 py-2 border border-black rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
+								disabled={isSubmitting}
+								className="w-full px-4 py-2 border border-black rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
 							/>
 							<input
 								type="email"
@@ -172,7 +190,8 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								value={formData.email}
 								onChange={handleFormChange}
 								required
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
+								disabled={isSubmitting}
+								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
 							/>
 							<input
 								type="text"
@@ -180,7 +199,8 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								placeholder="Company"
 								value={formData.company}
 								onChange={handleFormChange}
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
+								disabled={isSubmitting}
+								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
 							/>
 							<input
 								type="text"
@@ -188,7 +208,8 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								placeholder="Contact Number"
 								value={formData.number}
 								onChange={handleFormChange}
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
+								disabled={isSubmitting}
+								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
 							/>
 							{isWholesalePage && (
 								<input
@@ -197,7 +218,8 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 									placeholder="Expected Quantity/Month (KG)"
 									value={formData.quantity}
 									onChange={handleFormChange}
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
+									disabled={isSubmitting}
+									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
 								/>
 							)}
 							<textarea
@@ -207,24 +229,43 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								onChange={handleFormChange}
 								rows={4}
 								required
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3"
+								disabled={isSubmitting}
+								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
 							/>
 							<button
 								type="submit"
-								className="w-full px-6 py-3 bg-yellow-600 text-black rounded-lg font-semibold hover:bg-yellow-700 transition flex items-center justify-center gap-2 mt-4"
+								disabled={isSubmitting}
+								className="w-full px-6 py-3 bg-yellow-600 text-black rounded-lg font-semibold hover:bg-yellow-700 transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-yellow-600"
 							>
-								<Send size={20} />
-								Send Message
+								{isSubmitting ? (
+									<>
+										<Loader2 className="w-5 h-5 animate-spin" />
+										Sending...
+									</>
+								) : (
+									<>
+										<Send size={20} />
+										Send Message
+									</>
+								)}
 							</button>
 							{formSubmitted && (
-								<p className="text-green-400 text-center font-semibold mt-2">
+								<motion.p
+									initial={{ opacity: 0, y: -10 }}
+									animate={{ opacity: 1, y: 0 }}
+									className="text-green-400 text-center font-semibold mt-2"
+								>
 									Thank you! We&apos;ll be in touch soon.
-								</p>
+								</motion.p>
 							)}
 							{error && (
-								<p className="text-red-400 text-center font-semibold mt-2">
+								<motion.p
+									initial={{ opacity: 0, y: -10 }}
+									animate={{ opacity: 1, y: 0 }}
+									className="text-red-400 text-center font-semibold mt-2"
+								>
 									{error}
-								</p>
+								</motion.p>
 							)}
 						</form>
 					</div>
