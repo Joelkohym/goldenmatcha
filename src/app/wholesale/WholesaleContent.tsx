@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
-import EnquiryForm from "../../components/EnquiryForm";
+import EnquiryForm_Wholesale from "../../components/EnquiryForm";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, Variants } from "framer-motion";
 
@@ -253,7 +253,7 @@ export default function WholesaleContent() {
 						</p>
 
 						<div id="get-a-quote" className="mt-6">
-							<EnquiryForm />
+							<EnquiryForm_Wholesale />
 						</div>
 					</div>
 				</motion.section>
@@ -413,7 +413,7 @@ export default function WholesaleContent() {
 							onWheel={(e) => {
 								e.preventDefault();
 								setScale((prev) =>
-									Math.min(Math.max(prev + (e.deltaY < 0 ? 0.1 : -0.1), 1), 3)
+									Math.min(Math.max(prev + (e.deltaY < 0 ? 0.1 : -0.1), 1), 3),
 								);
 							}}
 						/>

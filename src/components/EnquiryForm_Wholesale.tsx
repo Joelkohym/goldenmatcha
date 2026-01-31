@@ -117,30 +117,6 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								<span className="ml-2">goldenmatchaofficial</span>
 							</a>
 
-							{!isWholesalePage && (
-								<>
-									<a
-										href="https://th.shp.ee/evN7DXG"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex items-center text-[#ceb072] hover:text-orange-500 gap-2"
-									>
-										<SiTiktok size={20} />
-										<span className="font-semibold">Shopee:</span>
-										<span className="ml-2">@goldenmatchaofficial</span>
-									</a>
-									<a
-										href="https://vt.tiktok.com/ZS5HXxV7t/?page=TikTokShop"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex items-center text-[#ceb072] hover:text-white gap-2"
-									>
-										<SiShopee size={20} />
-										<span className="font-semibold">TikTok Shop:</span>
-										<span className="ml-2">@goldenmatchaofficial</span>
-									</a>
-								</>
-							)}
 							<a
 								href="https://instagram.com/goldenmatchaofficial"
 								target="_blank"
