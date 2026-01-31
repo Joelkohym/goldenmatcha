@@ -28,53 +28,53 @@ function HomeContent() {
 		}
 	}, [scrollToSectionId, router]);
 
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		company: "",
-		number: "",
-		message: "",
-	});
-	const [formSubmitted, setFormSubmitted] = useState(false);
-	const [error, setError] = useState("");
+	// const [formData, setFormData] = useState({
+	// 	name: "",
+	// 	email: "",
+	// 	company: "",
+	// 	number: "",
+	// 	message: "",
+	// });
+	// const [formSubmitted, setFormSubmitted] = useState(false);
+	// const [error, setError] = useState("");
 
-	const handleFormChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
-	};
+	// const handleFormChange = (
+	// 	e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	// ) => {
+	// 	setFormData({ ...formData, [e.target.name]: e.target.value });
+	// };
 
-	const handleFormSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		setError("");
+	// const handleFormSubmit = (e: React.FormEvent) => {
+	// 	e.preventDefault();
+	// 	setError("");
 
-		const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-		const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-		const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+	// 	const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+	// 	const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+	// 	const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-		if (!serviceId || !templateId || !publicKey) {
-			setError("Email service is not configured properly.");
-			return;
-		}
+	// 	if (!serviceId || !templateId || !publicKey) {
+	// 		setError("Email service is not configured properly.");
+	// 		return;
+	// 	}
 
-		emailjs.send(serviceId, templateId, formData, publicKey).then(
-			() => {
-				setFormSubmitted(true);
-				setFormData({
-					name: "",
-					email: "",
-					company: "",
-					number: "",
-					message: "",
-				});
-				setTimeout(() => setFormSubmitted(false), 3000);
-			},
-			(err) => {
-				setError("Failed to send message. Please try again later.");
-				console.error(err.text);
-			},
-		);
-	};
+	// 	emailjs.send(serviceId, templateId, formData, publicKey).then(
+	// 		() => {
+	// 			setFormSubmitted(true);
+	// 			setFormData({
+	// 				name: "",
+	// 				email: "",
+	// 				company: "",
+	// 				number: "",
+	// 				message: "",
+	// 			});
+	// 			setTimeout(() => setFormSubmitted(false), 3000);
+	// 		},
+	// 		(err) => {
+	// 			setError("Failed to send message. Please try again later.");
+	// 			console.error(err.text);
+	// 		},
+	// 	);
+	// };
 
 	return (
 		<div className="min-h-screen bg-[url('/Background_Main2.jpeg')] bg-cover md:bg-cover bg-center bg-no-repeat bg-fixed text-[#ceb072] relative overflow-hidden">
