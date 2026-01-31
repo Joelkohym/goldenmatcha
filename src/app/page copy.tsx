@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 
 import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
@@ -38,7 +38,7 @@ const MotionProductCard = ({ product }: { product: Product }) => {
 					src={
 						isHovered
 							? "/Hover_picture1.jpeg"
-							: product.image ?? "/placeholder.jpeg"
+							: (product.image ?? "/placeholder.jpeg")
 					}
 					alt={product.name}
 					fill
