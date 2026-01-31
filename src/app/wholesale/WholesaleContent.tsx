@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
-import EnquiryForm_Wholesale from "../../components/EnquiryForm";
+import EnquiryForm from "../../components/EnquiryForm";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, Variants } from "framer-motion";
 
@@ -253,7 +253,7 @@ export default function WholesaleContent() {
 						</p>
 
 						<div id="get-a-quote" className="mt-6">
-							<EnquiryForm_Wholesale />
+							<EnquiryForm />
 						</div>
 					</div>
 				</motion.section>
