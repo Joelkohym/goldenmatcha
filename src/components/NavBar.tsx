@@ -64,10 +64,10 @@ export default function NavBar() {
 	];
 
 	return (
-		<nav className="fixed w-full bg-black/95 backdrop-blur-sm shadow-md z-50 flex items-center h-24 px-4 sm:px-6 lg:px-8">
+		<nav className="fixed w-full bg-black/95 backdrop-blur-sm shadow-md z-50 flex items-center h-24 pl-0 pr-4 sm:pr-6 lg:pr-8">
 			{/* Logo */}
 			<div
-				className="flex items-center gap-2 cursor-pointer -ml-6 sm:-ml-9 lg:-ml-12"
+				className="flex items-center gap-2 cursor-pointer -ml-12 sm:ml-0"
 				onClick={() => router.push("/")}
 			>
 				<Image
