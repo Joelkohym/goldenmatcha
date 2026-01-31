@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Send } from "lucide-react";
 import { SiInstagram, SiTiktok, SiShopee, SiFacebook } from "react-icons/si";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 

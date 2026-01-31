@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 
 import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
 import { useSearchParams } from "next/navigation";
@@ -39,7 +39,7 @@ function HomeContent() {
 	const [error, setError] = useState("");
 
 	const handleFormChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
@@ -72,7 +72,7 @@ function HomeContent() {
 			(err) => {
 				setError("Failed to send message. Please try again later.");
 				console.error(err.text);
-			}
+			},
 		);
 	};
 
@@ -375,10 +375,10 @@ function HomeContent() {
 								onScroll={(e) => {
 									const container = e.currentTarget;
 									const leftArrow = document.getElementById(
-										"ceremonial-left-arrow"
+										"ceremonial-left-arrow",
 									);
 									const rightArrow = document.getElementById(
-										"ceremonial-right-arrow"
+										"ceremonial-right-arrow",
 									);
 
 									if (leftArrow && rightArrow) {
@@ -557,7 +557,7 @@ function HomeContent() {
 										onClick={() => {
 											setTimeout(
 												() => router.push("/wholesale?scrollTo=get-a-quote"),
-												150
+												150,
 											);
 										}}
 										className="w-[50%] sm:w-auto px-6 py-3 bg-[#ceb072] text-black rounded-full font-semibold text-sm md:text-base shadow-lg active:bg-yellow-600 transition-colors"
