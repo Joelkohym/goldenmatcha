@@ -181,7 +181,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								onChange={handleFormChange}
 								required
 								disabled={isSubmitting}
-								className="w-full px-4 py-2 border border-black rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#faf9f6] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity placeholder:text-gray-500"
 							/>
 							<input
 								type="email"
@@ -191,7 +191,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								onChange={handleFormChange}
 								required
 								disabled={isSubmitting}
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#faf9f6] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity placeholder:text-gray-500"
 							/>
 							<input
 								type="text"
@@ -200,7 +200,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								value={formData.company}
 								onChange={handleFormChange}
 								disabled={isSubmitting}
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#faf9f6] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity placeholder:text-gray-500"
 							/>
 							<input
 								type="text"
@@ -209,7 +209,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								value={formData.number}
 								onChange={handleFormChange}
 								disabled={isSubmitting}
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#faf9f6] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity placeholder:text-gray-500"
 							/>
 							{isWholesalePage && (
 								<input
@@ -219,7 +219,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 									value={formData.quantity}
 									onChange={handleFormChange}
 									disabled={isSubmitting}
-									className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+									className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#faf9f6] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity placeholder:text-gray-500"
 								/>
 							)}
 							<textarea
@@ -230,7 +230,7 @@ export default function EnquiryForm({ onSuccess }: EnquiryFormProps) {
 								rows={4}
 								required
 								disabled={isSubmitting}
-								className="w-full px-4 py-2 border border-yellow-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#ceb072] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-[#faf9f6] text-black mb-3 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity placeholder:text-gray-500"
 							/>
 							<button
 								type="submit"
